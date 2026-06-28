@@ -1,0 +1,4 @@
+.vercel/
+build/node_modules/
+outputs/**/preview_*.png
+outputs/**/*.inspect.ndjson

@@ -1,0 +1,1999 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3EDE3'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%235E2616' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Hipnoterapia Integrativa e o Método Voltar a Si: um processo que vai à raiz do que você sente. Atendimento particular na Vila Madalena (SP) ou online." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Cris Campos · Hipnoterapia Integrativa" />
+  <meta property="og:description" content="O Método Voltar a Si — um processo que vai à raiz do que você sente, não ao sintoma de superfície." />
+  <meta property="og:type" content="website" />
+
+  <!-- Preload da imagem de LCP (hero), por breakpoint, casando com a variante WebP usada -->
+  <link rel="preload" as="image" href="public/images/cris-hero-mobile.webp" type="image/webp" media="(max-width:767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="public/images/cris-hero-tablet.webp" type="image/webp" media="(min-width:768px) and (max-width:1024px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="public/images/cris-hero.webp" type="image/webp" media="(min-width:1025px)" fetchpriority="high" />
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- ========================================================== -->
+  <!-- RASTREIO DE ORIGEM — cookie 1st-party (90d) + localStorage; -->
+  <!-- propaga click IDs/UTMs nos CTAs do Whats e campos ocultos futuros -->
+  <!-- ========================================================== -->
+  <script>
+    (function () {
+      var DAYS = 90;
+      function setCookie(n, v) { try { document.cookie = n + '=' + encodeURIComponent(v) + '; max-age=' + (DAYS * 86400) + '; path=/; SameSite=Lax'; } catch (e) {} }
+      function getCookie(n) { try { var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : null; } catch (e) { return null; } }
+      function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+      function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+      var params = new URLSearchParams(window.location.search);
+      var CLICK_IDS = ['gclid', 'gbraid', 'wbraid'];
+      var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+      // 1) Captura/persistência — URL tem prioridade; senão mantém o já salvo.
+      CLICK_IDS.concat(UTM).forEach(function (k) {
+        var v = params.get(k);
+        if (v) { setCookie(k, v); lsSet(k, v); }
+      });
+      function getVal(k) { return params.get(k) || getCookie(k) || lsGet(k); }
+      function getPrimaryRef() {
+        for (var i = 0; i < CLICK_IDS.length; i++) {
+          var id = CLICK_IDS[i];
+          var v = getVal(id);
+          if (v) return { name: id, value: v };
+        }
+        return null;
+      }
+
+      // 2) Propagação para CTAs do WhatsApp + campos ocultos de formulário.
+      document.addEventListener('DOMContentLoaded', function () {
+        var ORIGEM = document.body.getAttribute('data-origem') || 'site';
+        var ref = getPrimaryRef();
+        document.querySelectorAll('a.whatsapp-cta').forEach(function (link) {
+          var href = link.getAttribute('href') || '';
+          var hash = ''; var hi = href.indexOf('#'); if (hi > -1) { hash = href.slice(hi); href = href.slice(0, hi); }
+          var qi = href.indexOf('?');
+          var base = qi === -1 ? href : href.slice(0, qi);
+          var sp = new URLSearchParams(qi === -1 ? '' : href.slice(qi + 1));
+          var texto = sp.get('text') || ('Vim pela página de ' + ORIGEM + ' e quero agendar a Sessão de Clareza');
+          if (ref && texto.indexOf('[ref:') === -1) { texto += ' [ref: ' + ref.name + ':' + ref.value + ']'; }
+          sp.delete('text');
+          var extra = sp.toString(); // preserva outros params, se houver
+          var query = (extra ? extra + '&' : '') + 'text=' + encodeURIComponent(texto); // espaço -> %20 (seguro p/ wa.me)
+          link.setAttribute('href', base + '?' + query + hash);
+        });
+        var data = { origem: ORIGEM };
+        CLICK_IDS.forEach(function (k) { data[k] = getVal(k); });
+        UTM.forEach(function (k) { data[k] = getVal(k); });
+        Object.keys(data).forEach(function (name) {
+          if (!data[name]) return;
+          document.querySelectorAll('input[name="' + name + '"]').forEach(function (inp) { inp.value = data[name]; });
+        });
+      });
+    })();
+  </script>
+
+  <!-- Fontes self-hosted (Playfair Display + Outfit) — @font-face no tailwind.min.css (font-display:swap).
+       Sem preload de fonte: o LCP aqui é a IMAGEM do hero (já com fetchpriority=high); preloadar fonte
+       roubaria banda do LCP no mobile. As fontes carregam async e fazem swap. -->
+
+  <!-- Tailwind compilado e purgado (produção) — substitui o CDN; inclui os @font-face self-hosted -->
+  <link rel="stylesheet" href="public/tailwind.min.css" />
+
+  <style>
+    :root{
+      --cream:#F3EDE3; --rust:#5E2616; --terra:#A86B4C; --clay:#9A7B4F;
+      --sage:#9CA48B; --bronze:#9A7B4F; --bronze-on-dark:#C9A06A; --ink:#2C2521;
+      --ease:cubic-bezier(.22,1,.36,1); --dur:.7s;
+    }
+    /* Garet real: coloque os .woff2 em public/fonts/ e descomente:
+    @font-face{ font-family:"Garet"; src:url("public/fonts/Garet-Book.woff2") format("woff2"); font-weight:400; font-display:swap; }
+    @font-face{ font-family:"Garet"; src:url("public/fonts/Garet-Heavy.woff2") format("woff2"); font-weight:600; font-display:swap; }
+    */
+    html,body{ background:var(--cream); color:var(--ink); }
+    body{ font-weight:300; }
+    body::before{ content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"); }
+    ::selection{ background:rgba(168,107,76,.20); }
+
+    .eyebrow{ display:inline-flex; align-items:center; gap:.7rem; text-transform:uppercase; letter-spacing:.22em; font-size:.72rem; font-weight:500; color:var(--bronze); }
+    .eyebrow::before{ content:""; width:1.7rem; height:1px; background:var(--clay); }
+    .eyebrow.center::after{ content:""; width:1.7rem; height:1px; background:var(--clay); }
+    .rule{ height:1px; background:linear-gradient(90deg,transparent,var(--clay),transparent); }
+    .card{ background:#FBF7F0; border:1px solid color-mix(in srgb,var(--bronze) 42%,transparent); box-shadow:0 26px 56px -40px rgba(44,37,33,.55); }
+    .blob{ position:absolute; z-index:0; filter:blur(40px); opacity:.5; border-radius:46% 54% 52% 48% / 52% 46% 54% 48%; pointer-events:none; }
+    /* logo monocromática via máscara CSS — recolore cada instância com currentColor (sem editar o SVG) */
+    .brand-logo{
+      -webkit-mask:url("public/images/logo-cris-campos.svg") no-repeat center / contain;
+      mask:url("public/images/logo-cris-campos.svg") no-repeat center / contain;
+      background-color:currentColor; display:inline-block; flex:0 0 auto;
+    }
+    .grain::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .js .reveal{ opacity:0; transform:translateY(20px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+    .js .reveal.visible{ opacity:1; transform:none; }
+    details > summary{ list-style:none; cursor:pointer; }
+    details > summary::-webkit-details-marker{ display:none; }
+    .faq-plus{ transition:transform .3s var(--ease); }
+    details[open] .faq-plus{ transform:rotate(45deg); }
+    .zoom img{ transition:transform .7s var(--ease); } .zoom:hover img{ transform:scale(1.04); }
+    .no-scrollbar{ scrollbar-width:none; } .no-scrollbar::-webkit-scrollbar{ display:none; }
+
+    /* ============================================================ */
+    /* BLOCO 1 / PRIMEIRA DOBRA — refino premium (quiet luxury)      */
+    /* Fontes do sistema apenas (sem Google Fonts / sem dependencia)  */
+    /* ============================================================ */
+    :root{
+      --cta-ease:cubic-bezier(.19,1,.22,1);
+      --font-num:Georgia,"Times New Roman",serif;
+      --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      /* Numeros-heroi (etapas/metodo) — preparado p/ etapa FUTURA, nao usar agora:
+         .hero-number{ font-family:var(--font-num); font-weight:500; line-height:1;
+                       font-size:clamp(2.5rem,6vw,4rem); color:var(--terra); } */
+    }
+
+    /* 1 — CTAs premium (material, tatil, discreto) — 3 variantes */
+    .cta-solid,.cta-inverse,.cta-ghost{
+      font-family:var(--font-ui); font-weight:500; letter-spacing:.005em;
+      transition:transform .7s var(--cta-ease),
+                 box-shadow .7s var(--cta-ease),
+                 background-color .7s var(--cta-ease),
+                 border-color .7s var(--cta-ease),
+                 color .7s var(--cta-ease);
+    }
+    .cta-solid svg,.cta-inverse svg,.cta-ghost svg{ opacity:.80; }
+
+    /* solido escuro — sobre fundo claro (heroi, metodo, barra fixa) */
+    .cta-solid{
+      color:#F3EDE3; background:#2C2521;
+      border:1px solid rgba(243,237,227,.14);
+      box-shadow:
+        0 20px 44px -22px rgba(44,37,33,.55),
+        0 2px 5px -2px rgba(44,37,33,.30),
+        inset 0 1px 0 rgba(243,237,227,.10);
+    }
+    .cta-solid:hover{
+      transform:translateY(-2px); background:#332B25;
+      box-shadow:
+        0 28px 60px -22px rgba(44,37,33,.60),
+        0 4px 10px -3px rgba(44,37,33,.38),
+        inset 0 1px 0 rgba(243,237,227,.14);
+    }
+    .cta-solid:focus-visible{ outline:2px solid rgba(154,123,79,.85); outline-offset:3px; }
+
+    /* inverso claro — sobre fundo escuro/espresso (oferta, fechamento) */
+    .cta-inverse{
+      color:#5E2616; background:#F3EDE3;
+      border:1px solid rgba(44,37,33,.10);
+      box-shadow:
+        0 22px 48px -22px rgba(0,0,0,.45),
+        0 2px 6px -2px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.55);
+    }
+    .cta-inverse:hover{
+      transform:translateY(-2px); background:#FBF7F0;
+      box-shadow:
+        0 30px 64px -22px rgba(0,0,0,.50),
+        0 4px 12px -3px rgba(0,0,0,.36),
+        inset 0 1px 0 rgba(255,255,255,.70);
+    }
+    .cta-inverse:focus-visible{ outline:2px solid rgba(243,237,227,.92); outline-offset:3px; }
+
+    /* ghost — header (secundario, discreto) */
+    .cta-ghost{
+      color:#2C2521; background:transparent;
+      border:1px solid rgba(44,37,33,.55);
+    }
+    .cta-ghost:hover{
+      transform:translateY(-1px); color:#F3EDE3; background:#2C2521; border-color:#2C2521;
+      box-shadow:0 14px 30px -18px rgba(44,37,33,.55);
+    }
+    .cta-ghost:focus-visible{ outline:2px solid rgba(154,123,79,.85); outline-offset:3px; }
+
+    /* 2 — Barra de provas: assinatura editorial (linha superior + divisores) */
+    .trust-bar{
+      display:flex; flex-wrap:wrap; align-items:flex-start; margin:0;
+      margin-top:42px; padding-top:22px;
+      border-top:1px solid rgba(154,123,79,.18);
+    }
+    .trust-bar dt,.trust-bar dd{ margin:0; }
+    .trust-bar__item{
+      display:flex; flex-direction:column; justify-content:flex-start;
+      padding-right:28px; margin-right:28px;
+      border-right:1px solid rgba(154,123,79,.24);
+    }
+    .trust-bar__item:last-child{ padding-right:0; margin-right:0; border-right:0; }
+    .trust-bar__num{
+      font-family:var(--font-num); font-weight:500;
+      font-size:clamp(1.45rem,1.65vw,1.85rem); line-height:.95;
+      color:#2C2521; letter-spacing:-.045em;
+    }
+    .trust-bar__num .star{
+      color:#A86B4C; opacity:.82; font-size:.86rem;
+      display:inline-block; transform:translateY(-1px); letter-spacing:0;
+    }
+    .trust-bar__label{
+      margin:3px 0 0; font-family:var(--font-ui);
+      font-size:clamp(.68rem,.72vw,.78rem); font-weight:600; line-height:1.15;
+      letter-spacing:.10em; text-transform:uppercase;
+      color:rgba(44,37,33,.70); white-space:nowrap;
+    }
+    @media (max-width:640px){
+      .trust-bar{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 24px; }
+      .trust-bar__item{ padding-right:0; margin-right:0; border-right:0; }
+      .trust-bar__label{ white-space:normal; }
+    }
+
+    /* 3 — Textura invisivel (papel premium) — reduzida ~33% p/ ficar imperceptivel */
+    .hero-texture{
+      background-image:
+        radial-gradient(125% 90% at 6% -6%, rgba(255,251,244,.40), rgba(255,251,244,0) 46%),
+        repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 8px);
+    }
+
+    /* 4 — Transicao suave p/ a proxima secao (#F3EDE3) — sem redesenhar o proximo bloco */
+    .hero-seam{ background:linear-gradient(to bottom, rgba(243,237,227,0) 0%, #F3EDE3 100%); }
+
+    /* hero (LCP desktop/tablet): WebP via image-set com fallback JPG; variante menor p/ tablet */
+    .hero-bg{
+      background-image:url("public/images/cris-hero.jpg");
+      background-image:-webkit-image-set(url("public/images/cris-hero.webp") type("image/webp"), url("public/images/cris-hero.jpg") type("image/jpeg"));
+      background-image:image-set(url("public/images/cris-hero.webp") type("image/webp"), url("public/images/cris-hero.jpg") type("image/jpeg"));
+    }
+    @media (min-width:768px) and (max-width:1024px){
+      .hero-bg{
+        background-image:url("public/images/cris-hero-tablet.webp");
+        background-image:-webkit-image-set(url("public/images/cris-hero-tablet.webp") type("image/webp"));
+        background-image:image-set(url("public/images/cris-hero-tablet.webp") type("image/webp"));
+      }
+    }
+
+    /* ============================================================ */
+    /* BLOCO 2 — refino visual (continuacao organica da 1a dobra)    */
+    /* So visual: nenhuma palavra/estrutura macro alterada           */
+    /* ============================================================ */
+    .b2-section{
+      background:
+        radial-gradient(circle at 12% 18%, rgba(168,107,76,.055), transparent 32%),
+        radial-gradient(circle at 88% 8%, rgba(154,123,79,.045), transparent 30%),
+        #F3EDE3;
+    }
+    .b2-inner{ padding-top:clamp(96px,11vw,150px); padding-bottom:clamp(96px,10vw,140px); }
+    .b2-lead{ letter-spacing:-.012em; }
+    .b2-inner .b2-body{ color:rgba(44,37,33,.72); line-height:1.75; }
+    .b2-body strong{ color:var(--rust); font-weight:600; }
+    .js .b2-reveal{
+      opacity:0; transform:translateY(16px);
+      transition:opacity .8s cubic-bezier(.19,1,.22,1), transform .8s cubic-bezier(.19,1,.22,1);
+    }
+    .js .b2-reveal.visible{ opacity:1; transform:none; }
+
+    /* prefers-reduced-motion: sem translate; transicao minima de cor */
+    @media (prefers-reduced-motion: reduce){
+      .cta-solid,.cta-inverse,.cta-ghost{ transition:background-color .2s linear, box-shadow .2s linear, color .2s linear !important; }
+      .cta-solid:hover,.cta-inverse:hover,.cta-ghost:hover{ transform:none !important; }
+    }
+
+    /* Notebook/janela baixa: herói SEMPRE 100vh (foto trava na tela toda);
+       só encolhe o título e o respiro p/ o CTA caber — nunca a altura do herói. */
+    @media (min-width:769px) and (max-height:900px){
+      .hero-title{ font-size:clamp(1.9rem, 2.1vh + 1rem, 3rem) !important; }
+      .hero-wrap{ padding-top:1rem !important; padding-bottom:1rem !important; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .js .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+      *{ animation:none !important; scroll-behavior:auto !important; transition:none !important; }
+    }
+
+    /* ============================================================ */
+    /* ESCOPO: .page-burnout — overrides SO desta pagina           */
+    /* Tarefas 1-4: barra de provas, Bloco 2, Bloco 3, transicoes    */
+    /* ============================================================ */
+
+    /* --- Tarefa 1: barra de provas (microblocos + conjunto) --- */
+    .page-burnout .trust-bar{
+      margin-top:46px; padding-top:24px;
+      border-top:1px solid rgba(154,123,79,.18);
+    }
+    .page-burnout .trust-bar__item{
+      display:grid; align-content:start; row-gap:6px; min-width:92px;
+      padding-right:32px; margin-right:32px;
+      border-right:1px solid rgba(154,123,79,.22);
+    }
+    .page-burnout .trust-bar__item:last-child{
+      padding-right:0; margin-right:0; border-right:0;
+    }
+    .page-burnout .trust-bar__num{
+      font-family:var(--font-num); font-weight:500;
+      font-size:clamp(1.45rem,1.65vw,1.85rem); line-height:.95;
+      letter-spacing:-.045em; color:#2C2521; margin:0;
+    }
+    .page-burnout .trust-bar__label{
+      margin:0; font-family:var(--font-ui);
+      font-size:clamp(.68rem,.72vw,.78rem); font-weight:600; line-height:1.15;
+      letter-spacing:.09em; text-transform:uppercase; color:rgba(44,37,33,.66);
+    }
+    @media (max-width:640px){
+      .page-burnout .trust-bar{
+        display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 24px;
+      }
+      .page-burnout .trust-bar__item{
+        padding-right:0; margin-right:0; border-right:0;
+      }
+    }
+
+    /* --- Tarefa 2: Bloco 2 — superficie material + campo de leitura --- */
+    .page-burnout .b2-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
+        radial-gradient(circle at 50% 28%, rgba(255,255,255,.50), transparent 38%),
+        radial-gradient(circle at 14% 16%, rgba(168,107,76,.045), transparent 34%),
+        radial-gradient(circle at 84% 80%, rgba(156,164,139,.05), transparent 36%),
+        #F3EDE3;
+    }
+    .page-burnout .b2-inner{
+      padding-top:clamp(80px,8vw,120px);
+      padding-bottom:clamp(76px,7vw,108px);
+    }
+    /* campo de leitura editorial — sutil, NAO card */
+    .page-burnout .b2-field{
+      position:relative; z-index:1;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(44,37,33,.035);
+      border-radius:30px;
+      box-shadow:0 64px 120px -82px rgba(44,37,33,.24);
+      padding:clamp(1.6rem,3.5vw,2.75rem);
+    }
+
+    /* --- Tarefa 3: Bloco 3 — banda mineral premium (frameless) --- */
+    .page-burnout .b3-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
+        radial-gradient(110% 70% at 50% 8%, rgba(255,253,248,.50), transparent 50%),
+        radial-gradient(85% 95% at 50% 58%, rgba(156,164,139,.10), transparent 76%),
+        linear-gradient(180deg, #EAECE2 0%, #E5E8DB 100%);
+    }
+    .page-burnout .b3-inner{
+      position:relative; z-index:1;
+      max-width:42rem;
+      padding-top:clamp(80px,8vw,120px);
+      padding-bottom:clamp(60px,6vw,92px);
+    }
+
+    /* --- Tarefa 4: transicoes inferiores (fade entre bandas) --- */
+    .page-burnout .b2-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(236,238,225,0), #ECEEE1);
+      pointer-events:none;
+    }
+    .page-burnout .b3-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
+      pointer-events:none;
+    }
+
+    /* ============================================================ */
+    /* BLOCO 4 — "O Metodo": secao editorial (escopo .page-burnout) */
+    /* ============================================================ */
+    .page-burnout .b4-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
+        radial-gradient(120% 80% at 50% 0%, rgba(255,253,248,.60), transparent 46%),
+        radial-gradient(90% 70% at 88% 92%, rgba(154,123,79,.04), transparent 40%),
+        #F3EDE3;
+    }
+    /* reduz o vazio B3->B4 (topo menor) e mantem respiro inferior */
+    .page-burnout .b4-inner{
+      position:relative; z-index:1;
+      padding-top:clamp(48px,5.5vw,76px);
+      padding-bottom:clamp(26px,3vw,44px);
+    }
+    .page-burnout .b4-steps-title{ letter-spacing:-.01em; }
+
+    /* etapas: micropecas editoriais, NAO cards (sobrescreve so .b4-step.card) */
+    .page-burnout .b4-step.card{
+      position:relative;
+      background:rgba(250,245,237,.66);
+      border:1px solid rgba(154,123,79,.20);
+      border-radius:10px;
+      box-shadow:0 40px 80px -60px rgba(44,37,33,.32);
+    }
+    .page-burnout .b4-step.card::before{
+      content:""; position:absolute; top:0; left:28px; right:28px; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(154,123,79,.45), transparent);
+    }
+    .page-burnout .b4-step-number{
+      position:relative; display:block;
+      font-family:var(--font-num); font-weight:500; line-height:.9;
+      font-size:clamp(2.9rem,4.8vw,3.8rem); letter-spacing:-.03em;
+      color:rgba(160,105,76,.55);   /* marca d'água editorial, não rótulo */
+    }
+    /* filete bronze de vínculo: número — etapa */
+    .page-burnout .b4-step-number::after{
+      content:""; display:block; width:32px; height:2px; margin-top:.55rem;
+      background:var(--bronze); opacity:.55; border-radius:2px;
+    }
+    .page-burnout .b4-step-title{
+      margin-top:.35rem;   /* anula o mt-3 do Tailwind, cola o título no par */
+      font-family:"Playfair Display",Georgia,Cambria,serif; font-weight:600;
+      letter-spacing:-.01em; color:var(--rust);
+    }
+    .page-burnout .b4-step-copy{
+      font-family:var(--font-ui); color:rgba(44,37,33,.76); line-height:1.66;
+    }
+
+    /* reveal das etapas: respiracao suave + stagger discreto */
+    .js .page-burnout .b4-step{
+      transform:translateY(14px);
+      transition:opacity .8s cubic-bezier(.19,1,.22,1), transform .8s cubic-bezier(.19,1,.22,1);
+    }
+    .js .page-burnout .b4-step.visible{ transform:none; }
+    .page-burnout .b4-step:nth-child(2){ transition-delay:.06s; }
+    .page-burnout .b4-step:nth-child(3){ transition-delay:.12s; }
+    .page-burnout .b4-step:nth-child(4){ transition-delay:.18s; }
+
+    /* transicao Bloco 4 -> faixa de micro-prova (#EFE6D6), assinatura discreta */
+    .page-burnout .b4-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(239,230,214,0), #EFE6D6);
+      pointer-events:none;
+    }
+
+    /* ============================================================ */
+    /* HERO — altura cabe header + dobra sem cortar a trust bar      */
+    /* ============================================================ */
+    @media (min-width:768px){
+      .page-burnout .hero-wrap{
+        min-height:calc(100vh - 4rem);
+        min-height:calc(100svh - 4rem);
+      }
+    }
+
+    /* ============================================================ */
+    /* "O QUE ISTO NAO E" — nota editorial / manifesto (hairlines)   */
+    /* ============================================================ */
+    .page-burnout .not-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.009) 0 1px, transparent 1px 9px),
+        radial-gradient(120% 80% at 16% 0%, rgba(255,251,244,.50), transparent 44%),
+        linear-gradient(180deg, #F2EADD 0%, #F4EEE3 100%);
+    }
+    .page-burnout .not-inner{
+      position:relative; z-index:1; max-width:42rem;
+      padding-top:clamp(52px,6vw,80px);
+      padding-bottom:clamp(64px,7vw,96px);
+    }
+    .page-burnout .not-list{
+      list-style:none; padding-left:0;
+      margin-top:1.4rem;
+      border-top:1px solid rgba(154,123,79,.14);
+    }
+    .page-burnout .not-item{
+      padding:.6rem 0;
+      border-bottom:1px solid rgba(154,123,79,.14);
+    }
+    .page-burnout .not-item:last-child{ border-bottom:0; }
+    /* "O que e, entao" — card editorial de fechamento (espresso de marca) */
+    .page-burnout .not-affirm{
+      margin-top:clamp(2rem,4vw,2.75rem);
+      background:linear-gradient(155deg,#5E2616,#2C2521);
+      border:1px solid rgba(243,237,227,.10);
+      border-radius:12px;
+      box-shadow:0 44px 90px -64px rgba(44,37,33,.50);
+      padding:clamp(1.4rem,3.2vw,2rem);
+    }
+    .page-burnout .not-affirm p{ margin:0; color:#F3EDE3; }
+    .page-burnout .not-affirm strong{ color:#EAD9C2; font-weight:600; }
+    .page-burnout .not-section::before{
+      content:""; position:absolute; left:0; right:0; top:0; height:70px; z-index:0;
+      background:linear-gradient(to bottom, #EFE6D6, rgba(239,230,214,0));
+      pointer-events:none;
+    }
+    .page-burnout .not-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
+      pointer-events:none;
+    }
+
+    /* ============================================================ */
+    /* BLOCO 5 — "Por que e diferente": ledger editorial             */
+    /* ============================================================ */
+    .page-burnout .b5-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
+        radial-gradient(110% 64% at 50% 0%, rgba(255,253,248,.60), transparent 52%),
+        #F3EDE3;
+    }
+    .page-burnout .b5-inner{
+      position:relative; z-index:1;
+      padding-top:clamp(56px,6vw,88px);
+      padding-bottom:clamp(52px,5.5vw,82px);
+    }
+    .page-burnout .b5-ledger{
+      margin-top:2.4rem;
+      border-top:1px solid rgba(154,123,79,.18);
+    }
+    .page-burnout .b5-row{
+      margin:0; padding:1.15rem 0;
+      border-bottom:1px solid rgba(154,123,79,.18);
+    }
+    .page-burnout .b5-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(241,229,212,0), #F1E5D4);
+      pointer-events:none;
+    }
+
+    /* ============================================================ */
+    /* BLOCO 6 — "O custo": gravidade silenciosa (fundo + quente)    */
+    /* ============================================================ */
+    .page-burnout .b6-section{
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.009) 0 1px, transparent 1px 9px),
+        radial-gradient(120% 80% at 50% 0%, rgba(255,250,242,.45), transparent 46%),
+        linear-gradient(180deg, #F1E5D4 0%, #EAD9C0 100%);
+    }
+    .page-burnout .b6-inner{
+      position:relative; z-index:1;
+      padding-top:clamp(44px,5vw,74px);
+      padding-bottom:clamp(72px,7vw,112px);
+    }
+    .page-burnout .b6-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
+      pointer-events:none;
+    }
+
+    /* ============================================================ */
+    /* BLOCO 7 — Prova social: editorial, humano (escopo)            */
+    /* ============================================================ */
+    .page-burnout .b7-section{
+      position:relative;
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.007) 0 1px, transparent 1px 9px),
+        radial-gradient(100% 52% at 50% 0%, rgba(255,253,248,.50), transparent 52%),
+        #F3EDE3;
+    }
+    .page-burnout .b7-header h2{ text-wrap:balance; }
+    .page-burnout .b7-header p{ text-wrap:pretty; }
+    /* ============================================================ */
+    /* BLOCO 7 · "Em palavras" — galeria editorial de depoimentos    */
+    /* ============================================================ */
+    .page-burnout .b7-words{ margin-top:clamp(2.6rem,4.6vw,4rem); }
+    .page-burnout .b7-words-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.2rem); }
+    .page-burnout .b7-words-title{ letter-spacing:-.01em; }
+    .page-burnout .b7-words-title::after{
+      content:""; display:block; width:34px; height:1px; margin:.75rem auto 0;
+      background:linear-gradient(90deg, transparent, rgba(154,123,79,.6), transparent);
+    }
+    .page-burnout .b7-words-carousel{ position:relative; }
+    .page-burnout .b7-words-track{
+      counter-reset:b7q;
+      display:flex; align-items:stretch; gap:clamp(16px,1.6vw,24px);
+      overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+      padding:10px 0 16px;   /* sem padding lateral: evita que a última página assente ~4px à direita */
+      scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .page-burnout .b7-words-track::-webkit-scrollbar{ display:none; }
+    .page-burnout .b7-words-card{ flex:0 0 auto; scroll-snap-align:start; width:86%; }
+    @media (min-width:641px){ .page-burnout .b7-words-card{ width:calc((100% - clamp(16px,1.6vw,24px)) / 2); } }
+    @media (min-width:1024px){ .page-burnout .b7-words-card{ width:calc((100% - 2 * clamp(16px,1.6vw,24px)) / 3); } }
+
+    /* card = folha editorial (papel premium) */
+    .page-burnout .b7-card.card{
+      position:relative; display:flex; flex-direction:column; overflow:hidden;
+      counter-increment:b7q;
+      /* card stock: grão de papel fino + gradiente vertical aprofundado */
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #F5EEE3 0%, #EAE2D3 100%);
+      border:1px solid rgba(154,123,79,.26);
+      border-radius:18px;
+      box-shadow:
+        0 1px 2px rgba(44,37,33,.10),            /* contato */
+        0 18px 38px -24px rgba(44,37,33,.34),    /* ambiente (pilha) */
+        inset 0 1px 0 rgba(255,255,255,.55);     /* aresta de luz no topo */
+      padding:clamp(1.6rem,2.1vw,2.05rem);
+    }
+    /* aspa grande decorativa — opacidade muito baixa, sem competir */
+    .page-burnout .b7-card.card::before{
+      content:"\201C"; position:absolute; top:-.30em; right:.14em; z-index:0;
+      font-family:Georgia,"Times New Roman",serif; font-size:5.75rem; line-height:1;
+      color:rgba(94,38,22,.07); pointer-events:none;
+    }
+    .page-burnout .b7-card.card > *{ position:relative; z-index:1; }
+    /* assinatura editorial: indice 01..08 + estrelas rebaixadas */
+    .page-burnout .b7-words-top{ display:flex; align-items:center; gap:.65rem; margin-bottom:.85rem; }
+    .page-burnout .b7-words-index{
+      font-family:Georgia,"Times New Roman",serif; font-weight:600;
+      font-size:.82rem; letter-spacing:.06em; color:#9A7B4F;
+    }
+    .page-burnout .b7-words-index::before{ content:counter(b7q, decimal-leading-zero) " / 32"; }
+    .page-burnout .b7-words-stars{ font-size:.56rem; letter-spacing:.18em; color:rgba(154,123,79,.55); }
+    .page-burnout .b7-quote{ text-wrap:pretty; line-height:1.5; color:#5E2616; font-weight:600; }
+    .page-burnout .b7-body{ text-wrap:pretty; overflow-wrap:break-word; line-height:1.62; color:rgba(44,37,33,.70); }
+    .page-burnout .b7-meta{
+      margin-top:auto; padding-top:.9rem;
+      border-top:1px solid rgba(154,123,79,.18);
+      color:rgba(44,37,33,.86); font-weight:600;   /* nível 1: a pessoa (nome) */
+    }
+    /* nível 2: a plataforma (Google) — presença média */
+    .page-burnout .b7-words-card .b7-seal-src{ font-weight:500; color:#5E4A2C; }
+    /* nível 3: " · verificado" recua (peso normal; cor mantém AA) */
+    .page-burnout .b7-words-card .b7-seal{ font-weight:400; color:#6E5634; }
+    /* card final (Google) — herda raio 18 + sombra card-stock dos irmãos (sem moldura própria) */
+
+    /* navegacao abaixo do carrossel — discreta, vidro fosco; só com JS pronto */
+    .page-burnout .b7-words-nav{ display:none; }
+    .js .page-burnout .b7-words.is-ready .b7-words-nav{
+      display:flex; justify-content:center; gap:.7rem; margin-top:clamp(1rem,2vw,1.5rem);
+    }
+    .page-burnout .b7-words-button{
+      width:42px; height:42px; display:grid; place-items:center; border-radius:50%;
+      background:rgba(243,237,227,.58); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+      border:1px solid rgba(154,123,79,.22); color:#5E2616;
+      box-shadow:0 14px 32px -20px rgba(44,37,33,.40);
+      cursor:pointer; transition:background .35s var(--ease), transform .35s var(--ease);
+    }
+    .page-burnout .b7-words-button:hover{ background:rgba(243,237,227,.85); transform:translateY(-1px); }
+    .page-burnout .b7-words-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce){ .page-burnout .b7-words-track{ scroll-behavior:auto; } }
+    /* card-portão "ver mais" (posição 16) — mesmo recipiente dos cards, conteúdo centralizado */
+    .page-burnout .b7-card.card.b7-words-gate{ counter-increment:none; }   /* não conta como depoimento */
+    .page-burnout .b7-words-gate{ -webkit-appearance:none; appearance:none; font:inherit; cursor:pointer; gap:.15rem; }
+    .page-burnout .b7-words-gate:hover{ border-color:rgba(154,123,79,.5); }
+    .page-burnout .b7-words-gate:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    .page-burnout .b7-words-gate-ico{ display:inline-flex; color:rgba(168,107,76,.85); }
+    /* controle "ver menos" abaixo do carrossel (visível só no estado expandido, via [hidden]) */
+    .page-burnout .b7-words-more{ text-align:center; margin-top:clamp(1.2rem,2.2vw,1.8rem); }
+    .page-burnout .b7-words-morebtn{
+      -webkit-appearance:none; appearance:none; cursor:pointer; font:inherit;
+      font-family:var(--font-ui); font-size:.86rem; letter-spacing:.02em; color:#5E2616;
+      padding:.55rem 1.4rem; border-radius:999px;
+      background:rgba(243,237,227,.5); border:1px solid rgba(154,123,79,.34);
+      transition:background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
+    }
+    .page-burnout .b7-words-morebtn:hover{ background:rgba(154,123,79,.12); border-color:rgba(154,123,79,.5); }
+    .page-burnout .b7-words-morebtn:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    /* [hidden] precisa vencer o display:flex de .b7-card.card (origem autor > UA) — sem isto o atributo é inerte */
+    .page-burnout .b7-card.card[hidden]{ display:none; }
+    /* sem JS: revela os cards ocultos (SEO/a11y) e oculta o card-portão não-funcional */
+    html:not(.js) .page-burnout .b7-words-card[hidden]{ display:flex; }
+    html:not(.js) .page-burnout .b7-words-gate{ display:none; }
+    /* frames de video: proporcao estavel + moldura premium discreta */
+    .page-burnout .b7-frame{
+      border-radius:12px;
+      border:1px solid rgba(154,123,79,.22);
+      box-shadow:0 30px 60px -48px rgba(44,37,33,.40);
+    }
+    /* transicao organica B7 -> B8 (#F3EDE3) */
+    .page-burnout .b7-section::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
+      background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
+      pointer-events:none;
+    }
+
+    /* ===== BLOCO 7 · "Em video" — galeria privada curada (center-stage) ===== */
+    .page-burnout .b7-video{ margin-top:clamp(2.2rem,3.8vw,3.4rem); }
+    .page-burnout .b7-video-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.4rem); }
+    .page-burnout .b7-video-carousel{ position:relative; }
+    .page-burnout .b7-video-stage{ position:relative; }
+
+    /* BASE / SEM JS: lista horizontal scroll-snap (fallback) */
+    .page-burnout .b7-video-track{
+      display:flex; align-items:center; gap:clamp(14px,1.6vw,22px);
+      overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+      padding-block:10px;
+      padding-inline:calc(50% - clamp(130px,12.5vw,170px));
+      scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .page-burnout .b7-video-track::-webkit-scrollbar{ display:none; }
+    .page-burnout .b7-video-card{
+      flex:0 0 auto; width:clamp(240px,23vw,300px); scroll-snap-align:center;
+    }
+    .page-burnout .b7-video-frame{
+      position:relative; aspect-ratio:9/16; overflow:hidden;
+      border-radius:16px; background:#221a16;
+      border:1px solid rgba(154,123,79,.20);
+      box-shadow:0 34px 80px -56px rgba(44,37,33,.45);
+    }
+    .page-burnout .b7-video-el{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      display:block; z-index:0; background:#221a16; border:0;
+      /* Quiet Luxury: still claro, matte e soft-focus (privacidade pela suavidade) */
+      filter:brightness(1.14) contrast(.93) saturate(.93) blur(4px);
+      transform:scale(1.06); /* cobre as bordas embaçadas do blur */
+      transition:filter .45s var(--ease), transform .45s var(--ease);
+    }
+    /* véu editorial em 2 camadas — leve, arejado (não escurece o rosto) */
+    /* camada 1 — scrim só na base p/ legibilidade da legenda; topo arejado */
+    .page-burnout .b7-video-frame::before{
+      content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:linear-gradient(to top, rgba(20,15,12,.60) 0%, rgba(20,15,12,.12) 40%, rgba(243,237,227,.06) 100%);
+      transition:opacity .45s var(--ease);
+    }
+    /* camada 2 — wash quente suave (unifica temperatura dos stills) */
+    .page-burnout .b7-video-frame::after{
+      content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:linear-gradient(150deg, rgba(94,38,22,.24) 0%, rgba(154,123,79,.16) 100%);
+      mix-blend-mode:multiply; transition:opacity .45s var(--ease);
+    }
+    /* ao tocar: vídeo nítido e real; oculta véu/play/legenda */
+    .page-burnout .b7-video-card.is-playing .b7-video-frame::before,
+    .page-burnout .b7-video-card.is-playing .b7-video-frame::after,
+    .page-burnout .b7-video-card.is-playing .b7-video-play,
+    .page-burnout .b7-video-card.is-playing .b7-video-caption{ opacity:0; pointer-events:none; }
+    .page-burnout .b7-video-card.is-playing .b7-video-el{ z-index:2; filter:none; transform:none; }
+    /* botão de play acessível (reset de <button>) + foco visível */
+    .page-burnout .b7-video-play{ cursor:pointer; -webkit-appearance:none; appearance:none; padding:0 0 0 3px; font:inherit; }
+    .page-burnout .b7-video-play:focus-visible{ outline:2px solid rgba(224,174,132,.95); outline-offset:3px; }
+    /* play discreto — anel terracota fino */
+    .page-burnout .b7-video-play{
+      position:absolute; inset:0; margin:auto; z-index:2;
+      width:48px; height:48px; display:grid; place-items:center;
+      border-radius:50%; border:1px solid rgba(201,150,110,.70);
+      background:rgba(34,26,22,.28); backdrop-filter:blur(2px);
+      color:#C9926B; font-size:1rem; padding-left:3px;
+      transition:background .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
+    }
+    .page-burnout .b7-video-card.is-active .b7-video-play:hover{ background:rgba(94,38,22,.42); border-color:rgba(201,150,110,.95); transform:scale(1.05); }
+    /* legenda: centralizada, dois registros (nome micro-label + fala em Playfair italic) */
+    .page-burnout .b7-video-caption{
+      position:absolute; inset-inline:0; bottom:0; z-index:2;
+      padding:1.1rem 1rem 1.25rem; text-align:center;
+      display:flex; flex-direction:column; align-items:center; gap:.32rem;
+    }
+    .page-burnout .b7-video-name{
+      font-size:.66rem; text-transform:uppercase; letter-spacing:.2em;
+      color:rgba(243,237,227,.78);
+    }
+    .page-burnout .b7-video-line{
+      font-family:'Playfair Display',serif; font-style:italic;
+      font-size:1.02rem; line-height:1.3; color:#F3EDE3; text-wrap:balance;
+    }
+
+    /* botoes — vidro fosco, discretos; só quando JS pronto */
+    .page-burnout .b7-video-button{ display:none; }
+    .js .page-burnout .b7-video-carousel.is-ready .b7-video-button{
+      position:absolute; top:50%; margin-top:-22px; z-index:6;
+      display:grid; place-items:center; width:44px; height:44px; border-radius:50%;
+      background:rgba(243,237,227,.58); backdrop-filter:blur(10px);
+      border:1px solid rgba(154,123,79,.22); color:#5E2616;
+      box-shadow:0 16px 36px -20px rgba(44,37,33,.45);
+      cursor:pointer; transition:background .35s var(--ease), transform .35s var(--ease);
+    }
+    .js .page-burnout .b7-video-prev{ left:clamp(4px,2vw,20px); }
+    .js .page-burnout .b7-video-next{ right:clamp(4px,2vw,20px); }
+    .js .page-burnout .b7-video-carousel.is-ready .b7-video-button:hover{ background:rgba(243,237,227,.82); transform:translateY(-1px); }
+    .js .page-burnout .b7-video-carousel.is-ready .b7-video-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+
+    /* STAGE (JS pronto, >=641): só 3 cards (prev/active/next), resto oculto */
+    @media (min-width:641px){
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-stage{
+        height:clamp(430px,42vw,548px); overflow:hidden;
+        --b7-shift:clamp(138px,15vw,220px);   /* menor = centro sobrepõe os laterais (oclusão) */
+        --b7-tilt:9deg;                        /* subir até ~10-12deg se quiser mais relevo */
+        perspective:1600px; perspective-origin:50% 50%; transform-style:preserve-3d;
+        -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-track{
+        position:absolute; inset:0; display:block; overflow:visible; padding:0; scroll-snap-type:none;
+        transform-style:preserve-3d;           /* propaga a perspective do palco até os cards */
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card{
+        position:absolute; top:50%; left:50%;
+        transform:translate(-50%,-50%) scale(.7); opacity:0; pointer-events:none;
+        transition:transform 800ms cubic-bezier(.19,1,.22,1), opacity 800ms cubic-bezier(.19,1,.22,1), filter 800ms cubic-bezier(.19,1,.22,1);
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-active{
+        transform:translate(-50%,-50%) scale(1) rotateY(0); opacity:1; filter:none; z-index:3; pointer-events:auto;
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-active .b7-video-frame{
+        box-shadow:0 50px 90px -46px rgba(20,14,10,.70), 0 18px 40px -30px rgba(20,14,10,.55);
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-prev{
+        transform:translate(calc(-50% - var(--b7-shift)), calc(-50% + 16px)) scale(.80) rotateY(var(--b7-tilt)); opacity:.46; z-index:2;
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-next{
+        transform:translate(calc(-50% + var(--b7-shift)), calc(-50% + 16px)) scale(.80) rotateY(calc(-1 * var(--b7-tilt))); opacity:.46; z-index:2;
+      }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-hidden{
+        transform:translate(-50%,-50%) scale(.7); opacity:0; pointer-events:none; z-index:1;
+      }
+    }
+
+    /* MOBILE (<=640): scroll-snap, ~1.12 card, legenda sem estourar */
+    @media (max-width:640px){
+      /* trilho sai do padding do painel p/ centralizar o vídeo protagonista */
+      .page-burnout .b7-video-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
+      .page-burnout .b7-video-track{
+        gap:16px;
+        padding-inline:calc((100% - min(78vw, 290px)) / 2);
+      }
+      .page-burnout .b7-video-card{ width:min(78vw, 290px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .page-burnout .b7-video-track{ scroll-behavior:auto; }
+    }
+
+    /* ===== Continuidade de textura — blocos posteriores (acabamento sutil) ===== */
+    .page-burnout .tex-paper{
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
+        radial-gradient(100% 60% at 50% 0%, rgba(255,253,248,.50), transparent 55%),
+        #F3EDE3;
+    }
+    .page-burnout .tex-cream{
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 10px),
+        radial-gradient(120% 70% at 50% 0%, rgba(255,252,246,.45), transparent 55%),
+        #F3EDE3;
+    }
+    .page-burnout .tex-band{
+      background:
+        repeating-linear-gradient(135deg, rgba(44,37,33,.008) 0 1px, transparent 1px 10px),
+        linear-gradient(180deg, rgba(154,123,79,.04), transparent 62%),
+        #EFE6D6;
+    }
+
+    /* ============================================================ */
+    /* BLOCO 7 — banda escura de marca (prova social unificada)      */
+    /* ============================================================ */
+    .page-burnout .b7-section{
+      position:relative; scroll-margin-top:5.5rem;
+      padding-block:clamp(40px,5.5vw,76px) clamp(20px,3vw,38px);
+      padding-inline:clamp(14px,3.5vw,32px);
+      background:
+        radial-gradient(120% 64% at 50% 0%, rgba(255,253,248,.5), transparent 60%),
+        #F3EDE3;
+    }
+    /* sala reservada: painel escuro contido (não faixa cheia) */
+    .page-burnout .b7-inner{
+      position:relative; z-index:1; overflow:hidden; scroll-margin-top:5.5rem;
+      border-radius:clamp(20px,2.4vw,30px);
+      padding:clamp(2.6rem,4.4vw,4.25rem) clamp(1.3rem,3vw,3rem) clamp(1.9rem,3.2vw,2.8rem);
+      background:
+        repeating-linear-gradient(135deg, rgba(255,250,244,.0025) 0 1px, transparent 1px 20px),
+        linear-gradient(170deg, #302722 0%, #2B221D 60%, #271F1A 100%);
+      box-shadow:0 40px 90px -60px rgba(20,14,11,.46), inset 0 1px 0 rgba(255,250,244,.04);
+    }
+    .page-burnout .b7-section .b7-header h2{ color:#F3EDE3; }
+    .page-burnout .b7-eyebrow{ color:var(--bronze-on-dark); }
+    .page-burnout .b7-eyebrow::before, .page-burnout .b7-eyebrow::after{ background:rgba(201,160,106,.55); }
+    .page-burnout .b7-intro{ color:rgba(243,237,227,.82); }
+    .page-burnout .b7-intro strong{ color:#F3EDE3; }
+    .page-burnout .b7-rating{ color:#E0AE84; font-weight:600; }
+    /* subtitulos editoriais "Em video" / "Em palavras" */
+    .page-burnout .b7-label{
+      text-align:center;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(1.4rem, 1.08rem + 1.2vw, 2.125rem);
+      font-weight:500; letter-spacing:0; line-height:1.2;
+      color:#E3C7A0;
+      margin:clamp(3rem,5vw,4.25rem) 0 clamp(1.5rem,2.6vw,2.1rem);
+    }
+    .page-burnout .b7-label::after{
+      content:""; display:block; width:34px; height:1px; margin:.9rem auto 0;
+      background:linear-gradient(90deg, transparent, rgba(201,160,106,.6), transparent);
+    }
+    /* play solido em tom de marca */
+    .page-burnout .b7-video-play{
+      width:54px; height:54px; padding-left:3px;
+      background:radial-gradient(circle at 50% 42%, rgba(120,48,28,.80), rgba(44,33,28,.72));
+      border:1px solid rgba(243,237,227,.45); color:#F3EDE3;
+      box-shadow:0 10px 26px -10px rgba(0,0,0,.55);
+    }
+    /* convite ao clique: escala discreta só no card ativo */
+    .page-burnout .b7-video-card.is-active .b7-video-play:hover{ background:radial-gradient(circle at 50% 42%, rgba(140,58,34,.88), rgba(54,40,33,.78)); transform:scale(1.05); }
+    /* laterais do video: sem legenda competindo; play rebaixado (convite só no centro) */
+    @media (min-width:641px){
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-prev,
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-next{ filter:blur(3px); }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-caption,
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-caption,
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-caption{ opacity:0; }
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-play,
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-play,
+      .js .page-burnout .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-play{ opacity:.35; }
+    }
+    /* setas integradas ao fundo escuro */
+    .js .page-burnout .b7-video-carousel.is-ready .b7-video-button,
+    .page-burnout .b7-words-button{ background:rgba(243,237,227,.16); border-color:rgba(243,237,227,.30); color:#F3EDE3; }
+    .js .page-burnout .b7-video-carousel.is-ready .b7-video-button:hover,
+    .page-burnout .b7-words-button:hover{ background:rgba(243,237,227,.32); }
+    /* cards de texto claros flutuando: pilha + aresta de luz, sombra mais funda no escuro */
+    .page-burnout .b7-section .b7-card.card{
+      box-shadow:
+        0 1px 2px rgba(0,0,0,.16),
+        0 24px 46px -30px rgba(0,0,0,.46),
+        inset 0 1px 0 rgba(255,255,255,.50);
+    }
+
+    /* ===== MOBILE "Em palavras": card único protagonista, centralizado ===== */
+    @media (max-width:640px){
+      /* trilho sai do padding do painel p/ poder centralizar de borda a borda */
+      .page-burnout .b7-words-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
+      .page-burnout .b7-words-track{
+        gap:16px; padding-block:8px 6px;
+        padding-inline:calc((100% - min(100vw - 40px, 390px)) / 2);
+        -webkit-mask-image:none; mask-image:none;        /* sem fade de borda no mobile */
+      }
+      .page-burnout .b7-words-card{
+        width:min(100vw - 40px, 390px);
+        margin-inline:auto; scroll-snap-align:center;     /* protagonista centralizado */
+      }
+      /* mobile: pilha mais curta, mantém contato + aresta de luz */
+      .page-burnout .b7-section .b7-card.card{
+        box-shadow:
+          0 1px 2px rgba(0,0,0,.16),
+          0 16px 30px -24px rgba(0,0,0,.42),
+          inset 0 1px 0 rgba(255,255,255,.50);
+      }
+    }
+    .page-burnout .b7-card.card::before{ content:none; }
+    .page-burnout .b7-words-top{ margin-bottom:.55rem; }
+    /* selos de verificacao com micro-icone monocromatico */
+    .page-burnout .b7-seal{
+      display:inline; color:#6E5634; font-size:.72rem; letter-spacing:.015em;
+      font-family:var(--font-ui); white-space:nowrap;
+    }
+    /* ===== Micro-provas: linhas editoriais discretas espalhadas na LP ===== */
+    .page-burnout .microprova{ max-width:34rem; margin-inline:auto; text-align:center; }
+    .page-burnout .microprova-quote{
+      font-family:"Playfair Display",Georgia,serif; font-style:italic;
+      font-size:clamp(1.05rem, 0.98rem + 0.45vw, 1.3rem); line-height:1.5;
+      color:#5E2616; text-wrap:balance;
+    }
+    .page-burnout .microprova-cite{
+      margin-top:.7rem; font-family:var(--font-ui);
+      font-size:.72rem; letter-spacing:.02em; color:#6E5634;
+    }
+    .page-burnout .microprova.on-dark .microprova-quote{ color:#F3EDE3; }
+    .page-burnout .microprova.on-dark .microprova-cite{ color:var(--bronze-on-dark); }
+    .page-burnout .microprova.on-dark .b7-seal{ color:var(--bronze-on-dark); }
+
+    /* ===== BLOCO 8 "Quem conduz" — seção editorial com foto integrada (estilo hero) ===== */
+    .page-burnout .b8-section{ position:relative; isolation:isolate; overflow:hidden; background:#F3EDE3; }
+    .page-burnout .b8-section picture{ display:contents; }   /* o <img.b8-bg> herda layout como filho direto */
+    .page-burnout .b8-bg{ display:block; width:100%; object-fit:cover; filter:brightness(1.015) saturate(1.05) contrast(1.03); transform:scaleX(-1); }
+    .page-burnout .b8-veil{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+    .page-burnout .b8-content{ position:relative; z-index:2; }
+    .page-burnout .b8-text{ max-width:500px; }
+    /* DESKTOP (≥1024): foto full-bleed ao fundo (Cris à esquerda); texto sobre campo cream à direita.
+       Abaixo de 1024 o layout horizontal aperta a coluna contra a foto → usa o empilhado. */
+    @media (min-width:1024px){
+      .page-burnout .b8-section{ min-height:clamp(460px,54vh,580px); display:flex; align-items:center; }
+      .page-burnout .b8-bg{ position:absolute; top:0; bottom:0; left:-4vw; right:auto; width:100%; height:100%; object-position:74% 32%; z-index:0; }
+      /* luz natural entrando da direita: foto limpa à esquerda (rosto/cabelo/ombro),
+         fusão começa ~44%, campo claro do texto a partir de ~59% */
+      .page-burnout .b8-veil{
+        background:
+          repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
+          linear-gradient(92deg,
+            rgba(243,237,227,0) 0%,
+            rgba(243,237,227,0) 40%,
+            rgba(243,237,227,.30) 46%,
+            rgba(243,237,227,.85) 50%,
+            #F3EDE3 54%,
+            #F3EDE3 100%);
+      }
+      .page-burnout .b8-content{ width:100%; padding-block:clamp(40px,5vh,68px); }
+      .page-burnout .b8-text{ margin-left:auto; }
+    }
+    /* ATÉ 1023 (mobile + tablet/notebook estreito): foto como faixa editorial no topo, texto sobre cream abaixo */
+    @media (max-width:1023px){
+      .page-burnout .b8-bg{ position:relative; aspect-ratio:4/5; max-height:72vh; object-position:81% 24%; }
+      .page-burnout .b8-veil{ display:none; }
+      .page-burnout .b8-content{ padding:clamp(1.75rem,6vw,2.5rem) 0 clamp(0px,1vw,8px); }
+      /* cabeçalho centralizado (declaração); parágrafos longos seguem à esquerda (argumento) */
+      .page-burnout .b8-text{ text-align:center; }
+      .page-burnout .b8-text p:not(:first-of-type){ text-align:left; }
+      .page-burnout .b8-text details{ text-align:left; }
+    }
+    /* ===== BLOCO 9 "O primeiro passo" — convite premium (espresso mineral) ===== */
+    .page-burnout .b9-card{
+      position:relative; overflow:hidden;
+      border-radius:clamp(16px,1.6vw,22px);
+      padding:clamp(2rem,4.2vw,3.5rem);
+      background:
+        repeating-linear-gradient(135deg, rgba(255,250,244,.008) 0 1px, transparent 1px 15px),
+        radial-gradient(120% 90% at 18% 0%, rgba(120,72,46,.06), transparent 58%),
+        linear-gradient(158deg, #312820 0%, #2A211C 56%, #241C18 100%);
+      border:1px solid rgba(154,123,79,.14);
+      box-shadow:0 56px 112px -66px rgba(20,14,11,.42), 0 18px 44px -30px rgba(20,14,11,.24);
+    }
+    .page-burnout .b9-measure{ max-width:58ch; }
+    .page-burnout .b9-list{ margin-top:1.35rem; display:flex; flex-direction:column; gap:.95rem; }
+    .page-burnout .b9-list li{ display:flex; gap:.85rem; align-items:flex-start; }
+    .page-burnout .b9-arrow{ flex:0 0 auto; margin-top:.16rem; color:rgba(201,160,106,.82); font-size:.92em; line-height:1.45; }
+    .page-burnout .b9-cta{ box-shadow:0 18px 40px -26px rgba(0,0,0,.36); }
+
+    /* ===== BLOCO 10 FAQ — clareza editorial, silenciosa ===== */
+    /* fronteira B9→B10: mesmo canvas #F3EDE3; divisor hairline p/ passagem percebida (não degrau) */
+    .page-burnout .b10-section{ border-top:1px solid rgba(154,123,79,.14); }
+    .page-burnout .faq-sig{ max-width:30rem; }
+    .page-burnout .faq-sig .microprova-quote{ font-size:clamp(1rem, 0.95rem + 0.28vw, 1.16rem); }
+    .page-burnout .faq-list{
+      margin-top:clamp(1.25rem,2.2vw,1.85rem);          /* respiro citação→lista reduzido */
+      display:flex; flex-direction:column; gap:8px;
+      border-top:1px solid rgba(154,123,79,.14);         /* divisor antes da lista, delicado */
+      padding-top:8px;
+    }
+    /* fechado: linha de índice editorial, fina — sem caixa, sem sombra */
+    .page-burnout .faq-item{
+      border-bottom:1px solid rgba(154,123,79,.14); border-radius:12px;
+      transition:background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+    }
+    /* aberto: papel premium sobre papel (contraste sutil + borda discreta + sombra longa) */
+    .page-burnout .faq-item[open]{
+      background:rgba(243,237,227,.58);
+      border:1px solid rgba(154,123,79,.12);
+      box-shadow:0 24px 70px rgba(44,37,33,.045);
+    }
+    .page-burnout .faq-item summary{
+      list-style:none; cursor:pointer;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:1.25rem;
+      padding:24px 28px;                                  /* fechado: 24/28 */
+    }
+    .page-burnout .faq-item[open] summary{ padding:28px 32px 10px; }   /* aberto: 28/32 */
+    .page-burnout .faq-item summary::-webkit-details-marker{ display:none; }
+    .page-burnout .faq-q{
+      max-width:46ch; color:#5E2616; padding-right:.25rem;
+      font-family:"Playfair Display",Georgia,serif; font-weight:600;
+      font-size:clamp(1.02rem, 0.97rem + 0.32vw, 1.18rem); line-height:1.34; text-wrap:pretty;
+    }
+    .page-burnout .faq-ico{
+      flex:0 0 auto; width:16px; height:16px; margin-top:.32rem;
+      color:rgba(168,107,76,.82);
+      transition:transform .32s cubic-bezier(.19,1,.22,1), color .32s cubic-bezier(.19,1,.22,1);
+    }
+    .page-burnout .faq-item[open] .faq-ico{ transform:rotate(45deg); color:rgba(168,107,76,.92); }
+    .page-burnout .faq-a{
+      max-width:60ch; color:rgba(44,37,33,.82); line-height:1.8; text-wrap:pretty;
+      margin:0; padding:6px 32px 30px;                    /* +respiro pergunta→resposta */
+    }
+    /* ===== BLOCO 11 CTA final — espresso quente, vinheta sutil, transição alta ===== */
+    .page-burnout .b11-section{
+      background:
+        radial-gradient(120% 85% at 50% 30%, rgba(94,38,22,.15), transparent 58%),   /* calor do rust, baixa intensidade */
+        radial-gradient(125% 132% at 50% 50%, transparent 50%, rgba(0,0,0,.26)),      /* vinheta muito sutil nas bordas */
+        linear-gradient(165deg, #32231E 0%, #2C2521 58%, #261E1A 100%);               /* espresso/carvão quente, sem vermelho saturado */
+    }
+    /* finale: transição DELIBERADA claro→escuro — marfim (#F3EDE3) → bloom rust (#5E2616) → espresso */
+    .page-burnout .b11-section::before{
+      content:""; position:absolute; left:0; right:0; top:0; z-index:0; pointer-events:none;
+      height:clamp(120px,16vh,200px);
+      background:linear-gradient(to bottom, #F3EDE3 0%, rgba(94,38,22,.55) 55%, rgba(94,38,22,0) 100%);
+    }
+    .page-burnout .b11-inner{ position:relative; z-index:1; padding-top:clamp(128px,17vh,210px); }
+    /* links legais do rodapé — discretos, sem botão, sublinhado só no hover/focus */
+    .page-burnout .footer-legal{ color:rgba(243,237,227,.66); text-decoration:none; transition:color .25s ease; }
+    .page-burnout .footer-legal:hover{ color:#9A7B4F; text-decoration:underline; text-underline-offset:3px; }
+    .page-burnout .footer-legal:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:2px; color:#9A7B4F; }
+    /* redes sociais do rodapé — ícones discretos, hover dourado */
+    .page-burnout .footer-social{ display:inline-flex; color:rgba(201,160,106,.75); transition:color .25s ease; }
+    .page-burnout .footer-social:hover{ color:#C9A06A; }
+    .page-burnout .footer-social:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:4px; color:#C9A06A; }
+    /* alinhamento óptico: a SVG manuscrita tem ~14% de respiro à esquerda; no desktop puxamos a logo
+       para que a borda visível do "CRIS" bata na mesma vertical da borda dos ícones (margem do bloco-marca).
+       Só em md+ (no mobile a coluna é centralizada — não deslocar). */
+    @media (min-width:768px){
+      .page-burnout footer .brand-logo{ margin-left:-24px; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .page-burnout .faq-ico{ transition:color .32s linear; }
+    }
+    @media (max-width:640px){
+      .page-burnout .faq-item summary{ padding:20px 20px; }
+      .page-burnout .faq-item[open] summary{ padding:22px 20px 8px; }   /* aberto mobile: 22/20/24 */
+      .page-burnout .faq-a{ padding:6px 20px 24px; }
+    }
+    .page-burnout .b7-words-end{ gap:.1rem; }
+
+    /* ===== Bloco 6 "O custo" — refino tipografico (medida/quebras) ===== */
+    /* titulos e destaques: linhas equilibradas */
+    .page-burnout .b6-title{ text-wrap:balance; }
+    /* depoimento: voz da cliente, distinta do climax (rust serifada) */
+    .page-burnout .b6-testimonial{ max-width:34rem; margin-inline:auto; }
+    .page-burnout .b6-quote{ text-wrap:balance; }
+    /* lead: medida mais curta + pretty p/ nao isolar "a que custo." */
+    .page-burnout .b6-lead{ text-wrap:balance; max-width:33rem; margin-inline:auto; }
+    /* paragrafo-corpo: argumento corrido -> esquerda; coluna segue centralizada */
+    .page-burnout .b6-body{ text-align:left; text-wrap:pretty; max-width:33rem; margin-inline:auto; }
+    /* frase em destaque: balanceada, presenca editorial, -1 a -2px no desktop */
+    .page-burnout .b6-emph{
+      text-wrap:balance; max-width:36rem; margin-inline:auto;
+      font-size:clamp(1.25rem, 1.05rem + 0.55vw, 1.42rem); line-height:1.5;
+    }
+  </style>
+</head>
+
+<body data-origem="burnout" class="page-burnout font-sans antialiased text-ink pb-28 md:pb-0">
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 border-b border-clay/30 bg-cream/85 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex flex-col leading-none">
+        <span class="font-serif text-xl tracking-wide text-rust">Cris Campos</span>
+        <span class="text-[10px] uppercase tracking-[.24em] text-clay mt-0.5">Hipnoterapia Integrativa</span>
+      </a>
+      <a href="https://wa.me/5511978622903"
+         class="whatsapp-cta cta-ghost hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+        Agendar Sessão
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= BLOCO 1 — HERO (modular: kicker + H1) ================= -->
+    <section class="relative overflow-hidden bg-cream md:bg-transparent">
+      <div role="img" aria-label="Cris Campos, hipnoterapeuta integrativa, em sala de atendimento com luz natural"
+           class="hero-bg hidden md:block absolute inset-0 bg-no-repeat bg-[length:105%_auto] bg-[position:0%_18%]"></div>
+      <div class="hidden md:block absolute inset-0" style="background:linear-gradient(to right,#F3EDE3 0%,rgba(243,237,227,.95) 27%,rgba(243,237,227,.62) 46%,rgba(243,237,227,.12) 68%,rgba(243,237,227,0) 100%)"></div>
+      <div class="hero-texture absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="hero-seam absolute inset-x-0 bottom-0 h-24 md:h-28 pointer-events-none" aria-hidden="true"></div>
+      <span class="blob bg-sage/25 hidden md:block" style="width:340px;height:340px;bottom:-120px;left:-110px"></span>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 pt-9 pb-10 md:py-24 md:min-h-screen flex flex-col items-start md:justify-center hero-wrap">
+        <!-- topo: kicker + título + linha-ponte -->
+        <div class="order-1 w-full max-w-xl">
+          <p class="eyebrow mb-6">
+            <!-- ==BLOCO1:KICKER== -->Você dá conta de tudo. Menos de você.<!-- ==/BLOCO1:KICKER== -->
+          </p>
+          <h1 class="hero-title font-serif font-bold leading-[1.07] text-[2.4rem] sm:text-[3.3rem] text-rust">
+            <!-- ==BLOCO1:H1== -->Resolva o esgotamento que você esconde atrás da sua competência… <em class="italic font-medium text-terra">e volte a se reconhecer.</em><!-- ==/BLOCO1:H1== -->
+          </h1>
+          <p class="mt-5 text-base md:text-lg leading-relaxed text-ink/80">
+            Burnout, ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. Por baixo, costuma haver a <span class="text-terra">mesma raiz</span>.
+          </p>
+        </div>
+        <!-- MOBILE: foto cedo (LCP mobile); no desktop é o fundo full-bleed -->
+        <picture style="display:contents">
+          <source type="image/webp" srcset="public/images/cris-hero-mobile.webp" />
+          <img src="public/images/cris-hero.jpg" alt="Cris Campos, hipnoterapeuta integrativa, em sala de atendimento com luz natural"
+               width="860" height="484" fetchpriority="high" decoding="async"
+               class="order-2 md:hidden block -mx-4 w-[calc(100%+2rem)] max-w-none h-[36vh] object-cover object-[55%_30%] mt-8 mb-8" />
+        </picture>
+        <!-- baixo: subhead + CTA + prova social -->
+        <div class="order-3 w-full max-w-xl">
+          <p class="md:mt-6 text-base md:text-lg leading-relaxed text-ink/90 max-w-lg">
+            Hipnoterapia Integrativa e o <strong class="font-medium text-rust">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.
+          </p>
+          <div class="mt-8 md:mt-9 hidden md:block">
+            <a href="https://wa.me/5511978622903" class="whatsapp-cta cta-solid inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+              Agendar minha Sessão de Clareza
+            </a>
+            <p class="mt-3 text-sm text-ink/70">Atendimento particular e sigiloso · Vila Madalena (SP) ou online</p>
+          </div>
+          <dl class="trust-bar">
+            <div class="trust-bar__item">
+              <dt class="trust-bar__num"><span class="star" aria-hidden="true">★</span> 4,9</dt>
+              <dd class="trust-bar__label">no Google</dd>
+            </div>
+            <div class="trust-bar__item">
+              <dt class="trust-bar__num">73</dt>
+              <dd class="trust-bar__label">avaliações</dd>
+            </div>
+            <div class="trust-bar__item">
+              <dt class="trust-bar__num">+9</dt>
+              <dd class="trust-bar__label">anos de atuação</dd>
+            </div>
+            <div class="trust-bar__item">
+              <dt class="trust-bar__num">+900</dt>
+              <dd class="trust-bar__label">atendimentos</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 2 — IDENTIFICAÇÃO ================= -->
+    <section class="b2-section">
+      <div class="b2-inner max-w-2xl mx-auto px-4 md:px-8">
+        <div class="b2-field">
+          <span class="eyebrow mb-7 reveal b2-reveal" style="transition-delay:0s">O que ninguém vê</span>
+          <div class="space-y-5">
+            <p class="b2-lead font-serif text-2xl md:text-3xl text-rust leading-snug reveal b2-reveal" style="transition-delay:.06s">“Tá tudo bem? Tudo ótimo!”</p>
+            <p class="b2-body text-base md:text-lg reveal b2-reveal" style="transition-delay:.12s">Você responde no automático e segue. É você que sustenta tudo: o trabalho, a casa, as pessoas que dependem de você. E ninguém desconfia.</p>
+            <p class="b2-body text-base md:text-lg reveal b2-reveal" style="transition-delay:.18s">Mas faz tempo que “<strong class="font-medium text-rust">tudo ótimo</strong>” deixou de ser verdade. É a mente que não desliga, o cansaço que o sono não resolve, o medo que trava bem na hora de decidir por você, e o vazio que aparece justo quando, <strong class="font-medium text-rust">por fora, está tudo sob controle</strong>.</p>
+            <p class="b2-body text-base md:text-lg reveal b2-reveal" style="transition-delay:.24s">No fundo, uma sensação que você quase não diz em voz alta: a de que <strong class="font-medium text-rust">se perdeu de si</strong>. E talvez o passo mais difícil não seja aguentar. Nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 3 — DO SINTOMA À RAIZ ================= -->
+    <section class="b3-section relative overflow-hidden bg-[#ECEEE1]">
+      <span class="blob bg-sage/40" style="width:380px;height:380px;top:-120px;left:-100px"></span>
+      <div class="b3-inner max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32 relative text-center">
+        <span class="eyebrow center mb-5 reveal">Do sintoma à raiz</span>
+        <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust reveal">O que está por trás do que você sente</h2>
+        <div class="rule w-24 mx-auto my-8 reveal"></div>
+        <p class="font-serif text-xl md:text-2xl leading-relaxed text-ink/85 reveal">
+          A ansiedade que não passa, o cansaço que o sono não resolve, o medo que paralisa, o vazio sem nome: tudo isso é a superfície. <em class="text-terra not-italic font-medium">São sintomas.</em>
+        </p>
+        <p class="mt-6 text-base md:text-lg leading-relaxed text-ink/90 reveal">
+          A raiz costuma estar em padrões emocionais que se formaram muito antes: respostas que um dia te protegeram e que hoje disparam sozinhas, sem você perceber. É por isso que dá para entender tudo racionalmente e, ainda assim, continuar reagindo do mesmo jeito.
+        </p>
+        <p class="mt-4 text-base md:text-lg leading-relaxed text-ink/90 reveal">
+          Tratar só o sintoma traz alívio, e ele volta. O <strong class="font-medium text-rust">Método Voltar a Si</strong> vai até essa raiz e reorganiza a resposta interna. É por isso que, aqui, <span class="text-terra">a transformação se sustenta</span>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 4 — O MÉTODO VOLTAR A SI ================= -->
+    <section class="b4-section bg-cream">
+      <div class="b4-inner max-w-5xl mx-auto px-4 md:px-8 py-20 md:py-32">
+        <!-- Camada 1 — abertura -->
+        <div class="b4-intro max-w-2xl mx-auto text-center reveal">
+          <span class="eyebrow center mb-4">O método</span>
+          <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust">Um caminho estruturado de volta a você</h2>
+          <div class="rule w-16 mx-auto mt-6"></div>
+          <p class="mt-7 text-base md:text-lg leading-relaxed text-ink/90">
+            O Método Voltar a Si integra <strong class="font-medium text-rust">hipnoterapia</strong> e outras abordagens num processo conduzido, não para silenciar o sintoma, mas para chegar à <strong class="font-medium text-rust">raiz emocional</strong> do que você vive hoje. Em vez de só entender o problema pela razão, você acessa os padrões que o sustentam e reorganiza a resposta por dentro, para ter mais <strong class="font-medium text-rust">clareza, confiança e autonomia</strong>.
+          </p>
+        </div>
+
+        <!-- Camada 2 — as 4 etapas -->
+        <h3 class="b4-steps-title mt-16 text-center font-serif text-2xl text-rust reveal">Como o processo acontece, por dentro</h3>
+        <div class="b4-steps mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="b4-step card p-8 reveal"><span class="b4-step-number">1</span><h4 class="b4-step-title mt-3 text-xl">Clareza</h4><p class="b4-step-copy mt-2 text-[15px]">você entende, com profundidade, o que está acontecendo e como isso se manifesta na sua vida.</p></div>
+          <div class="b4-step card p-8 reveal"><span class="b4-step-number">2</span><h4 class="b4-step-title mt-3 text-xl">Raiz</h4><p class="b4-step-copy mt-2 text-[15px]">você acessa os padrões, memórias e respostas inconscientes que sustentam a questão.</p></div>
+          <div class="b4-step card p-8 reveal"><span class="b4-step-number">3</span><h4 class="b4-step-title mt-3 text-xl">Reorganização</h4><p class="b4-step-copy mt-2 text-[15px]">você ressignifica e muda a resposta interna, liberando o que bloqueia.</p></div>
+          <div class="b4-step card p-8 reveal"><span class="b4-step-number">4</span><h4 class="b4-step-title mt-3 text-xl">Integração</h4><p class="b4-step-copy mt-2 text-[15px]">você consolida um novo estado emocional: mais confiança, leveza e autonomia.</p></div>
+        </div>
+
+        <div class="b4-cta mt-12 text-center reveal">
+          <a href="https://wa.me/5511978622903" class="whatsapp-cta cta-solid inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+            Agendar minha Sessão de Clareza
+          </a>
+          <p class="mt-3 text-sm text-ink/70">Atendimento particular e sigiloso · Vila Madalena (SP) ou online</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAIXA DE MICRO-PROVA ================= -->
+    <section class="tex-band bg-[#EFE6D6]">
+      <div class="max-w-2xl mx-auto px-4 md:px-8 py-9 text-center">
+        <figure class="microprova reveal">
+          <p class="microprova-quote">“…graças a Deus estou conseguindo me reorganizar em todas as áreas da minha vida de uma forma tranquila e clara.”</p>
+          <figcaption class="microprova-cite">— Luis C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+        </figure>
+        <p class="mt-6 text-sm md:text-base text-ink/70"><span class="text-terra font-medium">★ 4,9 no Google</span> · +900 atendimentos em +9 anos</p>
+      </div>
+    </section>
+
+    <!-- ================= O QUE NÃO É (após o método) ================= -->
+    <section class="not-section bg-[#F3E7D8]">
+      <div class="not-inner max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-24">
+        <div class="reveal">
+          <span class="eyebrow mb-4">Para ficar claro</span>
+          <h2 class="font-serif font-bold text-2xl md:text-3xl text-rust mt-1">O que este processo terapêutico não é</h2>
+          <p class="mt-5 text-base md:text-lg leading-relaxed text-ink/90">Tão importante quanto dizer o que este processo é, é deixar claro o que ele <strong class="font-medium text-rust">não</strong> é:</p>
+          <ul class="not-list mt-5 text-base md:text-lg leading-relaxed text-ink/90">
+            <li class="not-item"><strong class="font-medium text-rust">Não é</strong> hipnose de palco nem show: você fica consciente e no controle o tempo todo.</li>
+            <li class="not-item"><strong class="font-medium text-rust">Não é</strong> conversa solta sem rumo: é um processo estruturado, com método e etapas.</li>
+            <li class="not-item"><strong class="font-medium text-rust">Não é</strong> promessa mágica nem resultado garantido: aqui se trabalha com autocura, método e acompanhamento sério.</li>
+            <li class="not-item"><strong class="font-medium text-rust">Não</strong> substitui acompanhamento médico quando ele é necessário: caminha junto, com responsabilidade.</li>
+          </ul>
+          <div class="not-affirm reveal">
+            <p class="text-base md:text-lg leading-relaxed">
+              <strong class="font-medium text-rust">O que é, então?</strong> É um processo clínico e estruturado que une <strong class="font-medium text-rust">ciência</strong> (neurociência, hipnose científica) e <strong class="font-medium text-rust">consciência</strong> (abordagens integrativas), conduzido com ética, profundidade e cuidado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 5 — POR QUE É DIFERENTE ================= -->
+    <section class="b5-section bg-[#F3EDE3]">
+      <div class="b5-inner max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32">
+        <div class="b5-intro text-center reveal">
+          <span class="eyebrow center mb-4">Por que é diferente</span>
+          <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust">Por que é diferente de tudo que você já tentou</h2>
+          <div class="rule w-16 mx-auto mt-6"></div>
+        </div>
+        <p class="mt-7 text-base md:text-lg leading-relaxed text-ink/90 reveal">
+          Você provavelmente já tentou de tudo para dar conta: terapia, leituras, meditação, força de vontade. Nada disso foi em vão, mas talvez nenhum tenha chegado onde a questão realmente mora.
+        </p>
+        <p class="mt-4 text-base md:text-lg leading-relaxed text-ink/90 reveal">
+          A maioria dos caminhos trabalha na superfície: a conversa, a razão, o controle do sintoma. O Método Voltar a Si une <strong class="font-medium text-rust">ciência e consciência</strong> para acessar a camada de baixo: a resposta emocional inconsciente que sustenta o padrão. É essa profundidade que faz a diferença.
+        </p>
+        <div class="b5-ledger mt-10 reveal">
+          <p class="b5-row text-base md:text-lg leading-relaxed text-ink/90"><strong class="font-medium text-rust">Terapia tradicional</strong> acessa pela conversa e pela razão; aqui, o processo vai à raiz inconsciente que a fala sozinha não alcança.</p>
+          <p class="b5-row text-base md:text-lg leading-relaxed text-ink/90"><strong class="font-medium text-rust">Apps e conteúdo gratuito</strong> são genéricos e “faça você mesmo”; aqui, é um processo conduzido, individual e profundo.</p>
+          <p class="b5-row text-base md:text-lg leading-relaxed text-ink/90"><strong class="font-medium text-rust">Terapias holísticas</strong>: dão alívio, mas não sustentam; aqui, ciência e consciência se unem num método completo e embasado.</p>
+          <p class="b5-row text-base md:text-lg leading-relaxed text-ink/90"><strong class="font-medium text-rust">Coaching e autoajuda</strong>: movimentam mas é mais superficial; aqui, a transformação emocional é real e se sustenta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 6 — O CUSTO DE NÃO RESOLVER (sem CTA) ================= -->
+    <section class="b6-section relative overflow-hidden">
+      <span class="blob bg-clay/25" style="width:340px;height:340px;bottom:-120px;right:-90px"></span>
+      <div class="b6-inner max-w-2xl mx-auto px-4 md:px-8 py-20 md:py-32 text-center relative">
+        <span class="eyebrow center mb-5 reveal">O custo de não olhar</span>
+        <h2 class="b6-title font-serif font-bold text-3xl md:text-4xl text-rust reveal">O preço de continuar como está</h2>
+        <div class="rule w-24 mx-auto my-8 reveal"></div>
+        <p class="b6-lead text-base md:text-lg leading-relaxed text-ink/90 reveal">Dá para seguir mais um ano assim. Você já provou que aguenta. A questão é outra: a que custo.</p>
+        <p class="b6-body mt-4 text-base md:text-lg leading-relaxed text-ink/90 reveal">Porque continuar funcional por fora e esgotado por dentro raramente fica parado no mesmo lugar. O cansaço vira exaustão, a ansiedade deixa de ser pontual, o corpo começa a cobrar o que a mente vinha segurando. Aí o sono encurta, a paciência diminui, e o que antes era um dia ruim vira o tom da semana. Quase sem perceber, vão passando os dias no automático, as conversas pela metade, os anos em que você esteve presente em tudo, menos em você.</p>
+        <p class="b6-emph mt-4 font-serif text-xl md:text-2xl leading-relaxed text-rust reveal">Esse é o custo que não aparece na conta, mas é o mais caro. Cuidar da raiz quase sempre pesa menos, emocional e praticamente, do que continuar adiando.</p>
+        <div class="b6-testimonial mt-14 pt-10 border-t border-clay/30 reveal">
+          <!-- eco proposital: mesma fala do vídeo da Simone no B7 (teaser -> payoff). NÃO deduplicar. -->
+          <p class="b6-quote font-serif italic text-lg md:text-xl text-ink leading-snug">“Eu sou eu de novo.”</p>
+          <p class="b6-cite mt-3 text-xs uppercase tracking-[.18em] text-clay inline-flex items-center gap-2">
+            — Simone
+            <span class="inline-flex items-center gap-1">
+              · <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Depoimento em vídeo
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 7 — PROVA SOCIAL (2 carrosséis) ================= -->
+    <section class="b7-section">
+      <div class="b7-inner max-w-5xl mx-auto px-4 md:px-8 py-20 md:py-32">
+        <div class="b7-header text-center reveal">
+          <span class="eyebrow center b7-eyebrow mb-4">Quem já fez esse caminho</span>
+          <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust">Histórias de quem voltou a si</h2>
+          <p class="b7-intro mt-5 text-base md:text-lg max-w-2xl mx-auto">
+            <span class="b7-rating">★ 4,9 no Google</span> · 73 avaliações · <strong class="font-medium text-rust">+900 atendimentos</strong> em +9 anos de atuação. Por trás de cada número, uma pessoa que chegou exausta, funcional por fora e perdida por dentro, e reencontrou o próprio caminho.
+          </p>
+        </div>
+
+        <!-- Carrossel 1 — VÍDEOS (carrossel com vídeo central em foco) -->
+        <p class="b7-label reveal">Em vídeo</p>
+        <div class="b7-video reveal">
+          <div class="b7-video-carousel">
+            <div class="b7-video-stage">
+            <div id="video-carousel" class="b7-video-track" role="group" aria-label="Depoimentos em vídeo">
+          <figure data-video="01" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" poster="assets/videos/depoimentos/posters/01-simone-eu-sou-eu-de-novo.webp" playsinline controls src="assets/videos/depoimentos/01-simone-eu-sou-eu-de-novo.mp4" aria-label="Depoimento em vídeo: Simone — Eu sou eu de novo"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Simone — Eu sou eu de novo"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption">
+                <span class="b7-video-name">Simone</span>
+                <span class="b7-video-line">“Eu sou eu de novo”</span>
+              </figcaption>
+            </div>
+          </figure>
+          <figure data-video="02" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" data-poster="assets/videos/depoimentos/posters/02-eu-tinha-muitos-medos-e-duvidas.webp" playsinline controls src="assets/videos/depoimentos/02-eu-tinha-muitos-medos-e-duvidas.mp4" aria-label="Depoimento em vídeo: Eloá — A transformação foi muito rápida"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Eloá — A transformação foi muito rápida"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption"><span class="b7-video-name">Eloá</span><span class="b7-video-line">“A transformação foi muito rápida”</span></figcaption>
+            </div>
+          </figure>
+          <figure data-video="03" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" data-poster="assets/videos/depoimentos/posters/03-nao-tenham-medo.webp" playsinline controls src="assets/videos/depoimentos/03-nao-tenham-medo.mp4" aria-label="Depoimento em vídeo: Fabiana — Recuperei minha vontade depois de 3 meses"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Fabiana — Recuperei minha vontade depois de 3 meses"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption"><span class="b7-video-name">Fabiana</span><span class="b7-video-line">“Recuperei minha vontade depois de 3 meses”</span></figcaption>
+            </div>
+          </figure>
+          <figure data-video="04" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" data-poster="assets/videos/depoimentos/posters/04-eu-tinha-muitos-medos-e-duvidas.webp" playsinline controls src="assets/videos/depoimentos/04-eu-tinha-muitos-medos-e-duvidas.mp4" aria-label="Depoimento em vídeo: Matheus — Resultados potentes"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Matheus — Resultados potentes"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption"><span class="b7-video-name">Matheus</span><span class="b7-video-line">“Resultados potentes”</span></figcaption>
+            </div>
+          </figure>
+          <figure data-video="05" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" data-poster="assets/videos/depoimentos/posters/05-eu-tinha-medo-de-me-expor.webp" playsinline controls src="assets/videos/depoimentos/05-eu-tinha-medo-de-me-expor.mp4" aria-label="Depoimento em vídeo: Daniela — Melhorou muito minha comunicação"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Daniela — Melhorou muito minha comunicação"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption"><span class="b7-video-name">Daniela</span><span class="b7-video-line">“Melhorou muito minha comunicação”</span></figcaption>
+            </div>
+          </figure>
+          <figure data-video="06" class="b7-video-card">
+            <div class="b7-video-frame">
+              <video class="b7-video-el" preload="none" data-poster="assets/videos/depoimentos/posters/06-como-me-livrei-da-depressao.webp" playsinline controls src="assets/videos/depoimentos/06-como-me-livrei-da-depressao.mp4" aria-label="Depoimento em vídeo: Luciana — Como me livrei da depressão"></video>
+              <button type="button" class="b7-video-play" aria-label="Reproduzir o depoimento de Luciana — Como me livrei da depressão"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+              <figcaption class="b7-video-caption"><span class="b7-video-name">Luciana</span><span class="b7-video-line">“Como me livrei da depressão”</span></figcaption>
+            </div>
+          </figure>
+            </div>
+            </div>
+            <div class="b7-video-nav">
+              <button type="button" class="b7-video-button b7-video-prev" data-dir="-1" aria-label="Vídeo anterior">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="b7-video-button b7-video-next" data-dir="1" aria-label="Próximo vídeo">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Vídeos reais integrados (assets/videos/depoimentos/). Carregamento sob demanda: preload="none" — nenhum byte de vídeo no load inicial; o src só baixa ao tocar. PENDENTE p/ publicar: comprimir 01 (269MB) e 06 (247MB) + faststart (moov no início). -->
+        </div>
+
+        <!-- Carrossel 2 — TEXTO (Google) -->
+        <p class="b7-label reveal">Em palavras</p>
+        <div class="b7-words reveal">
+          <div class="b7-words-carousel">
+            <div id="words-track" class="b7-words-track no-scrollbar" role="group" aria-label="Depoimentos em texto">
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…graças a Deus estou conseguindo me reorganizar em todas as áreas da minha vida de uma forma tranquila e clara.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Vivia um momento em que a mente não conseguia mais assimilar nada. A hipnoterapia chegou como um divisor de águas.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Luis C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“O que poderia levar anos pra eu entender num processo tradicional de análise/ terapia, eu pude entender nas sessões com a Cris.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Veio com preconceito e mil dúvidas sobre a hipnoterapia. Saiu tendo se encontrado consigo mesma.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Paula C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Anos de psicoterapia não resolveram meu problema básico, em apenas duas sessões, posso afirmar que foi solucionado o problema que tanto me impedia”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Uma experiência libertadora, que amadureceu de forma consciente e independente.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Telma T. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Transformadora, não tem outra forma de descrever. Retomei o melhor de mim, porém com uma visão mais madura”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Havia se desviado do caminho de evolução. A terapia o trouxe de volta, com mudanças radicais para o bem.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Carlos L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Cheguei angustiada, triste, com tantas questões e sai leve, feliz, entendendo os propósitos.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Libertou a versão criança que estava presa. Depois disso, a vida passou a sorrir mais.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Julia O. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…aprendi coisas depois de 62 anos de idade, inclusive a falar "não".”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Hoje é outra pessoa. Uma virada que chegou quando parecia que já estava tudo definido.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Duda S. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Tinha muita dificuldade de dizer não, impor limites e sustentar minhas opiniões. Agora estou arranjando até confusão!!!! Kkkk Estou adorando!!!!”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">O resultado superou as expectativas. O que antes era impossível, agora é natural.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Cecilia M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Eu sabia que precisava de ajuda. Só não sabia que precisava de tanta!”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A primeira sessão teve um efeito físico de bem-estar quase imediato. A cada dia, "um novo eu".</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Rafael B. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Chegou sem entender o peso que o passado tinha sobre ela. Aprendeu a se acolher com mais gentileza.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Barbara L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Foram 3 sessões que se equipararam a dezenas de sessões da terapia convencional (no que tange aos resultados)”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Começou cética. As crenças limitantes foram se dissipando uma a uma, com clareza e entendimento.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Karen N. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Cris me ajudou a voltar a dormir! Daqueles problemas que a gente acha que tem que conviver pra sempre, e descobrimos que não precisa ser assim.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Acessou várias memórias escondidas. Uma jornada muito legal.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Lucienne C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Em quatro sessões (muito aprofundadas) chegamos a conclusões que eu nunca tinha chegado, e que me trouxeram clareza e solucionaram o meu problema.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Queixas que carregou a vida toda tentando resolver. Espera que mais pessoas se abram para a experiência.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Mariah L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…hoje não sinto mais aquelas travas que me limitavam. Me sinto uma nova versão de mim mesma, mais confiante.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Aos poucos, uma grande melhora na autoestima. Sempre acolhida e ouvida nas sessões.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Stephanie G. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Na primeira sessão eu acabei tomando consciência e me libertando de bloqueios que afetavam a minha vida em muitos aspectos.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Foi conduzido por um processo muito mais profundo do que imaginava. Concluiu totalmente transformado.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Thiago V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Desde que saí do processo já sinto uma motivação e ânimo diferente no meu dia a dia, com uma fluidez muito gostosa.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Dois dias intensos, leves e surpreendentes de alinhamento: da missão de vida ao estado presente.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Liliana P. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <button type="button" id="words-gate" aria-expanded="false" aria-controls="words-track" class="b7-words-card b7-card card b7-words-gate justify-center items-center text-center">
+            <span class="font-serif text-2xl text-rust">Ver mais depoimentos</span>
+            <span class="mt-2 text-sm text-ink/65">+17 relatos verificados</span>
+            <span class="b7-words-gate-ico mt-4" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
+          </button>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Cada sessão foi reveladora e estou até agora sem palavras pra definir o quanto elas me modificaram .”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Primeira experiência com hipnoterapia, tão marcante que já quer voltar para mais.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Janaina R. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…me sinto triste em saber que muitas pessoas passarão suas vidas sem ao menos saberem a que tipo de experiência me refiro”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Um cético declarado que saiu surpreso com o poder de transformação do processo.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Lucas R. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Coisas que me afetaram durante toda a minha vida e que agora não afetarão mais, pois tudo foi tratado nessas sessões.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Três sessões para entender o porquê de vários traumas carregados por anos.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Rafael S. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…minha vida mudou da água pro vinho em questão de dias,tudo que me atrasava sumiu”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Nunca havia experimentado algo tão eficaz. O maior problema, a procrastinação, saiu do caminho.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Rhyan · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Aprendi olhar pra mim com mais amor..”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Passou a enxergar a vida com outro olhar, com mais ânimo e empatia, pela forma de conduzir o processo.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Yasmim S. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…me trouxe uma leveza, um olhar que eu estava precisando para alguns objetivos pessoais, me agregou muito.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A Cris viu uma necessidade voltada à terapia energética e foi sensacional.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Ana P. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…saí muito leve por finalmente tratar assuntos tão delicados da minha vida.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Chegou cheia de dúvidas. A Cris tranquilizou a cada passo, durante e depois das sessões.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Yara R. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…pude expressar minhas fraquezas e me permitir estar vulnerável.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Tinha resistência ao método, mas o processo surtiu efeito. Conduzido com cuidado, num ambiente seguro.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Camila N. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…consegui ser mais confiante e ser do jeito que sou sem me preocupar com a opinião de outras pessoas.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Logo após a hipnoterapia, já sentiu a diferença. Sempre confortável e à vontade.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Mayara C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A ansiedade atrapalhava demais várias áreas da vida. Depois do processo, as brigas no relacionamento acabaram.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Gabriela L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…as vezes a ansiedade fala, e eu logo calo ela. A Cris me ensinou que a nossa mente nos engana e é verdade, sofremos a toa.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Mais segura sobre o que quer, com forças para seguir combatendo os próprios pensamentos.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Fernanda M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A cada sessão, uma melhora significativa. Ao fim da terapia, a mudança interna foi incrível.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Abel F. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Uma profissional ética, transparente, que se preocupa de alma com os pacientes.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Amanda V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…depois da terceira sessão, estava eu começando a conseguir flutuar sem apoio de material pela primeira vez e dar os primeiros passos na natação, e foi uma sensação de liberdade sem igual”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Meses de aulas de natação paralisada pelo medo da água. Algumas sessões depois, os primeiros metros nadando.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Moneide M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…saí de lá entendendo os porques dos meus medos, especialmente do medo de ser feliz!”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Em poucas sessões, mergulhou na própria história com profundidade. Algo muito profundo foi tocado e transmutado.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Sônia M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Antes eu me sentia com medo de tomar ações e seguir adiante com minha vida, hoje posso dizer que passei essa barreira e não tem mais algo me segurando”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Entendeu os processos inconscientes: o porquê de fazermos o que fazemos e de ficarmos onde estamos.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— John M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Eu tratei uma fobia de aves e obtive uma melhora significante, diria que 85%.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Sempre acompanhada de perto, inclusive no pós-consulta. Já planeja voltar para tratar outras questões.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Natália M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <a href="https://www.google.com/maps/place/Cris+Campos+Hipnoterapia/@-23.5559519,-46.7001168,17z/data=!4m8!3m7!1s0x94ce57fcc22510ef:0x2e400f10e63153c4!8m2!3d-23.5559568!4d-46.6975419!9m1!1b1!16s%2Fg%2F11fkyy63pd?entry=ttu&amp;g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" hidden aria-label="Ver avaliações de Cris Campos no Google" class="b7-words-card b7-card card b7-words-end justify-center items-center text-center">
+            <div class="font-serif text-3xl text-rust">★ 4,9</div>
+            <p class="mt-1 text-ink/70 text-sm">no Google · 73 avaliações</p>
+            <div class="mt-4 pt-4 border-t border-clay/25 w-full">
+              <p class="font-serif text-xl text-rust">+900 atendimentos</p>
+              <p class="mt-1 text-ink/70 text-sm">em +9 anos de atuação</p>
+            </div>
+            <span class="mt-5 inline-flex items-center gap-1 text-sm font-medium text-rust underline underline-offset-4">ver avaliações →</span>
+          </a>
+            </div>
+          </div>
+          <div class="b7-words-nav">
+            <button type="button" class="b7-words-button b7-words-prev" data-dir="-1" aria-label="Depoimento anterior">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="b7-words-button b7-words-next" data-dir="1" aria-label="Próximo depoimento">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 8 — QUEM É A CRIS ================= -->
+    <section class="b8-section">
+      <picture>
+        <source srcset="public/images/cris-quem-conduz.webp" type="image/webp" />
+        <img class="b8-bg" src="public/images/cris-quem-conduz.jpg" alt="Cris Campos, hipnoterapeuta com formação OMNI" width="1672" height="941" loading="lazy" decoding="async" />
+      </picture>
+      <div class="b8-veil" aria-hidden="true"></div>
+      <div class="b8-content">
+        <div class="max-w-6xl mx-auto px-4 md:px-8">
+          <div class="b8-text reveal">
+            <span class="eyebrow mb-4">Quem conduz</span>
+            <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust mt-1">Quem conduz esse caminho</h2>
+            <p class="mt-6 font-serif text-xl text-rust">Antes de conduzir esse caminho, eu o vivi.</p>
+            <p class="mt-3 text-base md:text-lg leading-relaxed text-ink/90">
+              Também fui a mulher que dava conta de tudo por fora e, por dentro, tinha se perdido de si mesma. Sei o que é sorrir e dizer “tá tudo bem” sem que estivesse. Foi reorganizando a minha própria raiz emocional que encontrei o caminho de volta, e é esse processo, hoje estruturado no <strong class="font-medium text-rust">Método Voltar a Si</strong>, que conduzo há mais de 9 anos.
+            </p>
+            <p class="mt-4 text-base md:text-lg leading-relaxed text-ink/90">
+              Sou hipnoterapeuta com formação <strong class="font-medium text-rust">OMNI</strong> e reuni, ao longo de mais de uma década, formações em diversas abordagens: <strong class="font-medium text-rust">T.R.I. (Terapia de Reintegração Implícita)</strong>, análise existencial, constelação familiar e cuidados integrativos. Não as ofereço como terapias soltas: integrei cada uma no Método Voltar a Si, para chegar à raiz por mais de um caminho. São mais de <strong class="font-medium text-rust">900 atendimentos</strong> realizados.
+            </p>
+            <p class="mt-4 text-base md:text-lg leading-relaxed text-ink/90">
+              Não sou médica nem prometo milagre, e faço questão de que isso fique claro. O que ofereço é um método sério, conduzido com ética, profundidade e acompanhamento: <strong class="font-medium text-rust">autocura, não promessa de cura</strong>.
+            </p>
+            <details class="group mt-6 border-t border-clay/30 pt-4">
+              <summary class="flex items-center justify-between gap-4 text-rust font-medium cursor-pointer">
+                <span>Formação completa</span>
+                <svg class="faq-plus shrink-0 h-5 w-5 text-terra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-ink/80">
+                Hipnoterapeuta OMNI · Terapeuta licenciada T.R.I. (Rafael Kraisch) · Analista Existencial (Essentia Academy) · Consteladora Familiar (Gil Mori) · Terapeuta Energética Vibracional (Ágatha Evolução) · Terapeuta Holística em Psicologia da Gestação e Nascimento (Olívia Tani) · Terapia Floral de Bach e Compostos Vibracionais (Olívia Tani e Dra. Lucy Harasawa) · Terapeuta AIS (Abordagem Integral Sistêmica) · Coach pelo EcoSocial.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 9 — A SESSÃO DE CLAREZA (oferta) ================= -->
+    <section class="tex-cream bg-cream">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 pt-8 md:pt-10 pb-16 md:pb-24">
+        <figure class="microprova reveal mb-6">
+          <p class="microprova-quote">“Tinha muita dificuldade de dizer não, impor limites e sustentar minhas opiniões.”</p>
+          <figcaption class="microprova-cite">— Cecilia M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+        </figure>
+        <div class="b9-card reveal">
+          <div class="relative text-cream b9-measure mx-auto">
+            <div class="text-center">
+              <span class="eyebrow center mb-5" style="color:var(--bronze-on-dark)">O primeiro passo</span>
+              <h2 class="font-serif font-bold text-3xl md:text-4xl text-cream">Comece pela Sessão de Clareza</h2>
+            </div>
+            <p class="mt-6 text-base md:text-lg leading-relaxed text-cream/85">
+              Procurar ajuda não é admitir fraqueza. É a mesma força que você usa por todos, agora voltada para você.
+            </p>
+            <p class="mt-4 text-base md:text-lg leading-relaxed text-cream/85">
+              O primeiro passo é a <strong class="font-medium text-cream">Sessão de Clareza e Direcionamento</strong>: um atendimento particular, individual, conduzido pela própria Cris. Não é uma anamnese, nem uma conversa de avaliação: é uma sessão de verdade, onde você já vivencia o método. Nela você vai:
+            </p>
+            <ul class="b9-list">
+              <li><span class="b9-arrow" aria-hidden="true">→</span><span class="text-cream/90"><strong class="font-medium text-cream">levantar as possíveis raízes</strong> do que sente: o que está por trás da ansiedade, do cansaço, do que te trava;</span></li>
+              <li><span class="b9-arrow" aria-hidden="true">→</span><span class="text-cream/90"><strong class="font-medium text-cream">enxergar o caminho</strong>: um direcionamento personalizado para o seu caso;</span></li>
+              <li><span class="b9-arrow" aria-hidden="true">→</span><span class="text-cream/90"><strong class="font-medium text-cream">experimentar o método</strong>: uma vivência com a hipnose, para você sentir, na prática, como é.</span></li>
+            </ul>
+            <p class="mt-5 text-base md:text-lg leading-relaxed text-cream/85">
+              Você sai com clareza real sobre o que está acontecendo e sobre o caminho à frente, podendo optar por seguir ou não adiante. Presencial na Vila Madalena (SP) ou online para todo o Brasil, com a mesma profundidade.
+            </p>
+            <!-- [A CONFIRMAR COM A CRIS] linha de enquadramento de valor da Sessão de Clareza entra aqui (por ora, sem valor). -->
+            <div class="mt-9 text-center">
+              <a href="https://wa.me/5511978622903"
+                 class="whatsapp-cta cta-inverse b9-cta inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+                Agendar minha Sessão de Clareza
+              </a>
+              <p class="mt-3 text-sm text-cream/65">Atendimento particular e sigiloso · Comece pelo primeiro passo, sem compromisso de seguir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 10 — FAQ (ordem por peso na decisão) ================= -->
+    <section class="tex-paper bg-[#F3EDE3] b10-section">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 pt-14 md:pt-20 pb-10 md:pb-12 relative z-[1]">
+        <div class="text-center reveal">
+          <span class="eyebrow center mb-4">Dúvidas</span>
+          <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust">Perguntas frequentes</h2>
+          <div class="rule w-16 mx-auto mt-6"></div>
+        </div>
+        <figure class="microprova faq-sig reveal mt-7">
+          <p class="microprova-quote">“Cris me ajudou a voltar a dormir!”</p>
+          <figcaption class="microprova-cite">— Lucienne C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+        </figure>
+        <div class="faq-list reveal">
+          <details class="faq-item"><summary><span class="faq-q">A Sessão de Clareza é só uma anamnese paga?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Não. É uma sessão completa do método, não um questionário. Você sai dela entendendo as possíveis raízes do que você sente, com um direcionamento personalizado e já tendo experimentado uma vivência com a hipnose. É um primeiro passo com valor em si, independente de seguir ou não no processo.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Isso substitui psicólogo ou psiquiatra? Posso fazer se uso medicação ou já faço terapia?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Não substitui, e essa clareza faz parte da seriedade do trabalho. O Método Voltar a Si é complementar: se você faz terapia ou usa medicação, segue tudo normalmente, nada é interrompido por conta própria. O trabalho soma a esse cuidado, acessando a raiz emocional por um caminho que a fala sozinha nem sempre alcança.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Tem base científica ou é algo místico?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">É um processo clínico e estruturado. Une ciência (neurociência e hipnose científica) a abordagens integrativas, sempre conduzido com responsabilidade e ética. Não é hipnose de palco nem misticismo: é método, com profundidade e cuidado.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">O método trata a causa ou só o sintoma?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">A causa. Ansiedade, cansaço e o que te trava são a superfície; o processo acessa a raiz emocional que sustenta esses padrões. É por isso que a transformação se sustenta, em vez de ser só alívio momentâneo.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Por que é um processo, e não uma sessão avulsa?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Porque a raiz não se reorganiza num único encontro. O processo é o que torna a mudança profunda e duradoura: cada etapa prepara a seguinte.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Vou perder o controle ou a consciência durante a hipnose?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Não. Você permanece consciente e no controle o tempo todo. É um estado de foco e relaxamento profundo, parecido com quando você se concentra muito em algo, e pode interromper quando quiser.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Vou lembrar do que acontecer? Posso ficar "preso"?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Sim, você lembra. E não existe ficar preso: é um estado natural, do qual você retorna a qualquer momento.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Vou ter que reviver traumas e sofrer? Posso piorar?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">O método trabalha a raiz com cuidado e no seu ritmo. O objetivo é reorganizar, não retraumatizar: você é conduzido com segurança e acolhimento.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">Preciso acreditar na hipnose para funcionar?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Não é uma questão de fé. O trabalho é técnico e estruturado; o que importa é a sua disposição para o processo.</p></details>
+          <details class="faq-item"><summary><span class="faq-q">O online é tão profundo quanto o presencial?</span><svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary><p class="faq-a">Sim. O processo é igualmente profundo e eficaz online: muita gente faz todo o trabalho à distância, com os mesmos resultados.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOCO 11 — CTA FINAL ================= -->
+    <section class="relative overflow-hidden grain b11-section">
+      <div class="b11-inner max-w-3xl mx-auto px-4 md:px-8 pb-20 md:pb-28 text-center relative text-cream">
+        <span class="eyebrow center mb-6 reveal" style="color:#EAD9C2">O caminho começa aqui</span>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl leading-[1.15] text-cream reveal">O caminho de volta a você começa por uma <em class="italic font-medium text-[var(--bronze-on-dark)]">decisão</em></h2>
+        <p class="mt-6 text-base md:text-lg leading-relaxed text-cream/85 max-w-xl mx-auto reveal">
+          Você cuidou de todo mundo por muito tempo. Talvez seja a hora de virar esse cuidado para dentro. Não precisa ter certeza de todo o caminho, só do primeiro passo. Na Sessão de Clareza, você entende as possíveis raízes do que sente, experimenta o método e enxerga para onde ir. O resto, você decide depois.
+        </p>
+        <div class="mt-9 reveal">
+          <a href="https://wa.me/5511978622903"
+             class="whatsapp-cta cta-inverse inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+            Agendar minha Sessão de Clareza
+          </a>
+          <p class="mt-3 text-sm text-cream/70">Atendimento particular e sigiloso · Vila Madalena (SP) ou online</p>
+        </div>
+        <figure class="microprova on-dark reveal mt-12">
+          <p class="microprova-quote">“Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.”</p>
+          <figcaption class="microprova-cite">— Barbara L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+        </figure>
+        <div class="w-24 h-px mx-auto mt-10 mb-6 bg-cream/30 reveal"></div>
+        <p class="text-sm text-cream/75 reveal">
+          <span class="text-[var(--bronze-on-dark)]">★ 4,9 no Google</span> · 73 avaliações · +900 atendimentos · +9 anos · Sigilo absoluto
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-rust-deep text-cream/70">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-12">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+        <div class="flex flex-col items-center md:items-start gap-5">
+          <span class="brand-logo h-28" style="aspect-ratio:308/194; color:#C9A06A" role="img" aria-label="Cris Campos Terapias — Hipnoterapia Integrativa"></span>
+          <nav class="flex items-center gap-4" aria-label="Redes sociais">
+            <a href="https://www.instagram.com/criscampos.terapias/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram da Cris Campos">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/cristina-campos-14643a17/?locale=pt" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn da Cris Campos">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3.2 9h3.6v11.5H3.2zM9 9h3.45v1.57h.05c.48-.86 1.65-1.77 3.4-1.77 3.64 0 4.3 2.4 4.3 5.5v6.2h-3.6v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9v5.6H9z"/></svg>
+            </a>
+          </nav>
+        </div>
+        <div class="max-w-md">
+          <p class="text-sm leading-relaxed">
+            Atendimento particular na Vila Madalena (São Paulo) e online para todo o Brasil. Trabalho de <strong class="text-cream/90 font-medium">autocura</strong>, método e acompanhamento. Não substitui acompanhamento médico quando ele é necessário.
+          </p>
+          <p class="mt-3 text-sm text-cream/75">R. Natingui, 1074 — Vila Madalena</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-cream/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-cream/45">
+        <p>© <span id="ano">2026</span> Cris Campos · Hipnoterapeuta (formação OMNI). Todos os direitos reservados.</p>
+        <nav class="flex items-center gap-3" aria-label="Links legais">
+          <a href="politica-de-privacidade.html" class="footer-legal">Política de Privacidade</a>
+          <span class="text-cream/25" aria-hidden="true">·</span>
+          <a href="termos-de-uso.html" class="footer-legal">Termos de Uso</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= STICKY CTA MOBILE ================= -->
+  <div id="sticky-cta" class="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 bg-cream/95 backdrop-blur border-t border-clay/25 translate-y-full transition-transform duration-300 will-change-transform">
+    <a href="https://wa.me/5511978622903"
+       class="whatsapp-cta cta-solid flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
+      Agendar minha Sessão de Clareza
+    </a>
+  </div>
+
+  <script>
+    (function () {
+      var a = document.getElementById('ano'); if (a) a.textContent = new Date().getFullYear();
+
+      // Lazy dos posters laterais de vídeo: só carregam quando o carrossel se aproxima da dobra.
+      // O card central (01) já traz poster WebP eager; os 5 laterais usam data-poster.
+      (function () {
+        var lazy = document.querySelectorAll('.b7-video-el[data-poster]');
+        if (!lazy.length) return;
+        function load(v) { if (v.dataset.poster) { v.poster = v.dataset.poster; v.removeAttribute('data-poster'); } }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } });
+          }, { rootMargin: '300px 0px' });
+          lazy.forEach(function (v) { io.observe(v); });
+        } else { lazy.forEach(load); }
+      })();
+
+      // Carrossel de vídeos: ordem por sintoma (match de scent).
+      // medos abre com os relatos de medo (05, 02); ansiedade/burnout abrem com Simone (ordem padrão do HTML).
+      var origem = document.body.getAttribute('data-origem');
+      var vc = document.getElementById('video-carousel');
+      if (vc && origem === 'medos') {
+        ['05','02'].forEach(function (k) {
+          var el = vc.querySelector('[data-video="' + k + '"]');
+          if (el) vc.insertBefore(el, vc.firstChild);
+        });
+      }
+
+      // Carrossel "Em video": galeria curada (stage no desktop, scroll-snap no mobile).
+      (function () {
+        var carousel = document.querySelector('.b7-video-carousel');
+        if (!carousel || !vc) return;
+        var cards = Array.prototype.slice.call(vc.querySelectorAll('.b7-video-card'));
+        var n = cards.length;
+        if (!n) return;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var mq = window.matchMedia('(min-width: 641px)');
+        var idx = 0, timer = null, st;
+        function isStage() { return mq.matches; }
+        function clearStates(c) { c.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden'); }
+        function renderStage() {
+          cards.forEach(function (c, i) {
+            clearStates(c);
+            var pos = (i - idx + n) % n;
+            if (pos === 0) { c.classList.add('is-active'); c.removeAttribute('aria-hidden'); }
+            else if (pos === 1) { c.classList.add('is-next'); c.setAttribute('aria-hidden', 'true'); }
+            else if (pos === n - 1) { c.classList.add('is-prev'); c.setAttribute('aria-hidden', 'true'); }
+            else { c.classList.add('is-hidden'); c.setAttribute('aria-hidden', 'true'); }
+          });
+          syncVideos();
+        }
+        function renderScroll() {
+          var tr = vc.getBoundingClientRect(), mid = tr.left + tr.width / 2, best = null, bd = Infinity;
+          cards.forEach(function (c) { var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = c; } });
+          cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); if (c === best) c.classList.add('is-active'); });
+          syncVideos();
+        }
+        function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+        function startAuto() { stopAuto(); if (reduce || !isStage()) return; timer = setInterval(function () { idx = (idx + 1) % n; renderStage(); }, 6200); }
+        function go(dir) {
+          if (isStage()) { idx = (idx + dir + n) % n; renderStage(); startAuto(); }
+          else {
+            var act = vc.querySelector('.b7-video-card.is-active') || cards[0];
+            var i = cards.indexOf(act), m = Math.max(0, Math.min(n - 1, i + dir));
+            cards[m].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+            setTimeout(renderScroll, reduce ? 0 : 500);
+          }
+        }
+        function init() {
+          stopAuto();
+          if (isStage()) { renderStage(); startAuto(); }
+          else { cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); }); renderScroll(); }
+        }
+        carousel.classList.add('is-ready');
+        carousel.querySelectorAll('.b7-video-button').forEach(function (b) {
+          b.addEventListener('click', function () { go(parseInt(b.getAttribute('data-dir'), 10)); });
+        });
+
+        // Reprodução sob demanda — sem autoplay; toca um, pausa os demais.
+        function resetVideo(c) {
+          var v = c.querySelector('video'); if (!v) return;
+          if (!v.paused) { try { v.pause(); } catch (e) {} }
+          v.removeAttribute('controls');
+          c.classList.remove('is-playing');
+        }
+        function syncVideos() {
+          cards.forEach(function (c) { if (!c.classList.contains('is-active')) resetVideo(c); });
+        }
+        function playVideo(c) {
+          cards.forEach(function (o) { if (o !== c) resetVideo(o); });
+          var v = c.querySelector('video'); if (!v) return;
+          v.setAttribute('controls', '');             // controles nativos acessíveis ao tocar
+          c.classList.add('is-playing');
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+        }
+        cards.forEach(function (c) {
+          var v = c.querySelector('video');
+          if (v) { v.removeAttribute('controls'); v.addEventListener('ended', function () { resetVideo(c); }); }
+          var btn = c.querySelector('.b7-video-play');
+          if (btn) btn.addEventListener('click', function (e) { e.preventDefault(); stopAuto(); playVideo(c); });
+        });
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+        carousel.addEventListener('focusin', stopAuto);
+        carousel.addEventListener('focusout', startAuto);
+        vc.addEventListener('scroll', function () { if (isStage()) return; clearTimeout(st); st = setTimeout(renderScroll, 90); }, { passive: true });
+        if (mq.addEventListener) mq.addEventListener('change', init); else if (mq.addListener) mq.addListener(init);
+        window.addEventListener('resize', function () { clearTimeout(st); st = setTimeout(init, 140); });
+        init();
+      })();
+
+      // "Em palavras": carrossel editorial (autoplay lento ping-pong, pausa hover/focus; fallback scroll).
+      (function () {
+        var wrap = document.querySelector('.b7-words');
+        var track = document.getElementById('words-track');
+        if (!wrap || !track) return;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var dir = 1, timer = null;
+        function step() {
+          var c = track.querySelector('.b7-words-card');
+          var gap = parseFloat(getComputedStyle(track).columnGap) || 18;
+          return c ? c.getBoundingClientRect().width + gap : track.clientWidth * 0.85;
+        }
+        function atEnd() { return track.scrollLeft >= (track.scrollWidth - track.clientWidth) - 4; }
+        function atStart() { return track.scrollLeft <= 4; }
+        function scrollByCards(d) { track.scrollTo({ left: track.scrollLeft + d * step(), behavior: reduce ? 'auto' : 'smooth' }); }
+        function go(d) {
+          if (d > 0 && atEnd()) track.scrollTo({ left: 0, behavior: reduce ? 'auto' : 'smooth' });
+          else if (d < 0 && atStart()) track.scrollTo({ left: track.scrollWidth, behavior: reduce ? 'auto' : 'smooth' });
+          else scrollByCards(d);
+        }
+        function tick() { if (atEnd()) dir = -1; else if (atStart()) dir = 1; scrollByCards(dir); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        function start() { stop(); if (reduce) return; timer = setInterval(tick, 5200); }
+        wrap.classList.add('is-ready');
+        wrap.querySelectorAll('.b7-words-button').forEach(function (b) {
+          b.addEventListener('click', function () { go(parseInt(b.getAttribute('data-dir'), 10)); start(); });
+        });
+        wrap.addEventListener('mouseenter', stop);
+        wrap.addEventListener('mouseleave', start);
+        wrap.addEventListener('focusin', stop);
+        wrap.addEventListener('focusout', start);
+        track.addEventListener('pointerdown', stop, { passive: true });
+        // Card-portão "Ver mais" (pos 16): revela cards 16–32 + folha do Google e some (sem recolher). Foco gerenciado; carrossel re-mede.
+        var gate = document.getElementById('words-gate');
+        if (gate) {
+          var hiddenCards = Array.prototype.slice.call(track.querySelectorAll('.b7-words-card[hidden]')); // 16–32 + folha
+          gate.addEventListener('click', function () {
+            hiddenCards.forEach(function (c) { c.hidden = false; });
+            gate.setAttribute('aria-expanded', 'true');
+            gate.hidden = true;
+            if (hiddenCards[0]) { hiddenCards[0].setAttribute('tabindex', '-1'); hiddenCards[0].focus(); }
+            start();
+          });
+        }
+        start();
+      })();
+
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el){ el.classList.add('visible'); }); }
+      else {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        els.forEach(function (el){ obs.observe(el); });
+      }
+
+      // Barra fixa do mobile: some quando o CTA do herói (desktop) está à vista; como ele é hidden no mobile,
+      // a barra fica visível ao longo da página — é o CTA único da dobra no celular.
+      var sticky = document.getElementById('sticky-cta');
+      var heroCta = document.querySelector('main section a.whatsapp-cta');
+      if (sticky && heroCta && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { sticky.classList.toggle('translate-y-full', e.isIntersecting); });
+        }, { threshold: 0 }).observe(heroCta);
+      } else if (sticky) { sticky.classList.remove('translate-y-full'); }
+    })();
+  </script>
+</body>
+</html>
