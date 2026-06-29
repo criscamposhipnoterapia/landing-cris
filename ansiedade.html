@@ -193,6 +193,18 @@
     }
     .cta-ghost:focus-visible{ outline:2px solid rgba(154,123,79,.85); outline-offset:3px; }
 
+    /* CTA em UMA linha no mobile (item Cris): menos padding-X + leve reducao de fonte + nowrap.
+       Da folga para nao quebrar nem no font-swap / fonte grande do sistema. Vale p/ conteudo E barra fixa.
+       Copy do botao inalterada. */
+    @media (max-width:480px){
+      .whatsapp-cta{
+        white-space:nowrap;
+        padding-left:1rem; padding-right:1rem;
+        font-size:.95rem;
+        gap:.5rem;
+      }
+    }
+
     /* 2 — Barra de provas: assinatura editorial (linha superior + divisores) */
     .trust-bar{
       display:flex; flex-wrap:wrap; align-items:flex-start; margin:0;
@@ -336,7 +348,7 @@
         #F3EDE3;
     }
     .page-ansiedade .b2-inner{
-      padding-top:clamp(80px,8vw,120px);
+      padding-top:clamp(52px,8vw,120px);   /* mobile: reduz o respiro hero->B2 (creme sobre creme lia muito vazio) */
       padding-bottom:clamp(76px,7vw,108px);
     }
     /* campo de leitura editorial — sutil, NAO card */
@@ -1327,7 +1339,7 @@
         <div class="rule w-24 mx-auto my-8 reveal"></div>
         <p class="b6-lead text-base md:text-lg leading-relaxed text-ink/90 reveal">Dá para seguir mais um ano assim. Você já provou que aguenta. A questão é outra: a que custo.</p>
         <p class="b6-body mt-4 text-base md:text-lg leading-relaxed text-ink/90 reveal">Porque continuar funcional por fora e esgotado por dentro raramente fica parado no mesmo lugar. O cansaço vira exaustão, a ansiedade deixa de ser pontual, o corpo começa a cobrar o que a mente vinha segurando. Aí o sono encurta, a paciência diminui, e o que antes era um dia ruim vira o tom da semana. Quase sem perceber, vão passando os dias no automático, as conversas pela metade, os anos em que você esteve presente em tudo, menos em você.</p>
-        <p class="b6-emph mt-4 font-serif text-xl md:text-2xl leading-relaxed text-rust reveal">Esse é o custo que não aparece na conta, mas é o mais caro. Cuidar da raiz quase sempre pesa menos, emocional e praticamente, do que continuar adiando.</p>
+        <p class="b6-emph mt-4 font-serif text-xl md:text-2xl leading-relaxed text-rust reveal">Esse é o custo que não aparece na conta, mas muitas vezes é o mais caro. Emocionalmente, cuidar da raiz quase sempre pesa menos do que continuar adiando.</p>
         <div class="b6-testimonial mt-14 pt-10 border-t border-clay/30 reveal">
           <!-- eco proposital: mesma fala do vídeo da Simone no B7 (teaser -> payoff). NÃO deduplicar. -->
           <p class="b6-quote font-serif italic text-lg md:text-xl text-ink leading-snug">“Eu sou eu de novo.”</p>
@@ -1348,7 +1360,7 @@
           <span class="eyebrow center b7-eyebrow mb-4">Quem já fez esse caminho</span>
           <h2 class="font-serif font-bold text-3xl md:text-4xl text-rust">Histórias de quem voltou a si</h2>
           <p class="b7-intro mt-5 text-base md:text-lg max-w-2xl mx-auto">
-            <span class="b7-rating">★ 4,9 no Google</span> · 73 avaliações · <strong class="font-medium text-rust">+900 atendimentos</strong> em +9 anos de atuação. Por trás de cada número, uma pessoa que chegou exausta, funcional por fora e perdida por dentro, e reencontrou o próprio caminho.
+            <span class="b7-rating">★ 4,9 no Google</span> · 73 avaliações · <strong class="font-medium text-rust">+900 atendimentos</strong> em +9 anos de atuação. Por trás de cada número, há pessoas que também chegaram exaustas, perdidas por dentro e que conseguiram reencontrar o seu próprio caminho.
           </p>
         </div>
 
