@@ -59,7 +59,8 @@ PAGES = {
         "scope": "page-burnout", "origem": "burnout",
         "title": "Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento",
         "kicker": "Você dá conta de tudo. Menos de você.",
-        "h1": "Resolva o esgotamento que você esconde atrás da sua competência… <em class=\"italic font-medium text-terra\">e volte a se reconhecer.</em>",
+        # H1 com correção de viúva (a palavra "e" não fica sozinha): <br> só no desktop + nbsp antes de "volte".
+        "h1": "Resolva o esgotamento que você esconde atrás da sua competência…<br class=\"hidden md:block\" /> <em class=\"italic font-medium text-terra\">e&nbsp;volte a se reconhecer.</em>",
         "subhead": "Burnout, ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
         "seq": ["burnout", "geral", "ansiedade", "medos"],
         "micro": [

@@ -5,3 +5,5 @@ outputs/
 _propagate.py
 tailwind.config.js
 PARA-CRIS-revisao.html
+
+*.bak
