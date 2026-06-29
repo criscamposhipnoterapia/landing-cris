@@ -100,7 +100,7 @@
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"); }
     ::selection{ background:rgba(168,107,76,.20); }
 
-    .eyebrow{ display:inline-flex; align-items:center; gap:.7rem; text-transform:uppercase; letter-spacing:.22em; font-size:.72rem; font-weight:500; color:var(--bronze); }
+    .eyebrow{ display:inline-flex; align-items:center; gap:.7rem; text-transform:uppercase; letter-spacing:.22em; font-size:.72rem; font-weight:500; color:#6E5634; } /* a11y: clay-escuro p/ passar AA sobre fundo claro; on-dark tem override inline */
     .eyebrow::before{ content:""; width:1.7rem; height:1px; background:var(--clay); }
     .eyebrow.center::after{ content:""; width:1.7rem; height:1px; background:var(--clay); }
     .rule{ height:1px; background:linear-gradient(90deg,transparent,var(--clay),transparent); }
@@ -878,7 +878,7 @@
       box-shadow:0 40px 90px -60px rgba(20,14,11,.46), inset 0 1px 0 rgba(255,250,244,.04);
     }
     .page-medos .b7-section .b7-header h2{ color:#F3EDE3; }
-    .page-medos .b7-eyebrow{ color:var(--bronze-on-dark); }
+    .page-medos .b7-eyebrow{ color:var(--bronze-on-dark); } /* B7 é fundo ESCURO (gradiente) → bronze-on-dark passa ~5.9; manter */
     .page-medos .b7-eyebrow::before, .page-medos .b7-eyebrow::after{ background:rgba(201,160,106,.55); }
     .page-medos .b7-intro{ color:rgba(243,237,227,.82); }
     .page-medos .b7-intro strong{ color:#F3EDE3; }
@@ -1125,6 +1125,9 @@
       text-wrap:balance; max-width:36rem; margin-inline:auto;
       font-size:clamp(1.25rem, 1.05rem + 0.55vw, 1.42rem); line-height:1.5;
     }
+    /* a11y contraste: subtitulo do header (era text-clay 3.39) e copyright do rodape (era cream/45 3.81) */
+    .page-medos header span.uppercase{ color:#6E5634; }
+    .page-medos footer .pt-6 > p{ color:rgba(243,237,227,.55); }
   </style>
 </head>
 
@@ -1820,7 +1823,7 @@
   </footer>
 
   <!-- ================= STICKY CTA MOBILE ================= -->
-  <div id="sticky-cta" class="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 bg-cream/95 backdrop-blur border-t border-clay/25 translate-y-full transition-transform duration-300 will-change-transform">
+  <div id="sticky-cta" role="region" aria-label="Agendar sessão" class="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 bg-cream/95 backdrop-blur border-t border-clay/25 translate-y-full transition-transform duration-300 will-change-transform">
     <a href="https://wa.me/5511978622903"
        class="whatsapp-cta cta-solid flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base">
       <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.4-.7-2.3-1.2-3.2-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1 1.9-1 3.1.1.3.1 2 1.4 3.8 1.7 2.4 3.2 3.1 4.4 3.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg>
@@ -1873,17 +1876,17 @@
           cards.forEach(function (c, i) {
             clearStates(c);
             var pos = (i - idx + n) % n;
-            if (pos === 0) { c.classList.add('is-active'); c.removeAttribute('aria-hidden'); }
-            else if (pos === 1) { c.classList.add('is-next'); c.setAttribute('aria-hidden', 'true'); }
-            else if (pos === n - 1) { c.classList.add('is-prev'); c.setAttribute('aria-hidden', 'true'); }
-            else { c.classList.add('is-hidden'); c.setAttribute('aria-hidden', 'true'); }
+            if (pos === 0) { c.classList.add('is-active'); c.removeAttribute('aria-hidden'); c.inert = false; }
+            else if (pos === 1) { c.classList.add('is-next'); c.setAttribute('aria-hidden', 'true'); c.inert = true; }
+            else if (pos === n - 1) { c.classList.add('is-prev'); c.setAttribute('aria-hidden', 'true'); c.inert = true; }
+            else { c.classList.add('is-hidden'); c.setAttribute('aria-hidden', 'true'); c.inert = true; }
           });
           syncVideos();
         }
         function renderScroll() {
           var tr = vc.getBoundingClientRect(), mid = tr.left + tr.width / 2, best = null, bd = Infinity;
           cards.forEach(function (c) { var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = c; } });
-          cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); if (c === best) c.classList.add('is-active'); });
+          cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); c.inert = false; if (c === best) c.classList.add('is-active'); });
           syncVideos();
         }
         function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
@@ -1900,7 +1903,7 @@
         function init() {
           stopAuto();
           if (isStage()) { renderStage(); startAuto(); }
-          else { cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); }); renderScroll(); }
+          else { cards.forEach(function (c) { clearStates(c); c.removeAttribute('aria-hidden'); c.inert = false; }); renderScroll(); }
         }
         carousel.classList.add('is-ready');
         carousel.querySelectorAll('.b7-video-button').forEach(function (b) {
