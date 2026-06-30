@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cris Campos — Leitura de Resultados & Caminhos de Crescimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#F3EDE3;        /* marfim */
+    --paper:#FBF7F0;         /* papel mais claro p/ cards */
+    --ink:#2C2521;           /* carvão quente */
+    --espresso:#5E2616;      /* espresso rust */
+    --terra:#A86B4C;         /* terracota argila */
+    --terra-deep:#8A5238;    /* hover */
+    --bronze:#9A7B4F;        /* filetes/kickers */
+    --sage:#9CA48B;          /* sálvia */
+    --line:rgba(94,38,22,.14);
+    --shadow:0 18px 50px -28px rgba(46,30,20,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:'Outfit',system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 15% -5%, rgba(154,123,79,.10), transparent 45%),
+      radial-gradient(circle at 92% 8%, rgba(168,107,76,.08), transparent 40%);
+  }
+  .doc{max-width:980px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.01em}
+  .kicker{
+    font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--bronze);display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;
+  }
+  .kicker::before{content:"";width:34px;height:1.5px;background:var(--bronze)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 64px;position:relative}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:1.6rem}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.3rem);line-height:1.06;color:var(--espresso)}
+  .hero h1 em{font-style:italic;color:var(--terra)}
+  .hero .sub{font-size:1.2rem;max-width:620px;margin-top:1.8rem;color:#574b43}
+  .hero .meta{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:2.2rem;font-size:.9rem;color:#6b5d52}
+  .hero .meta b{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--ink);font-weight:600}
+  .rule{height:1px;background:var(--line);margin:0}
+
+  section{padding:62px 0}
+  .lead{font-size:1.16rem;max-width:680px;color:#4d423a;margin-bottom:2.4rem}
+  h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--espresso);line-height:1.12}
+  h2 .num{color:var(--bronze);font-size:.55em;vertical-align:.35em;margin-right:.5rem;font-weight:500}
+
+  /* ---------- STAT CARDS ---------- */
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .stat .figure{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:600;color:var(--espresso);line-height:1}
+  .stat .figure.warn{color:var(--terra)}
+  .stat .label{font-size:.82rem;color:#6b5d52;margin-top:.6rem;line-height:1.4}
+  .stat .tag{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:.9rem}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    background:linear-gradient(135deg,var(--espresso),var(--ink));
+    color:#F3EDE3;border-radius:20px;padding:40px 38px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .callout::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(168,107,76,.22)}
+  .callout .kicker{color:#d9a98f}
+  .callout .kicker::before{background:#d9a98f}
+  .callout h3{font-size:1.7rem;color:#fff;line-height:1.25;position:relative}
+  .callout p{margin-top:1rem;color:#e6d9cc;max-width:640px;position:relative}
+  .callout .big{font-family:'Playfair Display',serif;font-size:2.4rem;color:#fff;font-style:italic;display:block;margin:.4rem 0}
+
+  /* ---------- CHART ---------- */
+  .chart-wrap{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px 18px;box-shadow:var(--shadow)}
+  .chart-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+  .chart-head h3{font-size:1.25rem;color:var(--ink)}
+  .legend{display:flex;gap:18px;font-size:.8rem;color:#6b5d52}
+  .legend span{display:inline-flex;align-items:center;gap:.45rem}
+  .legend i{width:22px;height:3px;border-radius:2px;display:inline-block}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+
+  /* ---------- BARS (audience) ---------- */
+  .bars{display:flex;flex-direction:column;gap:16px;margin-top:6px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:16px}
+  .bar-row .name{font-size:.92rem;font-weight:500}
+  .bar-row .name small{display:block;color:#8a7c70;font-weight:400;font-size:.76rem}
+  .track{background:rgba(154,123,79,.16);border-radius:8px;height:30px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:8px;display:flex;align-items:center;padding-left:12px;color:#fff;font-size:.8rem;font-weight:600}
+  .fill.best{background:linear-gradient(90deg,var(--sage),#7f8a6b)}
+  .fill.mid{background:linear-gradient(90deg,var(--terra),var(--terra-deep))}
+  .fill.low{background:linear-gradient(90deg,#b89a87,#9a7b4f)}
+  .bar-row .cpa{font-size:.9rem;font-weight:600;color:var(--espresso);white-space:nowrap}
+
+  /* ---------- KEEP / FIX lists ---------- */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
+  .panel.keep{border-top:3px solid var(--sage)}
+  .panel.fix{border-top:3px solid var(--terra)}
+  .panel h3{font-size:1.3rem;margin-bottom:1rem;color:var(--espresso)}
+  .panel ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .panel li{padding-left:30px;position:relative;font-size:.96rem;color:#4d423a}
+  .panel li b{color:var(--ink)}
+  .panel.keep li::before{content:"✦";position:absolute;left:0;top:0;color:var(--sage);font-size:1rem}
+  .panel.fix li::before{content:"›";position:absolute;left:4px;top:-2px;color:var(--terra);font-size:1.4rem;font-weight:700}
+
+  /* ---------- LEVERS ---------- */
+  .lever{
+    display:grid;grid-template-columns:62px 1fr;gap:22px;align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:16px;box-shadow:var(--shadow);
+    transition:transform .2s ease;
+  }
+  .lever:hover{transform:translateX(4px)}
+  .lever .n{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--terra);line-height:1;font-style:italic}
+  .lever h3{font-size:1.22rem;color:var(--espresso);margin-bottom:.5rem}
+  .lever p{font-size:.96rem;color:#4d423a;max-width:680px}
+  .lever .pill{display:inline-block;margin-top:.9rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--sage);background:rgba(156,164,139,.15);border:1px solid rgba(156,164,139,.4);padding:.3rem .8rem;border-radius:30px}
+
+  /* ---------- META / economics ---------- */
+  .goalband{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper)}
+  .goalband > div{padding:30px 26px;border-right:1px solid var(--line)}
+  .goalband > div:last-child{border-right:none}
+  .goalband .from{font-family:'Playfair Display',serif;font-size:2.4rem;color:#9a8a7d}
+  .goalband .arrow{color:var(--terra);font-size:1.4rem}
+  .goalband .to{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--espresso)}
+  .goalband small{display:block;font-size:.8rem;color:#6b5d52;margin-top:.5rem}
+
+  /* ---------- closing ---------- */
+  .closing{background:linear-gradient(135deg,var(--espresso),#3a1810);color:#f3ede3;border-radius:22px;padding:58px 46px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .closing::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(168,107,76,.28),transparent 60%)}
+  .closing .kicker{justify-content:center;color:#d9a98f}
+  .closing .kicker::before{display:none}
+  .closing h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);position:relative;max-width:760px;margin:0 auto}
+  .closing h2 em{font-style:italic;color:#e9b89e}
+  .closing p{position:relative;margin-top:1.4rem;color:#e6d9cc;max-width:560px;margin-left:auto;margin-right:auto}
+
+  footer{padding:40px 0 70px;text-align:center;color:#8a7c70;font-size:.82rem}
+  .disclaim{max-width:680px;margin:30px auto 0;font-size:.78rem;color:#9a8a7d;line-height:1.6}
+
+  @media(max-width:760px){
+    .g3,.g4,.g2,.twocol,.goalband{grid-template-columns:1fr}
+    .goalband > div{border-right:none;border-bottom:1px solid var(--line)}
+    .bar-row{grid-template-columns:96px 1fr;}
+    .bar-row .cpa{grid-column:2;justify-self:start}
+    .lever{grid-template-columns:1fr;gap:10px}
+    .hero{padding:64px 0 40px}
+  }
+  @media print{
+    body{background:#fff;background-image:none}
+    .card,.panel,.lever,.chart-wrap,.goalband{box-shadow:none}
+    section{padding:34px 0}
+    .lever:hover,.lever{transform:none}
+    .callout,.closing{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Cris Campos · Hipnoterapia Integrativa</div>
+    <h1>Leitura de resultados<br>e caminhos de <em>crescimento</em></h1>
+    <p class="sub">Uma análise honesta da conta de anúncios — o que já foi construído, como está hoje e como crescer <strong>sem aumentar o investimento</strong>, apenas otimizando o que já existe.</p>
+    <div class="meta">
+      <div><span>Período analisado</span><b>Jun/2024 – Jun/2026</b></div>
+      <div><span>Base</span><b>Dados reais da conta</b></div>
+      <div><span>Foco</span><b>Otimização, sem nova verba</b></div>
+    </div>
+  </header>
+  <div class="rule"></div>
+
+  <!-- RESUMO EXECUTIVO -->
+  <section>
+    <div class="kicker">Onde estamos hoje</div>
+    <h2>O método funciona.<br>A captação é que está cara.</h2>
+    <p class="lead">Em 30 dias, a conta investe cerca de <strong>R$ 3.500</strong> e gera ~94 contatos. O problema não é o valor da sessão, nem a qualidade do atendimento — é <strong>quem o anúncio está trazendo</strong> e <strong>quanto custa</strong> trazer essa pessoa.</p>
+
+    <div class="grid g4" style="margin-top:10px">
+      <div class="card stat">
+        <div class="tag">Investimento/mês</div>
+        <div class="figure">R$ 3,5 mil</div>
+        <div class="label">já subiu ~25% sem trazer mais clientes</div>
+      </div>
+      <div class="card stat">
+        <div class="tag">Aparição nas buscas</div>
+        <div class="figure">24%</div>
+        <div class="label">de cada 100 buscas certas, aparecemos em ~24</div>
+      </div>
+      <div class="card stat">
+        <div class="tag">Perda por relevância</div>
+        <div class="figure warn">45%</div>
+        <div class="label">deixamos de aparecer por encaixe, não por dinheiro</div>
+      </div>
+      <div class="card stat">
+        <div class="tag">Capacidade ociosa</div>
+        <div class="figure">7→15</div>
+        <div class="label">a agenda comporta o dobro de entrantes/mês</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE JÁ FOI FEITO -->
+  <section>
+    <div class="kicker">Capítulo 1 · O que já foi construído</div>
+    <h2><span class="num">01</span>Uma base sólida — e muitos testes</h2>
+    <p class="lead">A conta tem um histórico de experimentação saudável. Várias campanhas foram testadas e pausadas com critério. Hoje, sobrou <strong>uma única campanha ativa</strong>, que carrega todo o tráfego.</p>
+    <div class="grid g3">
+      <div class="card">
+        <h3 class="serif" style="font-size:1.2rem;color:var(--espresso);margin-bottom:.5rem">Disciplina de teste</h3>
+        <p style="font-size:.95rem;color:#4d423a">Campanhas de hipnoterapia, vídeo e "IA" foram testadas e pausadas quando o custo subiu. <b>Nada de desperdício parado rodando.</b></p>
+      </div>
+      <div class="card">
+        <h3 class="serif" style="font-size:1.2rem;color:var(--espresso);margin-bottom:.5rem">Método validado</h3>
+        <p style="font-size:.95rem;color:#4d423a">4,9★ em 73 avaliações, 10+ anos. <b>O que converte quem senta na cadeira já funciona</b> — o gargalo está antes, no anúncio.</p>
+      </div>
+      <div class="card">
+        <h3 class="serif" style="font-size:1.2rem;color:var(--espresso);margin-bottom:.5rem">Economia favorável</h3>
+        <p style="font-size:.95rem;color:#4d423a">Cada cliente vale ~R$ 6 mil ao longo do tempo e custa ~R$ 400 para adquirir. <b>Crescer aqui é barato</b> — sala e horas já estão pagas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO ESTÁ HOJE - O GRÁFICO -->
+  <section>
+    <div class="kicker">Capítulo 2 · O sinal de alerta</div>
+    <h2><span class="num">02</span>Pagando o dobro pelo mesmo resultado</h2>
+    <p class="lead">Esta é a descoberta mais importante. Ao longo de 2 anos, o <strong>investimento subiu</strong> e o <strong>custo por contato dobrou</strong> — enquanto o número de contatos ficou praticamente parado. A máquina está ficando cara, devagar e em silêncio.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-head">
+        <h3 class="serif">Investimento mensal × custo por contato</h3>
+        <div class="legend">
+          <span><i style="background:var(--terra)"></i>Investimento/mês</span>
+          <span><i style="background:var(--espresso)"></i>Custo por contato</span>
+        </div>
+      </div>
+      <svg id="trend" viewBox="0 0 920 360" role="img" aria-label="Gráfico de tendência"></svg>
+    </div>
+
+    <div class="callout" style="margin-top:26px">
+      <div class="kicker">A conta em uma frase</div>
+      <h3>Junho/2024, cada contato custava R$ 18.<span class="big">Hoje custa R$ 38.</span></h3>
+      <p>Mesmo trabalho, mesma campanha, mesmo volume de pessoas — pagando mais que o dobro. Isso acontece quando o anúncio perde relevância e passa a disputar leilões caros contra o público errado. <strong>É exatamente isto que dá para reverter sem gastar um real a mais.</strong></p>
+    </div>
+  </section>
+
+  <!-- ONDE PERDEMOS -->
+  <section>
+    <div class="kicker">Capítulo 3 · Onde o dinheiro vaza</div>
+    <h2><span class="num">03</span>Aparecendo para a busca errada</h2>
+    <p class="lead">Em 30 dias, o anúncio foi disparado por <strong>3.462 buscas diferentes</strong> — a maioria genérica ("terapia", "psicoterapia", "psicanálise"). Isso coloca a Cris na vizinhança errada: disputando preço com consulta barata, em vez de falar com quem procura uma transformação.</p>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="tag" style="color:var(--bronze);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:1rem">Por que deixamos de aparecer</div>
+        <div class="bars">
+          <div class="bar-row">
+            <div class="name">Relevância<small>encaixe anúncio↔busca</small></div>
+            <div class="track"><div class="fill mid" style="width:73%">45%</div></div>
+            <div class="cpa">grátis de recuperar</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Orçamento<small>teto de verba</small></div>
+            <div class="track"><div class="fill low" style="width:51%">31%</div></div>
+            <div class="cpa">cai junto c/ relevância</div>
+          </div>
+          <div class="bar-row">
+            <div class="name">Aparecemos<small>impressão obtida</small></div>
+            <div class="track"><div class="fill best" style="width:39%">24%</div></div>
+            <div class="cpa">→ dá pra crescer</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="tag" style="color:var(--bronze);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:1rem">Dinheiro indo para o público errado <span style="text-transform:none;letter-spacing:0;color:#9a8a7d">(últ. 30 dias)</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:13px">
+          <li style="display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:11px"><span>"regressão / vidas passadas"</span><b style="color:var(--terra)">~R$ 90</b></li>
+          <li style="display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:11px"><span>"psicólogo / psicologia" <small style="color:#9a8a7d">(68 termos, 1 contato)</small></span><b style="color:var(--terra)">R$ 63</b></li>
+          <li style="display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:11px"><span>"psicanálise"</span><b style="color:var(--terra)">R$ 46</b></li>
+          <li style="display:flex;justify-content:space-between;padding-bottom:2px"><span>"online", "psiquiatra", "remédio"…</span><b style="color:var(--terra)">R$ 52</b></li>
+          <li style="display:flex;justify-content:space-between;margin-top:6px;background:rgba(168,107,76,.08);padding:12px 14px;border-radius:10px"><span style="font-weight:600">Desperdício recorrente</span><b style="color:var(--espresso);font-size:1.1rem">~R$ 250–300/mês</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM CONVERTE -->
+  <section>
+    <div class="kicker">Capítulo 4 · Quem realmente responde</div>
+    <h2><span class="num">04</span>O público que converte já está claro</h2>
+    <p class="lead">Os dados não deixam dúvida sobre quem é o cliente certo — e ele coincide com a persona da marca. Direcionar a verba para esse núcleo é ganho de eficiência imediato, sem custo adicional.</p>
+
+    <div class="card">
+      <div class="tag" style="color:var(--bronze);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:1.3rem">Custo por contato e taxa de conversão</div>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="name">Mulheres<small>conversão 21,2%</small></div>
+          <div class="track"><div class="fill best" style="width:55%">melhor desempenho</div></div>
+          <div class="cpa">R$ 33</div>
+        </div>
+        <div class="bar-row">
+          <div class="name">Homens<small>conversão 12,8%</small></div>
+          <div class="track"><div class="fill low" style="width:92%">+70% mais caro</div></div>
+          <div class="cpa">R$ 56</div>
+        </div>
+        <div class="bar-row">
+          <div class="name">35–44 anos<small>faixa mais forte</small></div>
+          <div class="track"><div class="fill best" style="width:50%">21% de conversão</div></div>
+          <div class="cpa">R$ 36</div>
+        </div>
+        <div class="bar-row">
+          <div class="name">45–54 anos<small>logo atrás</small></div>
+          <div class="track"><div class="fill mid" style="width:46%">19% de conversão</div></div>
+          <div class="cpa">R$ 33</div>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:.92rem;color:#6b5d52;border-top:1px solid var(--line);padding-top:16px">
+        <strong>Núcleo:</strong> mulher, 35–54 anos, alta renda, São Paulo. Exatamente a "Paula" da estratégia da marca — exausta por dentro, dá conta de tudo por fora. <strong>É para ela que a verba deve pesar.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- MANTER / AJUSTAR -->
+  <section>
+    <div class="kicker">Capítulo 5 · O balanço</div>
+    <h2><span class="num">05</span>O que manter, o que ajustar</h2>
+    <div class="twocol" style="margin-top:1.5rem">
+      <div class="panel keep">
+        <h3 class="serif">✦ Manter</h3>
+        <ul>
+          <li><b>O público feminino 35–54</b> — converte a metade do custo dos homens. É o motor.</li>
+          <li><b>As palavras de hipnoterapia</b> — pouco volume, mas baratas e qualificadas (custo ~R$ 19).</li>
+          <li><b>A disciplina de pausar o que não rende</b> — nenhuma campanha-zumbi queimando verba.</li>
+          <li><b>O método e a prova social</b> — 4,9★ é ativo de conversão; falta só apoiá-lo em vídeo.</li>
+        </ul>
+      </div>
+      <div class="panel fix">
+        <h3 class="serif">› Ajustar</h3>
+        <ul>
+          <li><b>A correspondência ampla</b> — gera 3.462 buscas/mês e espalha verba no público errado.</li>
+          <li><b>Os termos genéricos</b> — "terapia/psicologia/psicanálise" disputam preço, não transformação.</li>
+          <li><b>O peso em homens e 55+</b> — custam mais e convertem menos, sem ajuste de lance.</li>
+          <li><b>A medição</b> — o Google hoje persegue "clique de WhatsApp", não cliente fechado.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMINHOS -->
+  <section>
+    <div class="kicker">Capítulo 6 · O plano</div>
+    <h2><span class="num">06</span>Quatro caminhos — zero verba nova</h2>
+    <p class="lead">Cada um destes passos recupera desperdício ou eficiência. Estão em ordem de retorno: do ganho mais rápido e barato ao mais estrutural.</p>
+
+    <div class="lever">
+      <div class="n">1</div>
+      <div>
+        <h3 class="serif">Cortar o desperdício e estreitar o alvo</h3>
+        <p>Bloquear as buscas erradas ("psicólogo", "vidas passadas", "convênio", "barato") e tornar as palavras mais precisas. Para de queimar ~R$ 300/mês e, ao subir a relevância, <strong>baratea cada clique</strong> — o que faz a mesma verba render mais.</p>
+        <span class="pill">Ganho imediato · grátis</span>
+      </div>
+    </div>
+    <div class="lever">
+      <div class="n">2</div>
+      <div>
+        <h3 class="serif">Pesar a verba para quem converte</h3>
+        <p>Ajustar os lances a favor de <strong>mulheres 35–54</strong> e reduzir homens e 55+. É realocar o mesmo orçamento para o público que fecha a R$ 33 em vez de R$ 56. Reversível a qualquer momento.</p>
+        <span class="pill">Eficiência · grátis</span>
+      </div>
+    </div>
+    <div class="lever">
+      <div class="n">3</div>
+      <div>
+        <h3 class="serif">Recuperar relevância (os 45% perdidos)</h3>
+        <p>Alinhar cada anúncio à dor buscada (ansiedade, pânico, insônia, esgotamento). Isso eleva a nota de qualidade do Google e <strong>devolve aparições sem pagar mais</strong> — a maior alavanca gratuita do projeto.</p>
+        <span class="pill">Maior alavanca · grátis</span>
+      </div>
+    </div>
+    <div class="lever">
+      <div class="n">4</div>
+      <div>
+        <h3 class="serif">Página e convite certos para cada intenção</h3>
+        <p>Trocar o "saber mais" pelo convite a <strong>agendar</strong> e pré-enquadrar o valor cedo, para o caçador de preço se autoexcluir. O dado mostra que esse convite fecha ~3× mais — material premium já existe.</p>
+        <span class="pill">Conversão · estrutural</span>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:8px">
+      <div class="kicker">A pré-condição que multiplica tudo</div>
+      <h3>Ensinar o Google a perseguir cliente fechado — não clique de WhatsApp.</h3>
+      <p>Hoje o sistema otimiza para o contato mais barato, e por isso ele mesmo atrai o lead que some por preço. Ao medir "Sessão de Clareza paga" e "Processo fechado", o mesmo orçamento passa a caçar a pessoa certa. <strong>Sem isso, os passos acima melhoram os números; com isso, eles mudam o cliente.</strong></p>
+    </div>
+  </section>
+
+  <!-- META -->
+  <section>
+    <div class="kicker">Capítulo 7 · O destino</div>
+    <h2><span class="num">07</span>Da agenda ociosa à agenda cheia</h2>
+    <p class="lead">O crescimento aqui não depende de gastar mais, mas de <strong>trazer o cliente certo para uma agenda que já comporta o dobro</strong>.</p>
+    <div class="goalband">
+      <div>
+        <div class="from">~7</div>
+        <small>entrantes por mês hoje</small>
+      </div>
+      <div>
+        <div class="arrow">→ otimização →</div>
+        <small>relevância · público · medição</small>
+      </div>
+      <div>
+        <div class="to">15</div>
+        <small>vagas que a agenda comporta</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- FECHAMENTO -->
+  <section>
+    <div class="closing">
+      <div class="kicker">Em uma frase</div>
+      <h2>A conta não precisa de mais verba.<br>Precisa <em>parar de pagar o dobro pelo lead errado.</em></h2>
+      <p>Relevância, público e medição — as três alavancas estão prontas para serem giradas, e todas são otimização. Nenhuma exige aumentar o investimento.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+  <footer>
+    <p>Documento preparado para <strong>Cris Campos — Hipnoterapia Integrativa</strong></p>
+    <p class="disclaim">Análise baseada em dados reais da conta de Google Ads (jun/2024 a jun/2026). "Contatos" referem-se a cliques de contato registrados pela plataforma, não a clientes fechados — daí a importância da medição de conversão real. Valores de custo por contato e taxas de conversão extraídos dos relatórios de campanha, palavras-chave, termos de busca e demografia.</p>
+  </footer>
+
+</div>
+
+<script>
+// ----- Tendência: investimento (R$ mil) × custo por contato (R$) -----
+const data = [
+  {m:'jun/24',spend:1.38,cpa:17.6},{m:'',spend:1.40,cpa:17.1},{m:'ago',spend:1.54,cpa:14.5},
+  {m:'',spend:1.53,cpa:15.0},{m:'out',spend:2.11,cpa:17.0},{m:'',spend:1.67,cpa:15.5},
+  {m:'dez/24',spend:1.25,cpa:13.7},{m:'',spend:0.89,cpa:15.8},{m:'fev',spend:1.32,cpa:17.5},
+  {m:'',spend:1.65,cpa:19.8},{m:'abr',spend:2.05,cpa:23.9},{m:'',spend:2.65,cpa:30.8},
+  {m:'jun/25',spend:2.62,cpa:30.4},{m:'',spend:2.83,cpa:28.3},{m:'ago',spend:2.62,cpa:26.5},
+  {m:'',spend:2.75,cpa:30.4},{m:'out',spend:2.85,cpa:28.5},{m:'',spend:2.23,cpa:34.3},
+  {m:'dez/25',spend:2.27,cpa:40.5},{m:'',spend:2.04,cpa:43.0},{m:'fev',spend:2.44,cpa:32.1},
+  {m:'',spend:2.69,cpa:23.6},{m:'abr',spend:2.67,cpa:29.0},{m:'',spend:2.54,cpa:27.0},
+  {m:'jun/26',spend:3.37,cpa:37.9}
+];
+const W=920,H=360,pad={l:54,r:54,t:24,b:46};
+const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+const n=data.length;
+const x=i=>pad.l + (iw*i/(n-1));
+const maxSpend=4, maxCpa=50;
+const ys=v=>pad.t + ih*(1 - v/maxSpend);
+const yc=v=>pad.t + ih*(1 - v/maxCpa);
+const path=(arr,acc,sc)=>arr.map((d,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${sc(acc(d)).toFixed(1)}`).join(' ');
+const area=`${path(data,d=>d.spend,ys)} L${x(n-1)},${ys(0)} L${x(0)},${ys(0)} Z`;
+
+let g='';
+// grid + y labels (spend left)
+for(let v=0;v<=maxSpend;v++){
+  const yy=ys(v);
+  g+=`<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="rgba(94,38,22,.08)" stroke-width="1"/>`;
+  g+=`<text x="${pad.l-12}" y="${yy+4}" text-anchor="end" font-size="11" fill="#9a8a7d">R$${v}k</text>`;
+}
+// right axis cpa labels
+[0,10,20,30,40,50].forEach(v=>{
+  g+=`<text x="${W-pad.r+12}" y="${yc(v)+4}" text-anchor="start" font-size="11" fill="#9a8a7d">R$${v}</text>`;
+});
+// x labels
+data.forEach((d,i)=>{ if(d.m){ g+=`<text x="${x(i)}" y="${H-16}" text-anchor="middle" font-size="11" fill="#8a7c70">${d.m}</text>`; }});
+
+// spend area + line
+g+=`<path d="${area}" fill="rgba(168,107,76,.14)"/>`;
+g+=`<path d="${path(data,d=>d.spend,ys)}" fill="none" stroke="#A86B4C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+// cpa line
+g+=`<path d="${path(data,d=>d.cpa,yc)}" fill="none" stroke="#5E2616" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>`;
+// endpoint dots + labels
+const last=n-1;
+g+=`<circle cx="${x(last)}" cy="${ys(data[last].spend)}" r="5" fill="#A86B4C"/>`;
+g+=`<circle cx="${x(last)}" cy="${yc(data[last].cpa)}" r="5" fill="#5E2616"/>`;
+g+=`<circle cx="${x(0)}" cy="${yc(data[0].cpa)}" r="4" fill="#5E2616"/>`;
+g+=`<text x="${x(0)+8}" y="${yc(data[0].cpa)-10}" font-size="12" font-weight="600" fill="#5E2616">R$18</text>`;
+g+=`<text x="${x(last)-6}" y="${yc(data[last].cpa)-12}" text-anchor="end" font-size="12" font-weight="700" fill="#5E2616">R$38 / contato</text>`;
+g+=`<text x="${x(last)-6}" y="${ys(data[last].spend)-12}" text-anchor="end" font-size="12" font-weight="700" fill="#A86B4C">R$3,4k investido</text>`;
+
+document.getElementById('trend').innerHTML=g;
+</script>
+</body>
+</html>
