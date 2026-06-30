@@ -8,16 +8,8 @@
     { "source": "/termos", "destination": "/termos-de-uso", "permanent": true }
   ],
   "headers": [
-    { "source": "/", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/index", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/ansiedade", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/burnout", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/medos", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/politica-de-privacidade", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/termos-de-uso", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }, { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
-    { "source": "/public/tailwind.min.css", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }, { "key": "X-Content-Type-Options", "value": "nosniff" } ] },
-    { "source": "/public/images/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }, { "key": "X-Content-Type-Options", "value": "nosniff" } ] },
-    { "source": "/public/fonts/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }, { "key": "X-Content-Type-Options", "value": "nosniff" } ] },
-    { "source": "/assets/videos/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }, { "key": "X-Content-Type-Options", "value": "nosniff" } ] }
+    { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
+    { "source": "/public/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ] },
+    { "source": "/assets/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ] }
   ]
 }
