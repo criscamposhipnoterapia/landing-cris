@@ -38,6 +38,7 @@
       function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
       function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
+      var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxQ4qnswhqN2yGGXnOOCDNVTFo9FC6VJGhOlealLrvEwXXVNN2r1lZmIx3ups9pS7Xylg/exec';
       var params = new URLSearchParams(window.location.search);
       var CLICK_IDS = ['gclid', 'gbraid', 'wbraid'];
       var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
@@ -68,11 +69,23 @@
           var base = qi === -1 ? href : href.slice(0, qi);
           var sp = new URLSearchParams(qi === -1 ? '' : href.slice(qi + 1));
           var texto = sp.get('text') || ('Vim pela página de ' + ORIGEM + ' e quero agendar a Sessão de Clareza');
-          if (ref && texto.indexOf('[ref:') === -1) { texto += ' [ref: ' + ref.name + ':' + ref.value + ']'; }
           sp.delete('text');
           var extra = sp.toString(); // preserva outros params, se houver
           var query = (extra ? extra + '&' : '') + 'text=' + encodeURIComponent(texto); // espaço -> %20 (seguro p/ wa.me)
           link.setAttribute('href', base + '?' + query + hash);
+          link.addEventListener('click', function () {
+            try {
+              var payload = JSON.stringify({
+                gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
+                origem: ORIGEM, pagina: location.pathname, ua: navigator.userAgent
+              });
+              if (navigator.sendBeacon) {
+                navigator.sendBeacon(BACKEND_URL, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+              } else {
+                fetch(BACKEND_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
+              }
+            } catch (e) {}
+          });
         });
         var data = { origem: ORIGEM };
         CLICK_IDS.forEach(function (k) { data[k] = getVal(k); });
