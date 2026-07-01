@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/hipno", "destination": "/", "permanent": true },
+    { "source": "/bem-vindo", "destination": "/", "permanent": true },
     { "source": "/sintomas", "destination": "/ansiedade", "permanent": true },
     { "source": "/terapia", "destination": "/", "permanent": true },
     { "source": "/termos", "destination": "/termos-de-uso", "permanent": true }
