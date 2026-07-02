@@ -68,7 +68,13 @@
           var qi = href.indexOf('?');
           var base = qi === -1 ? href : href.slice(0, qi);
           var sp = new URLSearchParams(qi === -1 ? '' : href.slice(qi + 1));
-          var texto = sp.get('text') || ('Vim pela página de ' + ORIGEM + ' e quero agendar a Sessão de Clareza');
+          var MENSAGENS = {
+            'ansiedade': 'Olá! Vim pela sua página e quero agendar a Sessão de Clareza e Direcionamento.',
+            'medos': 'Olá! Vim pela sua página e quero agendar a Sessão de Clareza',
+            'burnout': 'Olá! Gostaria de agendar a Sessão de Clareza.',
+            'site': 'Oi! Vim pela sua página e quero agendar a Sessão inicial de Clareza'
+          };
+          var texto = sp.get('text') || MENSAGENS[ORIGEM] || MENSAGENS['site'];
           sp.delete('text');
           var extra = sp.toString(); // preserva outros params, se houver
           var query = (extra ? extra + '&' : '') + 'text=' + encodeURIComponent(texto); // espaço -> %20 (seguro p/ wa.me)
