@@ -6,7 +6,8 @@
     { "source": "/bem-vindo", "destination": "/", "permanent": true },
     { "source": "/sintomas", "destination": "/ansiedade", "permanent": true },
     { "source": "/terapia", "destination": "/", "permanent": true },
-    { "source": "/termos", "destination": "/termos-de-uso", "permanent": true }
+    { "source": "/termos", "destination": "/termos-de-uso", "permanent": true },
+    { "source": "/crm", "destination": "https://script.google.com/macros/s/AKfycbxQ4qnswhqN2yGGXnOOCDNVTFo9FC6VJGhOlealLrvEwXXVNN2r1lZmIx3ups9pS7Xylg/exec", "permanent": false }
   ],
   "headers": [
     { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" }, { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" } ] },
