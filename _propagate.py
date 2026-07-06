@@ -84,6 +84,23 @@ PAGES = {
             ("foi uma sensação de liberdade sem igual", "Moneide M."),
         ],
     },
+    "depressao.html": {
+        "scope": "page-depressao", "origem": "depressao",
+        "title": "Cris Campos · Hipnoterapia Integrativa — Depressão / Tristeza Profunda",
+        # OPÇÃO B (escolhida pelo Rodrigo). Nomeia "depressão" p/ relevância com o anúncio.
+        "kicker": "Não é preguiça, nem falta de fé. É um peso real.",
+        "h1": "Resolva a depressão que rouba a sua vontade… <em class=\"italic font-medium text-terra\">e volte a sentir prazer nas coisas simples.</em>",
+        "subhead": "Tristeza profunda, desânimo, vazio, ansiedade — um cansaço que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        # SÓ nesta página: disclaimer elevado para a dobra (depressão é o tema mais sensível).
+        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>A hipnoterapia caminha junto do acompanhamento médico ou psiquiátrico — não o substitui.</em></p>",
+        "seq": ["geral", "ansiedade", "burnout", "medos"],
+        "micro": [
+            ("Cris me ajudou a voltar a dormir!", "Lucienne C."),
+            ("saí de lá entendendo os porques dos meus medos, especialmente do medo de ser feliz!", "Sônia M."),
+            ("Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.", "Barbara L."),
+            ("Transformadora, não tem outra forma de descrever. Retomei o melhor de mim, porém com uma visão mais madura", "Carlos L."),
+        ],
+    },
     "index.html": {
         "scope": "page-site", "origem": "site",
         "title": "Cris Campos · Hipnoterapia Integrativa — O Método Voltar a Si",
@@ -104,6 +121,7 @@ TRACK_RE = re.compile(r'(<div id="words-track"[^>]*>\n)(.*?)(\n            </div
 UNIT_RE  = re.compile(r'(?ms)^ {10}<(?:blockquote|button|a)\b.*?</(?:blockquote|button|a)>')
 NAME_RE  = re.compile(r'— (.+?) · <span class="b7-seal">')
 MICRO_RE = re.compile(r'<p class="microprova-quote">“.*?”</p>\s*<figcaption class="microprova-cite">— .*?</figcaption>', re.DOTALL)
+HERONOTE_RE = re.compile(r'(mesma raiz</span>\.\s*\n\s*</p>)')
 
 CARD_VIS = '<blockquote class="b7-words-card b7-card card">'
 CARD_HID = '<blockquote class="b7-words-card b7-card card" hidden>'
@@ -200,6 +218,11 @@ def main():
         assert n == 1, "%s: track não substituído" % fname
 
         c = swap_micros(c, cfg["micro"])
+
+        # disclaimer na dobra (só páginas com "heronote"; hoje: depressao)
+        if cfg.get("heronote"):
+            c, nh = HERONOTE_RE.subn(lambda m, note=cfg["heronote"]: m.group(1) + "\n          " + note, c, count=1)
+            assert nh == 1, "%s: âncora do heronote não encontrada" % fname
 
         # invariantes
         assert "page-ansiedade" not in c, "%s: restou .page-ansiedade" % fname
