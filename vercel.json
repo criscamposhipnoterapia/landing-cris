@@ -7,6 +7,8 @@
     { "source": "/sintomas", "destination": "/", "permanent": true },
     { "source": "/gmn", "destination": "/?utm_source=google_meu_negocio&utm_medium=perfil", "permanent": false },
     { "source": "/insta", "destination": "/?utm_source=instagram&utm_medium=bio", "permanent": false },
+    { "source": "/depoimentos", "destination": "/#video-carousel", "permanent": true },
+    { "source": "/imersao", "destination": "/", "permanent": true },
     { "source": "/terapia", "destination": "/", "permanent": true },
     { "source": "/termos", "destination": "/termos-de-uso", "permanent": true },
     { "source": "/crm", "destination": "https://script.google.com/macros/s/AKfycbxQ4qnswhqN2yGGXnOOCDNVTFo9FC6VJGhOlealLrvEwXXVNN2r1lZmIx3ups9pS7Xylg/exec", "permanent": false }
