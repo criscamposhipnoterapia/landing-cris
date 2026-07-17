@@ -76,13 +76,17 @@
           var qi = href.indexOf('?');
           var base = qi === -1 ? href : href.slice(0, qi);
           var sp = new URLSearchParams(qi === -1 ? '' : href.slice(qi + 1));
+          // PADRÃO (15/07): todo destino de anúncio da conta 152 abre com "Olá, Cris!".
+          // Exceções propositais p/ atribuição: 'site' (home = tráfego da agência/683,
+          // mantém "Oi!...Sessão inicial") e 'ansiedade' orgânico (distingue do pago
+          // 'ansiedade01'). Ao criar página nova de anúncio, seguir o padrão "Olá, Cris!".
           var MENSAGENS = {
             'ansiedade': 'Olá! Vim pela sua página e quero agendar a Sessão de Clareza e Direcionamento.',
             'ansiedade01': 'Olá, Cris! Quero agendar a minha Sessão de Clareza e Direcionamento.',
             'panico': 'Olá, Cris! Quero agendar a Sessão de Clareza e entender as minhas crises.',
             'depressao': 'Olá, Cris! Quero agendar a Sessão de Clareza e recuperar a minha vontade.',
-            'medos': 'Olá! Vim pela sua página e quero agendar a Sessão de Clareza',
-            'burnout': 'Olá! Gostaria de agendar a Sessão de Clareza.',
+            'medos': 'Olá, Cris! Quero agendar a Sessão de Clareza e enfrentar os meus medos.',
+            'burnout': 'Olá, Cris! Quero agendar a Sessão de Clareza e aliviar o esgotamento.',
             'site': 'Oi! Vim pela sua página e quero agendar a Sessão inicial de Clareza'
           };
           var texto = sp.get('text') || MENSAGENS[ORIGEM] || MENSAGENS['site'];
