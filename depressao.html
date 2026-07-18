@@ -68,7 +68,52 @@
       // 2) Propagação para CTAs do WhatsApp + campos ocultos de formulário.
       document.addEventListener('DOMContentLoaded', function () {
         var ORIGEM = document.body.getAttribute('data-origem') || 'site';
-        var ref = getPrimaryRef();
+
+        // Beacon de origem — agora carrega o NOME capturado no portão.
+        function fireBeacon(nome) {
+          try {
+            var payload = JSON.stringify({
+              gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
+              origem: ORIGEM, pagina: location.pathname, ua: navigator.userAgent, nome: nome || ''
+            });
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(BACKEND_URL, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+            } else {
+              fetch(BACKEND_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
+            }
+          } catch (e) {}
+        }
+
+        // ===== Portão de nome: modal único p/ TODOS os CTAs de WhatsApp =====
+        var gate = document.getElementById('name-gate');
+        var gateInput = gate ? document.getElementById('name-gate-input') : null;
+        var gateGo = gate ? document.getElementById('name-gate-go') : null;
+        var gateCb = null, gateLastFocus = null;
+        function gateOpen(cb) {
+          gateCb = cb; gateLastFocus = document.activeElement;
+          gateInput.value = ''; gateGo.disabled = true;
+          gate.hidden = false; gate.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          setTimeout(function () { try { gateInput.focus(); } catch (e) {} }, 40);
+        }
+        function gateClose() {
+          gate.hidden = true; gate.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = ''; gateCb = null;
+          try { if (gateLastFocus && gateLastFocus.focus) gateLastFocus.focus(); } catch (e) {}
+        }
+        if (gate) {
+          gateInput.addEventListener('input', function () { gateGo.disabled = gateInput.value.trim().length < 2; });
+          gateInput.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !gateGo.disabled) { e.preventDefault(); gateGo.click(); } });
+          gateGo.addEventListener('click', function () {
+            var nome = gateInput.value.trim();
+            if (nome.length < 2) return;
+            nome = nome.charAt(0).toUpperCase() + nome.slice(1);
+            var cb = gateCb; gateClose(); if (cb) cb(nome);
+          });
+          Array.prototype.forEach.call(gate.querySelectorAll('[data-gate-close]'), function (el) { el.addEventListener('click', gateClose); });
+          document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && gate && !gate.hidden) gateClose(); });
+        }
+
         document.querySelectorAll('a.whatsapp-cta').forEach(function (link) {
           var href = link.getAttribute('href') || '';
           var hash = ''; var hi = href.indexOf('#'); if (hi > -1) { hash = href.slice(hi); href = href.slice(0, hi); }
@@ -92,20 +137,21 @@
           var texto = sp.get('text') || MENSAGENS[ORIGEM] || MENSAGENS['site'];
           sp.delete('text');
           var extra = sp.toString(); // preserva outros params, se houver
-          var query = (extra ? extra + '&' : '') + 'text=' + encodeURIComponent(texto); // espaço -> %20 (seguro p/ wa.me)
-          link.setAttribute('href', base + '?' + query + hash);
-          link.addEventListener('click', function () {
+          function buildUrl(t) { return base + '?' + (extra ? extra + '&' : '') + 'text=' + encodeURIComponent(t) + hash; }
+          link.setAttribute('href', buildUrl(texto)); // fallback SEM nome — se o modal falhar, o link ainda funciona
+          link.addEventListener('click', function (ev) {
+            if (!gate) { fireBeacon(''); return; } // sem modal no DOM: comportamento antigo (não trava o clique)
             try {
-              var payload = JSON.stringify({
-                gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
-                origem: ORIGEM, pagina: location.pathname, ua: navigator.userAgent
+              ev.preventDefault();
+              gateOpen(function (nome) {
+                var finalText = nome ? texto.replace('! ', '! Meu nome é ' + nome + '. ') : texto;
+                fireBeacon(nome);
+                window.location.href = buildUrl(finalText);
               });
-              if (navigator.sendBeacon) {
-                navigator.sendBeacon(BACKEND_URL, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
-              } else {
-                fetch(BACKEND_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
-              }
-            } catch (e) {}
+            } catch (e) {
+              fireBeacon('');
+              window.location.href = link.getAttribute('href');
+            }
           });
         });
         var data = { origem: ORIGEM };
@@ -234,6 +280,46 @@
       box-shadow:0 14px 30px -18px rgba(44,37,33,.55);
     }
     .cta-ghost:focus-visible{ outline:2px solid rgba(154,123,79,.85); outline-offset:3px; }
+
+    /* ============================================================ */
+    /* PORTÃO DE NOME — captura pré-WhatsApp (quiet luxury)          */
+    /* Modal único, compartilhado por TODOS os CTAs de WhatsApp.     */
+    /* ============================================================ */
+    .name-gate{ position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:1.25rem; }
+    .name-gate[hidden]{ display:none; }
+    .name-gate__backdrop{ position:absolute; inset:0; background:rgba(44,37,33,.55); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px); }
+    .name-gate__card{
+      position:relative; z-index:1; width:100%; max-width:25rem; text-align:center;
+      background:linear-gradient(180deg,#FBF7F0,#F3EDE3);
+      border:1px solid color-mix(in srgb,var(--bronze) 40%,transparent);
+      border-radius:18px;
+      box-shadow:0 40px 90px -50px rgba(44,37,33,.6), inset 0 1px 0 rgba(255,255,255,.6);
+      padding:clamp(1.7rem,5vw,2.4rem);
+      animation:gateIn .42s var(--ease) both;
+    }
+    @keyframes gateIn{ from{ opacity:0; transform:translateY(12px) scale(.98); } to{ opacity:1; transform:none; } }
+    .name-gate__x{
+      position:absolute; top:.6rem; right:.75rem; width:2rem; height:2rem; border:0; background:transparent;
+      color:rgba(44,37,33,.4); font-size:1.5rem; line-height:1; cursor:pointer; border-radius:50%; transition:color .2s, background-color .2s;
+    }
+    .name-gate__x:hover{ color:var(--rust); background:rgba(154,123,79,.12); }
+    .name-gate__eyebrow{ justify-content:center; margin-bottom:.5rem; }
+    .name-gate__title{
+      font-family:"Playfair Display",Georgia,Cambria,serif; font-weight:600; color:var(--rust);
+      font-size:clamp(1.4rem,4.6vw,1.72rem); letter-spacing:-.01em; line-height:1.15; margin:0;
+    }
+    .name-gate__lead{ color:rgba(44,37,33,.7); font-size:.95rem; line-height:1.55; margin:.65rem auto 1.35rem; max-width:19rem; }
+    .name-gate__input{
+      width:100%; text-align:center; font-family:var(--font-ui); font-size:1.05rem; color:var(--ink);
+      padding:.85rem 1rem; border:1px solid rgba(154,123,79,.42); border-radius:12px; background:rgba(255,255,255,.72);
+      transition:border-color .25s, box-shadow .25s;
+    }
+    .name-gate__input::placeholder{ color:rgba(44,37,33,.34); }
+    .name-gate__input:focus{ outline:none; border-color:var(--terra); box-shadow:0 0 0 3px rgba(168,107,76,.16); }
+    .name-gate__go{ width:100%; margin-top:1rem; }
+    .name-gate__go:disabled{ opacity:.42; cursor:not-allowed; transform:none !important; box-shadow:0 2px 5px -2px rgba(44,37,33,.3) !important; }
+    .name-gate__note{ margin-top:.9rem; font-size:.78rem; letter-spacing:.01em; color:rgba(44,37,33,.5); }
+    @media (prefers-reduced-motion: reduce){ .name-gate__card{ animation:none; } }
 
     /* CTA em UMA linha no mobile (item Cris): menos padding-X + leve reducao de fonte + nowrap.
        Da folga para nao quebrar nem no font-swap / fonte grande do sistema. Vale p/ conteudo E barra fixa.
@@ -1174,6 +1260,20 @@
 </head>
 
 <body data-origem="depressao" class="page-depressao font-sans antialiased text-ink pb-28 md:pb-0">
+
+  <!-- ===== Portão de nome — captura pré-WhatsApp (todos os CTAs) ===== -->
+  <div id="name-gate" class="name-gate" hidden aria-hidden="true">
+    <div class="name-gate__backdrop" data-gate-close></div>
+    <div class="name-gate__card" role="dialog" aria-modal="true" aria-labelledby="name-gate-title">
+      <button type="button" class="name-gate__x" data-gate-close aria-label="Fechar">&times;</button>
+      <span class="eyebrow center name-gate__eyebrow">Um instante</span>
+      <h3 id="name-gate-title" class="name-gate__title">Como gostaria de ser chamada(o)?</h3>
+      <p class="name-gate__lead">Você vai ser redirecionada(o) para o meu WhatsApp — confirme seu nome e, assim que possível, já te respondo.</p>
+      <input id="name-gate-input" class="name-gate__input" type="text" autocomplete="given-name" inputmode="text" maxlength="40" placeholder="Confirme seu nome" />
+      <button type="button" id="name-gate-go" class="cta-solid name-gate__go inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base" disabled>Continuar no WhatsApp →</button>
+      <p class="name-gate__note">Atendimento particular e sigiloso.</p>
+    </div>
+  </div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCR85K6M"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
