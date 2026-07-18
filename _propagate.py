@@ -55,6 +55,27 @@ def micro(q, name):
 
 # Identidade + ordem temática + micro-provas por página.
 PAGES = {
+    "ansiedade01.html": {
+        # Variante EXCLUSIVA da campanha própria (conta 152) p/ atribuição de leads —
+        # decisão da reunião TwyAds 14/07 ("cria uma outra página, troca o texto do botão").
+        # Conteúdo idêntico à /ansiedade; muda data-origem + mensagem do WhatsApp (mapa
+        # MENSAGENS no master) + noindex (cópia não deve indexar; AdsBot ignora noindex).
+        # scope sem o prefixo "page-ansiedade" p/ não disparar o invariante de propagação.
+        "scope": "page-campanha", "origem": "ansiedade01",
+        "noindex": True,
+        "title": "Cris Campos · Hipnoterapia Integrativa — Ansiedade",
+        "kicker": "Você cuida de todos. E quem cuida de você?",
+        "h1": "Resolva a ansiedade que você carrega em silêncio… <em class=\"italic font-medium text-terra\">e volte a se reconhecer.</em>",
+        "subhead": ('Ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. '
+                    'Por baixo, costuma haver a <span class="text-terra">mesma raiz</span>.'),
+        "seq": ["ansiedade", "geral", "burnout", "medos"],
+        "micro": [
+            ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
+            ("O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.", "Amanda V."),
+            ("Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.", "Gabriela L."),
+            ("as vezes a ansiedade fala, e eu logo calo ela.", "Fernanda M."),
+        ],
+    },
     "burnout.html": {
         "scope": "page-burnout", "origem": "burnout",
         "title": "Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento",
@@ -99,6 +120,42 @@ PAGES = {
             ("saí de lá entendendo os porques dos meus medos, especialmente do medo de ser feliz!", "Sônia M."),
             ("Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.", "Barbara L."),
             ("Transformadora, não tem outra forma de descrever. Retomei o melhor de mim, porém com uma visão mais madura", "Carlos L."),
+        ],
+    },
+    "panico.html": {
+        "scope": "page-panico", "origem": "panico",
+        "title": "Cris Campos · Hipnoterapia Integrativa — Crises de Pânico / Síndrome do Pânico",
+        # Copy 13/07 (pacote de melhoria do piloto): destino do grupo [Crise/Pânico]
+        # e da keyword "síndrome do pânico tratamento" (QS1 por landing genérica).
+        "kicker": "O corpo dispara o alarme. Mesmo sem perigo nenhum.",
+        "h1": "Resolva as crises de pânico que sequestram o seu corpo… <em class=\"italic font-medium text-terra\">e volte a viver sem medo da próxima.</em>",
+        "subhead": "Crise de pânico, ansiedade, coração disparado, medo de sair sozinho — um alarme que dispara sem aviso. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        # Tema sensível (sintomas físicos intensos): disclaimer elevado à dobra, como na depressão.
+        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>Sintomas físicos intensos merecem avaliação médica — a hipnoterapia caminha junto, não substitui.</em></p>",
+        "seq": ["medos", "ansiedade", "geral", "burnout"],
+        "micro": [
+            ("foi uma sensação de liberdade sem igual", "Moneide M."),
+            ("hoje posso dizer que passei essa barreira e não tem mais algo me segurando", "John M."),
+            ("saí de lá entendendo os porques dos meus medos, especialmente do medo de ser feliz!", "Sônia M."),
+            ("Foram 3 sessões que se equipararam a dezenas de sessões da terapia convencional (no que tange aos resultados)", "Karen N."),
+        ],
+    },
+    "relacionamentos.html": {
+        # Tema RELACIONAMENTOS — 1ª frente da estratégia buyer-first das fichas
+        # (término/ciúme/dependência/padrões). Whitespace: a 683 não roda esse tema.
+        # Captura na crise de superfície e ponte pra identidade ("voltar a se escolher").
+        "scope": "page-relacionamentos", "origem": "relacionamentos",
+        "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
+        "kicker": "O problema nunca é só a relação. É o que ela mexe em você.",
+        "h1": "Resolva o padrão que se repete nas suas relações… <em class=\"italic font-medium text-terra\">e volte a se escolher.</em>",
+        "subhead": ("Ciúme que consome, medo de ser abandonada, um término que não passa, a relação que se repete. "
+                    "Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>."),
+        "seq": ["geral", "ansiedade", "burnout", "medos"],
+        "micro": [
+            ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
+            ("Tinha muita dificuldade de dizer não, impor limites e sustentar minhas opiniões.", "Cecilia M."),
+            ("Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.", "Gabriela L."),
+            ("Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.", "Barbara L."),
         ],
     },
     "index.html": {
@@ -204,6 +261,10 @@ def main():
         c = master.replace("page-ansiedade", cfg["scope"])
         c = sub_once(r'data-origem="ansiedade"', 'data-origem="%s"' % cfg["origem"], c, "data-origem")
         c = sub_once(r"<title>.*?</title>", "<title>%s</title>" % cfg["title"], c, "title", re.DOTALL)
+
+        # noindex opcional (variantes de campanha que duplicam conteúdo; AdsBot ignora)
+        if cfg.get("noindex"):
+            c = sub_once(r"</title>", '</title>\n  <meta name="robots" content="noindex" />', c, "noindex")
         c = sub_once(r"<!-- ==BLOCO1:KICKER== -->.*?<!-- ==/BLOCO1:KICKER== -->",
                      "<!-- ==BLOCO1:KICKER== -->%s<!-- ==/BLOCO1:KICKER== -->" % cfg["kicker"], c, "kicker", re.DOTALL)
         c = sub_once(r"<!-- ==BLOCO1:H1== -->.*?<!-- ==/BLOCO1:H1== -->",
