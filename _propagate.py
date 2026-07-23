@@ -146,10 +146,26 @@ PAGES = {
         # Captura na crise de superfície e ponte pra identidade ("voltar a se escolher").
         "scope": "page-relacionamentos", "origem": "relacionamentos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
-        "kicker": "Para quem não está conseguindo soltar.",
-        "h1": "A relação que não te solta. A dor que não passa. <em class=\"italic font-medium text-terra\">Existe um caminho de volta para você.</em>",
-        "subhead": ("Um término que ainda dói, o ciúme que consome, a dependência que aprisiona, o medo de ficar sozinha. "
-                    "Por baixo de cada um, costuma haver a <span class=\"text-terra\">mesma raiz</span> — e é nela que a gente trabalha."),
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Essa dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
+        "subhead": ("Um término que não sai da cabeça, o ciúme que consome, a dependência que aprisiona, o medo de ficar só: "
+                    "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>. O Método Voltar a Si vai direto nela "
+                    "— sem dezenas de sessões — para você voltar a ficar bem."),
+        # Dobras 2 e 3 específicas de relacionamento (as symptom-pages mantêm o texto genérico).
+        "text_overrides": [
+            # b2 corpo 1 — troca a persona-cuidadora pela dor afetiva
+            ("Você responde no automático e segue. É você que sustenta tudo: o trabalho, a casa, as pessoas que dependem de você. E ninguém desconfia.",
+             "Você responde no automático e segue. Trabalha, resolve, aparece — e ninguém desconfia que, por dentro, ainda dói."),
+            # b2 corpo 2 — enumeração de sintomas de relacionamento (preserva prefixo e o strong final)
+            ("É a mente que não desliga, o cansaço que o sono não resolve, o medo que trava bem na hora de decidir por você, e o vazio que aparece justo quando,",
+             "É a lembrança que volta sem avisar, o sono que não descansa, o medo de recomeçar, e o vazio que aparece justo quando,"),
+            # b2 corpo 3 — "numa relação" + fecha com o "reconhecer-se" (guardado da 1ª dobra)
+            ("a de que <strong class=\"font-medium text-rust\">se perdeu de si</strong>. E talvez o passo mais difícil não seja aguentar. Nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você.",
+             "a de que <strong class=\"font-medium text-rust\">se perdeu de si numa relação</strong>. E talvez o passo mais difícil não seja aguentar — nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você — e voltar a se reconhecer."),
+            # b3 intro — abre na dor, não na ansiedade
+            ("A ansiedade que não passa, o cansaço que o sono não resolve, o medo que paralisa, o vazio sem nome: tudo isso é a superfície.",
+             "A dor que não passa, a lembrança que volta, o cansaço que o sono não resolve, o medo que paralisa, o vazio sem nome: tudo isso é a superfície."),
+        ],
         "seq": ["geral", "ansiedade", "burnout", "medos"],
         "micro": [
             ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
@@ -273,6 +289,13 @@ def main():
         # 2ª frase do hero (troca só a enumeração; preserva o final "… mesma raiz.")
         assert MASTER_SUBHEAD in c, "%s: subhead-mestre não encontrado" % fname
         c = c.replace(MASTER_SUBHEAD, cfg["subhead"], 1)
+
+        # Texto por página nas dobras 2/3 (opcional). Mesmo padrão do subhead:
+        # troca trechos-mestre literais só nas páginas que declaram "text_overrides".
+        # As demais páginas mantêm o texto genérico do master intacto.
+        for old, new in cfg.get("text_overrides", []):
+            assert old in c, "%s: trecho de override não encontrado: %s…" % (fname, old[:45])
+            c = c.replace(old, new, 1)
 
         new_track = build_track(gate, folha, cards, cfg["seq"])
         c, n = TRACK_RE.subn(lambda mm, t=new_track: mm.group(1) + t + mm.group(3), c, count=1)
