@@ -146,10 +146,10 @@ PAGES = {
         # Captura na crise de superfície e ponte pra identidade ("voltar a se escolher").
         "scope": "page-relacionamentos", "origem": "relacionamentos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
-        "kicker": "O problema nunca é só a relação. É o que ela mexe em você.",
-        "h1": "Resolva o padrão que se repete nas suas relações… <em class=\"italic font-medium text-terra\">e volte a se escolher.</em>",
-        "subhead": ("Ciúme que consome, medo de ser abandonada, um término que não passa, a relação que se repete. "
-                    "Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>."),
+        "kicker": "Para quem não está conseguindo soltar.",
+        "h1": "A relação que não te solta. A dor que não passa. <em class=\"italic font-medium text-terra\">Existe um caminho de volta para você.</em>",
+        "subhead": ("Um término que ainda dói, o ciúme que consome, a dependência que aprisiona, o medo de ficar sozinha. "
+                    "Por baixo de cada um, costuma haver a <span class=\"text-terra\">mesma raiz</span> — e é nela que a gente trabalha."),
         "seq": ["geral", "ansiedade", "burnout", "medos"],
         "micro": [
             ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
