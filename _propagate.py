@@ -147,7 +147,7 @@ PAGES = {
         "scope": "page-relacionamentos", "origem": "relacionamentos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
         "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "Essa dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
+        "h1": "Essa dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio vem mais rápido.</em>",
         "subhead": ("Um término que não sai da cabeça, o ciúme que consome, a dependência que aprisiona, o medo de ficar só: "
                     "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>. O Método Voltar a Si vai direto nela "
                     "— sem dezenas de sessões — para você voltar a ficar bem."),
