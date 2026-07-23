@@ -147,12 +147,14 @@ PAGES = {
         "scope": "page-relacionamentos", "origem": "relacionamentos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
         "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "Essa dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio vem mais rápido.</em>",
+        "h1": "A dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
         "subhead": ("Um término que não sai da cabeça, o ciúme que consome, a dependência que aprisiona, o medo de ficar só: "
-                    "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>. O Método Voltar a Si vai direto nela "
-                    "— sem dezenas de sessões — para você voltar a ficar bem."),
-        # Dobras 2 e 3 específicas de relacionamento (as symptom-pages mantêm o texto genérico).
+                    "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>."),
+        # Dobras 1 (parágrafo do método), 2 e 3 específicas de relacionamento (as symptom-pages mantêm o genérico).
         "text_overrides": [
+            # 1ª dobra — parágrafo do método: justifica o "terapia breve" (raiz -> por isso é breve)
+            ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
+             "Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong> vão à raiz do que você sente, não ao sintoma de superfície. É isso que torna a terapia breve: tratar a origem encurta o caminho até você voltar a ficar bem."),
             # b2 corpo 1 — troca a persona-cuidadora pela dor afetiva
             ("Você responde no automático e segue. É você que sustenta tudo: o trabalho, a casa, as pessoas que dependem de você. E ninguém desconfia.",
              "Você responde no automático e segue. Trabalha, resolve, aparece — e ninguém desconfia que, por dentro, ainda dói."),
