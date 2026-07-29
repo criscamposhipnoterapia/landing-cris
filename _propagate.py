@@ -64,10 +64,22 @@ PAGES = {
         "scope": "page-campanha", "origem": "ansiedade01",
         "noindex": True,
         "title": "Cris Campos · Hipnoterapia Integrativa — Ansiedade",
-        "kicker": "Você cuida de todos. E quem cuida de você?",
-        "h1": "Resolva a ansiedade que você carrega em silêncio… <em class=\"italic font-medium text-terra\">e volte a se reconhecer.</em>",
-        "subhead": ('Ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. '
-                    'Por baixo, costuma haver a <span class="text-terra">mesma raiz</span>.'),
+        # Copy 29/07/2026: estrutura DIFERENTE da /relacionamentos, de proposito.
+        #   /relacionamentos = culpa -> sintomas -> mecanismo
+        #   /ansiedade01     = culpa -> mecanismo -> prova + primeiro passo
+        # As duas rodam em paralelo para comparar qual estrutura converte melhor.
+        # Trava de marca: "terapia breve" tem que aparecer (o anuncio promete isso).
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Não é exagero seu. <em class=\"italic font-medium text-terra\">A ansiedade tem causa. E com terapia breve, tem fim.</em>",
+        # subhead carrega o MECANISMO (nao os sintomas): por que a raiz encurta o caminho
+        "subhead": ('Respiração, remédio, força de vontade: tudo isso alivia o sintoma. E ele volta. '
+                    'A Hipnoterapia Integrativa vai à <span class="text-terra">origem</span>, '
+                    'e é exatamente por isso que o caminho é mais curto.'),
+        # o paragrafo do metodo deixa de repetir o mecanismo e vira prova + proximo passo
+        "text_overrides": [
+            ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
+             "Poucas sessões, não anos. A <strong class=\"font-medium text-rust\">Sessão de Clareza</strong> é o primeiro passo: 60 minutos para entender a raiz do que você sente e sair com um caminho. Particular e sigiloso, na Vila Madalena ou online."),
+        ],
         "seq": ["ansiedade", "geral", "burnout", "medos"],
         "micro": [
             ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
@@ -147,7 +159,7 @@ PAGES = {
         "scope": "page-relacionamentos", "origem": "relacionamentos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
         "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "A dor não passa — e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
+        "h1": "A dor não passa, e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
         "subhead": ("Um término que não sai da cabeça, o ciúme que consome, a dependência que aprisiona, o medo de ficar só: "
                     "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>."),
         # Dobras 1 (parágrafo do método), 2 e 3 específicas de relacionamento (as symptom-pages mantêm o genérico).
