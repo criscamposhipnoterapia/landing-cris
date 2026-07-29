@@ -139,11 +139,20 @@ PAGES = {
         "title": "Cris Campos · Hipnoterapia Integrativa — Crises de Pânico / Síndrome do Pânico",
         # Copy 13/07 (pacote de melhoria do piloto): destino do grupo [Crise/Pânico]
         # e da keyword "síndrome do pânico tratamento" (QS1 por landing genérica).
-        "kicker": "O corpo dispara o alarme. Mesmo sem perigo nenhum.",
-        "h1": "Resolva as crises de pânico que sequestram o seu corpo… <em class=\"italic font-medium text-terra\">e volte a viver sem medo da próxima.</em>",
-        "subhead": "Crise de pânico, ansiedade, coração disparado, medo de sair sozinho — um alarme que dispara sem aviso. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        # Copy 29/07/2026: mesma estrutura testada na /ansiedade01 (culpa -> mecanismo ->
+        # prova + primeiro passo), adaptada ao medo central do panico ("estou enlouquecendo").
+        # Trava de marca: "terapia breve" presente; sem travessao (preferencia do Rodrigo).
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Você não está enlouquecendo. <em class=\"italic font-medium text-terra\">A crise de pânico tem causa. E com terapia breve, tem fim.</em>",
+        "subhead": ('Respiração guiada, remédio na bolsa, evitar os lugares onde já aconteceu: '
+                    'tudo isso alivia a crise. E ela volta. A Hipnoterapia Integrativa vai à '
+                    '<span class="text-terra">origem do alarme</span>, e é exatamente por isso que o caminho é mais curto.'),
+        "text_overrides": [
+            ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
+             "Poucas sessões, não anos. A <strong class=\"font-medium text-rust\">Sessão de Clareza</strong> é o primeiro passo: 60 minutos para entender o que dispara as suas crises e sair com um caminho. Particular e sigiloso, na Vila Madalena ou online."),
+        ],
         # Tema sensível (sintomas físicos intensos): disclaimer elevado à dobra, como na depressão.
-        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>Sintomas físicos intensos merecem avaliação médica — a hipnoterapia caminha junto, não substitui.</em></p>",
+        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>Sintomas físicos intensos merecem avaliação médica. A hipnoterapia caminha junto, não substitui.</em></p>",
         "seq": ["medos", "ansiedade", "geral", "burnout"],
         "micro": [
             ("foi uma sensação de liberdade sem igual", "Moneide M."),
@@ -317,10 +326,16 @@ def main():
 
         c = swap_micros(c, cfg["micro"])
 
-        # disclaimer na dobra (só páginas com "heronote"; hoje: depressao)
+        # disclaimer na dobra (só páginas com "heronote"; hoje: depressao e panico).
+        # Ancora no PROPRIO subhead da pagina (nao em "mesma raiz"): a copy 29/07
+        # trocou o fim do subhead e a ancora textual antiga deixou de existir.
         if cfg.get("heronote"):
-            c, nh = HERONOTE_RE.subn(lambda m, note=cfg["heronote"]: m.group(1) + "\n          " + note, c, count=1)
-            assert nh == 1, "%s: âncora do heronote não encontrada" % fname
+            i = c.find(cfg["subhead"])
+            assert i != -1, "%s: subhead não encontrado p/ ancorar heronote" % fname
+            j = c.find("</p>", i)
+            assert j != -1, "%s: </p> do subhead não encontrado" % fname
+            j += len("</p>")
+            c = c[:j] + "\n          " + cfg["heronote"] + c[j:]
 
         # invariantes
         assert "page-ansiedade" not in c, "%s: restou .page-ansiedade" % fname
