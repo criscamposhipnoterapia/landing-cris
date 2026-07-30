@@ -88,7 +88,14 @@
         // ===== Beacon de visita (Painel, 30/07): 1 disparo por pageview. =====
         // Alimenta a aba Visitas: e o denominador da taxa visita->clique e a
         // unica leitura de organico/Instagram/direto (o Ads so ve trafego pago).
-        try {
+        // SO no dominio publicado: abrir o arquivo local (file://) ou rodar em
+        // localhost/preview nao pode contar visita (aconteceu em 30/07 e sujou
+        // a aba). ATENCAO: nunca usar `return` aqui — este bloco vive dentro do
+        // IIFE que configura o PORTAO DE NOME logo abaixo; sair antes mataria
+        // todos os CTAs de WhatsApp (o dominio de QA da Vercel cairia nisso).
+        var contarVisita = (location.protocol === 'https:' &&
+          location.hostname.indexOf('cristinacampos.com.br') !== -1);
+        if (contarVisita) try {
           var pv = JSON.stringify({
             event_type: 'pageview',
             gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
