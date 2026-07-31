@@ -127,6 +127,54 @@ PAGES = {
             ("Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.", "Gabriela L."),
         ],
     },
+    "consulta.html": {
+        # PAGINA NOVA 31/07/2026. Destino dos grupos "Terapia" e "Psicoterapia" da
+        # conta 6833627547, que juntos levam 61% do orcamento (82% nos ultimos 90d)
+        # e apontavam para /terapia, que virou redirect 308 para a home em 30/06.
+        # A palavra da busca e "consulta": "Consulta com terapeuta" gastou R$586 em
+        # 30d (a nº1 do grupo Terapia) e "Consulta com psicoterapeuta" R$364 (a nº1
+        # do grupo Psicoterapia). Ela aparece no title, no kicker, no H1 e no FAQ.
+        # A pagina tambem QUALIFICA: quem busca "terapeuta" ou "psicoterapeuta" pode
+        # nao saber o que e hipnoterapia. "terapia breve", "particular" e "poucas
+        # sessoes" entram cedo de proposito, para filtrar antes do WhatsApp.
+        # noindex: conteudo duplicado da /ansiedade (AdsBot ignora noindex).
+        "scope": "page-consulta", "origem": "consulta",
+        "noindex": True,
+        "title": "Cris Campos · Consulta com Terapeuta em São Paulo",
+        "kicker": "Terapia breve · consulta particular na Vila Madalena e online",
+        "h1": ("Você não precisa de mais um lugar para desabafar. "
+               "<em class=\"italic font-medium text-terra\">Precisa de uma consulta que chegue na causa.</em>"),
+        "subhead": ("Meses falando da mesma dor, entendendo cada detalhe dela, e a segunda-feira "
+                    "chegando exatamente igual. Entender não muda. A consulta aqui começa por onde "
+                    "a conversa não alcança, na <span class=\"text-terra\">raiz</span>, e é por isso "
+                    "que se conta em sessões, não em anos."),
+        "text_overrides": [
+            ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
+             "Sua consulta começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>: 60 minutos, particular, para mapear a raiz do que trava você e sair com um caminho definido, não com uma lista de tarefas. Se fizer sentido seguir, o processo é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>, contado em poucas sessões. Na Vila Madalena ou online."),
+            # 3 perguntas de busca literal so desta pagina, antes das 6 comuns.
+            # A do convenio e deliberada: convenio e a 2ª objecao mais citada no
+            # diario (6,1% dos leads) e desqualificar na pagina custa menos que
+            # desqualificar no WhatsApp da Cris.
+            ('<details class="faq-item"><summary><span class="faq-q">Ansiedade tem cura?',
+             '<details class="faq-item"><summary><span class="faq-q">Como funciona a primeira consulta?</span>'
+             '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
+             '<p class="faq-a">É a Sessão de Clareza, 60 minutos. Você conta o que está acontecendo e saímos com a raiz mapeada e um caminho definido. Não é uma triagem nem uma conversa de apresentação: já é trabalho. Muita gente sai dela enxergando algo que não tinha visto em anos.</p></details>\n'
+             '          <details class="faq-item"><summary><span class="faq-q">Atende por convênio ou plano de saúde?</span>'
+             '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
+             '<p class="faq-a">Não. O atendimento é particular. É o que permite trabalhar em poucas sessões e com profundidade, sem o limite de sessões e o formato que os planos impõem.</p></details>\n'
+             '          <details class="faq-item"><summary><span class="faq-q">Preciso saber exatamente o que quero tratar?</span>'
+             '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
+             '<p class="faq-a">Não. Chegar dizendo "não sei o que é, só sei que não está bom" é comum e é suficiente. Descobrir o que está embaixo é justamente o trabalho da primeira consulta.</p></details>\n'
+             '          <details class="faq-item"><summary><span class="faq-q">Ansiedade tem cura?'),
+        ],
+        "seq": ["geral", "ansiedade", "burnout", "medos"],
+        "micro": [
+            ("Anos de psicoterapia não resolveram meu problema básico, em apenas duas sessões, posso afirmar que foi solucionado o problema que tanto me impedia", "Telma T."),
+            ("Foram 3 sessões que se equipararam a dezenas de sessões da terapia convencional (no que tange aos resultados)", "Karen N."),
+            ("O que poderia levar anos pra eu entender num processo tradicional de análise/ terapia, eu pude entender nas sessões com a Cris.", "Paula C."),
+            ("Na primeira sessão eu acabei tomando consciência e me libertando de bloqueios que afetavam a minha vida em muitos aspectos.", "Thiago V."),
+        ],
+    },
     "burnout.html": {
         "scope": "page-burnout", "origem": "burnout",
         "title": "Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento",
