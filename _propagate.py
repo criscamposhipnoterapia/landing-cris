@@ -53,6 +53,18 @@ def micro(q, name):
             '          <figcaption class="microprova-cite">— %s · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>') % (q, name)
 
 
+# Subhead do hero na master (/ansiedade). Cada página troca o parágrafo inteiro.
+# 31/07/2026: padrão único de copy. Todo subhead passa a ter, nesta ordem,
+# CENA DE DOR + QUEBRA DE OBJEÇÃO + MECANISMO VIRANDO BENEFÍCIO FUTURO.
+# A enumeração de substantivos ("um vazio que você não sabe nomear") saiu de
+# todas as páginas: era o mesmo texto em quatro delas e não continha dor.
+# Definido ANTES de PAGES porque a /ansiedade01 reusa este mesmo texto.
+MASTER_SUBHEAD = ('Você entrega, resolve, aparece. E o corpo não desliga: o peito aperta, '
+                  'o sono não descansa, e decidir qualquer coisa virou peso. Não é falta de '
+                  'força de vontade, é um alarme antigo que ficou ligado. A Hipnoterapia '
+                  'Integrativa desarma esse alarme na <span class="text-terra">origem</span>, '
+                  'e é por isso que dá para voltar a dormir a noite inteira em poucas sessões.')
+
 # Identidade + ordem temática + micro-provas por página.
 PAGES = {
     "ansiedade01.html": {
@@ -71,10 +83,9 @@ PAGES = {
         # Trava de marca: "terapia breve" tem que aparecer (o anuncio promete isso).
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "Não é exagero seu. <em class=\"italic font-medium text-terra\">A ansiedade tem causa. E com terapia breve, tem fim.</em>",
-        # subhead carrega o MECANISMO (nao os sintomas): por que a raiz encurta o caminho
-        "subhead": ('Respiração, remédio, força de vontade: tudo isso alivia o sintoma. E ele volta. '
-                    'A Hipnoterapia Integrativa vai à <span class="text-terra">origem</span>, '
-                    'e é exatamente por isso que o caminho é mais curto.'),
+        # 31/07: subhead identico ao da master. O anterior abria listando SOLUCOES que
+        # falharam ("respiracao, remedio, forca de vontade"), nao dor. Agora abre em cena.
+        "subhead": MASTER_SUBHEAD,
         # o paragrafo do metodo deixa de repetir o mecanismo e vira prova + proximo passo
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
@@ -88,13 +99,45 @@ PAGES = {
             ("as vezes a ansiedade fala, e eu logo calo ela.", "Fernanda M."),
         ],
     },
+    "tratamento.html": {
+        # PAGINA NOVA 31/07/2026. Destino do grupo "Tratamento / Cura" da conta 152,
+        # que e o que mais gasta (só "tratamento para ansiedade" passou de R$211 em 30d)
+        # e apontava para uma pagina que nao dizia "tratamento" nenhuma vez. A nota de
+        # experiencia da pagina estava ABAIXO DA MEDIA em 18 das 22 palavras com nota.
+        # A palavra da busca aparece no title, no H1, no subhead e no FAQ.
+        # noindex: conteudo duplicado da /ansiedade (AdsBot ignora noindex).
+        "scope": "page-tratamento", "origem": "tratamento",
+        "noindex": True,
+        "title": "Cris Campos · Tratamento para Ansiedade que vai à causa",
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Existe tratamento para ansiedade que chega na causa. <em class=\"italic font-medium text-terra\">E o caminho é mais curto do que você imagina.</em>",
+        "subhead": ("O peito aperta sem motivo. Às três da manhã você está acordada de novo, "
+                    "esperando passar. E ainda ouve que é só ansiedade, como se isso fosse pouco. "
+                    "Você já fez o que a internet manda e não resolveu, porque dica não chega na "
+                    "<span class=\"text-terra\">raiz</span>. Tratamento chega."),
+        "text_overrides": [
+            ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
+             "O tratamento é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: poucas sessões, não anos. Começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>, 60 minutos para entender a raiz do que você sente e sair com um caminho definido. Particular e sigiloso, na Vila Madalena ou online."),
+        ],
+        "seq": ["ansiedade", "geral", "burnout", "medos"],
+        "micro": [
+            ("O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.", "Amanda V."),
+            ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
+            ("as vezes a ansiedade fala, e eu logo calo ela.", "Fernanda M."),
+            ("Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.", "Gabriela L."),
+        ],
+    },
     "burnout.html": {
         "scope": "page-burnout", "origem": "burnout",
         "title": "Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento",
-        "kicker": "Você dá conta de tudo. Menos de você.",
-        # H1 com correção de viúva (a palavra "e" não fica sozinha): <br> só no desktop + nbsp antes de "volte".
-        "h1": "Resolva o esgotamento que você esconde atrás da sua competência…<br class=\"hidden md:block\" /> <em class=\"italic font-medium text-terra\">e&nbsp;volte a se reconhecer.</em>",
-        "subhead": "Burnout, ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        # 31/07: padrao unico. O kicker de dor virou a abertura do H1 (mais peso) e o
+        # kicker passou a carregar a promessa do anuncio ("terapia breve").
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Você dá conta de tudo, menos de você. <em class=\"italic font-medium text-terra\">O esgotamento tem causa. E com terapia breve, tem fim.</em>",
+        "subhead": ("Dormir o fim de semana inteiro e acordar cansado. Ler a mesma linha três vezes. "
+                    "Continuar entregando tudo, porque parar não é opção, e conviver com o medo de que "
+                    "um dia alguém perceba. O tratamento vai à <span class=\"text-terra\">raiz</span> do "
+                    "esgotamento, e é isso que devolve a sua energia sem você ter que largar tudo."),
         "seq": ["burnout", "geral", "ansiedade", "medos"],
         "micro": [
             ("graças a Deus estou conseguindo me reorganizar em todas as áreas da minha vida de uma forma tranquila e clara.", "Luis C."),
@@ -106,9 +149,12 @@ PAGES = {
     "medos.html": {
         "scope": "page-medos", "origem": "medos",
         "title": "Cris Campos · Hipnoterapia Integrativa — Medos",
-        "kicker": "Por fora, firmeza. Por dentro, um medo que paralisa.",
-        "h1": "Resolva o medo que vira bloqueio e paralisia… <em class=\"italic font-medium text-terra\">e volte a confiar em você.</em>",
-        "subhead": "Angústia, fobia, ansiedade, medos que paralisam, um vazio que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Por fora, firmeza. Por dentro, um medo que paralisa. <em class=\"italic font-medium text-terra\">Ele tem causa, e com terapia breve, tem fim.</em>",
+        "subhead": ("A oportunidade que passou. O convite que você recusou. A conversa adiada mais "
+                    "uma vez, com uma desculpa que já nem precisa inventar. Não é falta de coragem, "
+                    "é uma resposta antiga disparando sozinha. Tratar a <span class=\"text-terra\">raiz</span> "
+                    "é o que faz ela parar de disparar, e devolve a você o direito de dizer sim."),
         "seq": ["medos", "geral", "ansiedade", "burnout"],
         "micro": [
             ("hoje posso dizer que passei essa barreira e não tem mais algo me segurando", "John M."),
@@ -121,11 +167,14 @@ PAGES = {
         "scope": "page-depressao", "origem": "depressao",
         "title": "Cris Campos · Hipnoterapia Integrativa — Depressão / Tristeza Profunda",
         # OPÇÃO B (escolhida pelo Rodrigo). Nomeia "depressão" p/ relevância com o anúncio.
-        "kicker": "Não é preguiça, nem falta de fé. É um peso real.",
-        "h1": "Resolva a depressão que rouba a sua vontade… <em class=\"italic font-medium text-terra\">e volte a sentir prazer nas coisas simples.</em>",
-        "subhead": "Tristeza profunda, desânimo, vazio, ansiedade — um cansaço que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": "Não é preguiça nem falta de fé. <em class=\"italic font-medium text-terra\">A depressão tem causa. E com terapia breve, tem fim.</em>",
+        "subhead": ("Levantar já custa. Você cumpre o dia no automático e chega em casa sem nada "
+                    "sobrando, nem para quem você ama. E ainda escuta que é falta de vontade. O "
+                    "tratamento vai à <span class=\"text-terra\">raiz</span> do que apagou a sua "
+                    "vontade, e caminha junto do acompanhamento médico, nunca no lugar dele."),
         # SÓ nesta página: disclaimer elevado para a dobra (depressão é o tema mais sensível).
-        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>A hipnoterapia caminha junto do acompanhamento médico ou psiquiátrico — não o substitui.</em></p>",
+        "heronote": "<p class=\"mt-3 text-[0.8rem] leading-snug text-ink/55\"><em>A hipnoterapia caminha junto do acompanhamento médico ou psiquiátrico. Não o substitui.</em></p>",
         "seq": ["geral", "ansiedade", "burnout", "medos"],
         "micro": [
             ("Cris me ajudou a voltar a dormir!", "Lucienne C."),
@@ -144,9 +193,11 @@ PAGES = {
         # Trava de marca: "terapia breve" presente; sem travessao (preferencia do Rodrigo).
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "Você não está enlouquecendo. <em class=\"italic font-medium text-terra\">A crise de pânico tem causa. E com terapia breve, tem fim.</em>",
-        "subhead": ('Respiração guiada, remédio na bolsa, evitar os lugares onde já aconteceu: '
-                    'tudo isso alivia a crise. E ela volta. A Hipnoterapia Integrativa vai à '
-                    '<span class="text-terra">origem do alarme</span>, e é exatamente por isso que o caminho é mais curto.'),
+        "subhead": ('Você já achou que fosse o coração, e ouviu que não era nada. Hoje calcula a '
+                    'rota de fuga antes de entrar em qualquer lugar e finge que é só preferência. '
+                    'Não é fraqueza: é um alarme disparando sem incêndio. O tratamento vai à '
+                    '<span class="text-terra">origem do alarme</span>, e é por isso que dá para '
+                    'voltar a sair sem planejar a saída.'),
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
              "Poucas sessões, não anos. A <strong class=\"font-medium text-rust\">Sessão de Clareza</strong> é o primeiro passo: 60 minutos para entender o que dispara as suas crises e sair com um caminho. Particular e sigiloso, na Vila Madalena ou online."),
@@ -169,8 +220,14 @@ PAGES = {
         "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "A dor não passa, e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
-        "subhead": ("Um término que não sai da cabeça, o ciúme que consome, a dependência que aprisiona, o medo de ficar só: "
-                    "sintomas diferentes, a <span class=\"text-terra\">mesma raiz</span>."),
+        # 31/07: abre em DEPENDENCIA EMOCIONAL (as palavras que mais gastam no grupo) e
+        # recolhe quem ja terminou no 2o periodo, para a pagina seguir servindo os dois
+        # blocos de busca ("sair da dependencia emocional" e "como superar um termino").
+        "subhead": ("Você sabe que essa relação faz mal e mesmo assim não consegue sair. Ou ela já "
+                    "acabou e você continua presa, esperando uma mensagem que não vem. Não é fraqueza "
+                    "nem falta de amor próprio: é uma raiz antiga que ainda decide por você. Tratar "
+                    "essa <span class=\"text-terra\">raiz</span> é o que devolve o sono, a concentração "
+                    "e a vontade de recomeçar."),
         # Dobras 1 (parágrafo do método), 2 e 3 específicas de relacionamento (as symptom-pages mantêm o genérico).
         "text_overrides": [
             # 1ª dobra — parágrafo do método: justifica o "terapia breve" (raiz -> por isso é breve)
@@ -178,13 +235,14 @@ PAGES = {
              "Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong> vão à raiz do que você sente, não ao sintoma de superfície. É isso que torna a terapia breve: tratar a origem encurta o caminho até você voltar a ficar bem."),
             # b2 corpo 1 — troca a persona-cuidadora pela dor afetiva
             ("Você responde no automático e segue. É você que sustenta tudo: o trabalho, a casa, as pessoas que dependem de você. E ninguém desconfia.",
-             "Você responde no automático e segue. Trabalha, resolve, aparece — e ninguém desconfia que, por dentro, ainda dói."),
-            # b2 corpo 2 — enumeração de sintomas de relacionamento (preserva prefixo e o strong final)
-            ("É a mente que não desliga, o cansaço que o sono não resolve, o medo que trava bem na hora de decidir por você, e o vazio que aparece justo quando,",
+             "Você responde no automático e segue. Trabalha, resolve, aparece, e ninguém desconfia que, por dentro, ainda dói."),
+            # b2 corpo 2 — enumeração de sintomas de relacionamento (preserva prefixo e o strong final).
+            # 31/07: ancora atualizada junto com o master ("pensamento que volta assim que a casa silencia").
+            ("É o pensamento que volta assim que a casa silencia, o cansaço que o sono não resolve, o medo que trava bem na hora de decidir por você, e o vazio que aparece justo quando,",
              "É a lembrança que volta sem avisar, o sono que não descansa, o medo de recomeçar, e o vazio que aparece justo quando,"),
             # b2 corpo 3 — "numa relação" + fecha com o "reconhecer-se" (guardado da 1ª dobra)
             ("a de que <strong class=\"font-medium text-rust\">se perdeu de si</strong>. E talvez o passo mais difícil não seja aguentar. Nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você.",
-             "a de que <strong class=\"font-medium text-rust\">se perdeu de si numa relação</strong>. E talvez o passo mais difícil não seja aguentar — nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você — e voltar a se reconhecer."),
+             "a de que <strong class=\"font-medium text-rust\">se perdeu de si numa relação</strong>. E talvez o passo mais difícil não seja aguentar. Nisso você é especialista. Seja, pela primeira vez em muito tempo, deixar que o cuidado seja com você, e voltar a se reconhecer."),
             # b3 intro — abre na dor, não na ansiedade
             ("A ansiedade que não passa, o cansaço que o sono não resolve, o medo que paralisa, o vazio sem nome: tudo isso é a superfície.",
              "A dor que não passa, a lembrança que volta, o cansaço que o sono não resolve, o medo que paralisa, o vazio sem nome: tudo isso é a superfície."),
@@ -200,9 +258,18 @@ PAGES = {
     "index.html": {
         "scope": "page-site", "origem": "site",
         "title": "Cris Campos · Hipnoterapia Integrativa — O Método Voltar a Si",
-        "kicker": "Hipnoterapia Integrativa · Vila Madalena (SP) e online",
+        # 31/07: a home tambem carrega a promessa "terapia breve" (era a unica sem).
+        # Mantem Vila Madalena, que e o que serve a busca local e de marca.
+        "kicker": "Terapia breve · Vila Madalena (SP) e online",
         "h1": "Um caminho <em class=\"italic font-medium text-terra\">de volta a você.</em>",
-        "subhead": "Ansiedade, angústia, vazio ou outro conflito emocional que você não sabe nomear. Por baixo, costuma haver a <span class=\"text-terra\">mesma raiz</span>.",
+        # 31/07: a home recebe busca de marca e generica ("terapeuta", "consulta com
+        # terapeuta"), entao ela mostra as SEIS portas para a pessoa se reconhecer em
+        # uma. Cada item e cena, nao substantivo, e a ordem espelha as paginas de tema.
+        "subhead": ("A ansiedade que aperta o peito no meio da reunião. A crise que vem do nada. "
+                    "O esgotamento que o fim de semana não cura. O medo que decide por você. "
+                    "A tristeza que apagou a vontade. A relação que machuca e da qual você não "
+                    "consegue sair. Seis portas diferentes, e por baixo costuma haver a "
+                    "<span class=\"text-terra\">mesma raiz</span>."),
         "seq": ["geral", "ansiedade", "burnout", "medos"],
         "micro": [
             ("Anos de psicoterapia não resolveram meu problema básico, em apenas duas sessões, posso afirmar que foi solucionado o problema que tanto me impedia", "Telma T."),
@@ -221,11 +288,6 @@ HERONOTE_RE = re.compile(r'(mesma raiz</span>\.\s*\n\s*</p>)')
 
 CARD_VIS = '<blockquote class="b7-words-card b7-card card">'
 CARD_HID = '<blockquote class="b7-words-card b7-card card" hidden>'
-
-# Subhead do hero na master (ansiedade). Cada página troca só a enumeração inicial.
-MASTER_SUBHEAD = ('Ansiedade, esgotamento, medos que paralisam, um vazio que você não sabe nomear. '
-                  'Por baixo, costuma haver a <span class="text-terra">mesma raiz</span>.')
-
 
 def parse_track(master):
     m = TRACK_RE.search(master)

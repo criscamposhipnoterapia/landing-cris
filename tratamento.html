@@ -18,7 +18,8 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cris Campos · Hipnoterapia Integrativa — Depressão / Tristeza Profunda</title>
+  <title>Cris Campos · Tratamento para Ansiedade que vai à causa</title>
+  <meta name="robots" content="noindex" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3EDE3'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%235E2616' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E" />
   <meta name="description" content="Hipnoterapia Integrativa e o Método Voltar a Si: um processo que vai à raiz do que você sente. Atendimento particular na Vila Madalena (SP) ou online." />
   <meta name="robots" content="index,follow" />
@@ -458,44 +459,44 @@
     }
 
     /* ============================================================ */
-    /* ESCOPO: .page-depressao — overrides SO desta pagina           */
+    /* ESCOPO: .page-tratamento — overrides SO desta pagina           */
     /* Tarefas 1-4: barra de provas, Bloco 2, Bloco 3, transicoes    */
     /* ============================================================ */
 
     /* --- Tarefa 1: barra de provas (microblocos + conjunto) --- */
-    .page-depressao .trust-bar{
+    .page-tratamento .trust-bar{
       margin-top:46px; padding-top:24px;
       border-top:1px solid rgba(154,123,79,.18);
     }
-    .page-depressao .trust-bar__item{
+    .page-tratamento .trust-bar__item{
       display:grid; align-content:start; row-gap:6px; min-width:92px;
       padding-right:32px; margin-right:32px;
       border-right:1px solid rgba(154,123,79,.22);
     }
-    .page-depressao .trust-bar__item:last-child{
+    .page-tratamento .trust-bar__item:last-child{
       padding-right:0; margin-right:0; border-right:0;
     }
-    .page-depressao .trust-bar__num{
+    .page-tratamento .trust-bar__num{
       font-family:var(--font-num); font-weight:500;
       font-size:clamp(1.45rem,1.65vw,1.85rem); line-height:.95;
       letter-spacing:-.045em; color:#2C2521; margin:0;
     }
-    .page-depressao .trust-bar__label{
+    .page-tratamento .trust-bar__label{
       margin:0; font-family:var(--font-ui);
       font-size:clamp(.68rem,.72vw,.78rem); font-weight:600; line-height:1.15;
       letter-spacing:.09em; text-transform:uppercase; color:rgba(44,37,33,.66);
     }
     @media (max-width:640px){
-      .page-depressao .trust-bar{
+      .page-tratamento .trust-bar{
         display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 24px;
       }
-      .page-depressao .trust-bar__item{
+      .page-tratamento .trust-bar__item{
         padding-right:0; margin-right:0; border-right:0;
       }
     }
 
     /* --- Tarefa 2: Bloco 2 — superficie material + campo de leitura --- */
-    .page-depressao .b2-section{
+    .page-tratamento .b2-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
@@ -504,12 +505,12 @@
         radial-gradient(circle at 84% 80%, rgba(156,164,139,.05), transparent 36%),
         #F3EDE3;
     }
-    .page-depressao .b2-inner{
+    .page-tratamento .b2-inner{
       padding-top:clamp(52px,8vw,120px);   /* mobile: reduz o respiro hero->B2 (creme sobre creme lia muito vazio) */
       padding-bottom:clamp(76px,7vw,108px);
     }
     /* campo de leitura editorial — sutil, NAO card */
-    .page-depressao .b2-field{
+    .page-tratamento .b2-field{
       position:relative; z-index:1;
       background:rgba(255,255,255,.16);
       border:1px solid rgba(44,37,33,.035);
@@ -519,7 +520,7 @@
     }
 
     /* --- Tarefa 3: Bloco 3 — banda mineral premium (frameless) --- */
-    .page-depressao .b3-section{
+    .page-tratamento .b3-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
@@ -527,7 +528,7 @@
         radial-gradient(85% 95% at 50% 58%, rgba(156,164,139,.10), transparent 76%),
         linear-gradient(180deg, #EAECE2 0%, #E5E8DB 100%);
     }
-    .page-depressao .b3-inner{
+    .page-tratamento .b3-inner{
       position:relative; z-index:1;
       max-width:42rem;
       padding-top:clamp(80px,8vw,120px);
@@ -535,21 +536,21 @@
     }
 
     /* --- Tarefa 4: transicoes inferiores (fade entre bandas) --- */
-    .page-depressao .b2-section::after{
+    .page-tratamento .b2-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(236,238,225,0), #ECEEE1);
       pointer-events:none;
     }
-    .page-depressao .b3-section::after{
+    .page-tratamento .b3-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
       pointer-events:none;
     }
 
     /* ============================================================ */
-    /* BLOCO 4 — "O Metodo": secao editorial (escopo .page-depressao) */
+    /* BLOCO 4 — "O Metodo": secao editorial (escopo .page-tratamento) */
     /* ============================================================ */
-    .page-depressao .b4-section{
+    .page-tratamento .b4-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 9px),
@@ -558,57 +559,57 @@
         #F3EDE3;
     }
     /* reduz o vazio B3->B4 (topo menor) e mantem respiro inferior */
-    .page-depressao .b4-inner{
+    .page-tratamento .b4-inner{
       position:relative; z-index:1;
       padding-top:clamp(48px,5.5vw,76px);
       padding-bottom:clamp(26px,3vw,44px);
     }
-    .page-depressao .b4-steps-title{ letter-spacing:-.01em; }
+    .page-tratamento .b4-steps-title{ letter-spacing:-.01em; }
 
     /* etapas: micropecas editoriais, NAO cards (sobrescreve so .b4-step.card) */
-    .page-depressao .b4-step.card{
+    .page-tratamento .b4-step.card{
       position:relative;
       background:rgba(250,245,237,.66);
       border:1px solid rgba(154,123,79,.20);
       border-radius:10px;
       box-shadow:0 40px 80px -60px rgba(44,37,33,.32);
     }
-    .page-depressao .b4-step.card::before{
+    .page-tratamento .b4-step.card::before{
       content:""; position:absolute; top:0; left:28px; right:28px; height:1px;
       background:linear-gradient(90deg, transparent, rgba(154,123,79,.45), transparent);
     }
-    .page-depressao .b4-step-number{
+    .page-tratamento .b4-step-number{
       position:relative; display:block;
       font-family:var(--font-num); font-weight:500; line-height:.9;
       font-size:clamp(2.9rem,4.8vw,3.8rem); letter-spacing:-.03em;
       color:rgba(160,105,76,.55);   /* marca d'água editorial, não rótulo */
     }
     /* filete bronze de vínculo: número — etapa */
-    .page-depressao .b4-step-number::after{
+    .page-tratamento .b4-step-number::after{
       content:""; display:block; width:32px; height:2px; margin-top:.55rem;
       background:var(--bronze); opacity:.55; border-radius:2px;
     }
-    .page-depressao .b4-step-title{
+    .page-tratamento .b4-step-title{
       margin-top:.35rem;   /* anula o mt-3 do Tailwind, cola o título no par */
       font-family:"Playfair Display",Georgia,Cambria,serif; font-weight:600;
       letter-spacing:-.01em; color:var(--rust);
     }
-    .page-depressao .b4-step-copy{
+    .page-tratamento .b4-step-copy{
       font-family:var(--font-ui); color:rgba(44,37,33,.76); line-height:1.66;
     }
 
     /* reveal das etapas: respiracao suave + stagger discreto */
-    .js .page-depressao .b4-step{
+    .js .page-tratamento .b4-step{
       transform:translateY(14px);
       transition:opacity .8s cubic-bezier(.19,1,.22,1), transform .8s cubic-bezier(.19,1,.22,1);
     }
-    .js .page-depressao .b4-step.visible{ transform:none; }
-    .page-depressao .b4-step:nth-child(2){ transition-delay:.06s; }
-    .page-depressao .b4-step:nth-child(3){ transition-delay:.12s; }
-    .page-depressao .b4-step:nth-child(4){ transition-delay:.18s; }
+    .js .page-tratamento .b4-step.visible{ transform:none; }
+    .page-tratamento .b4-step:nth-child(2){ transition-delay:.06s; }
+    .page-tratamento .b4-step:nth-child(3){ transition-delay:.12s; }
+    .page-tratamento .b4-step:nth-child(4){ transition-delay:.18s; }
 
     /* transicao Bloco 4 -> faixa de micro-prova (#EFE6D6), assinatura discreta */
-    .page-depressao .b4-section::after{
+    .page-tratamento .b4-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(239,230,214,0), #EFE6D6);
       pointer-events:none;
@@ -618,7 +619,7 @@
     /* HERO — altura cabe header + dobra sem cortar a trust bar      */
     /* ============================================================ */
     @media (min-width:768px){
-      .page-depressao .hero-wrap{
+      .page-tratamento .hero-wrap{
         min-height:calc(100vh - 4rem);
         min-height:calc(100svh - 4rem);
       }
@@ -627,30 +628,30 @@
     /* ============================================================ */
     /* "O QUE ISTO NAO E" — nota editorial / manifesto (hairlines)   */
     /* ============================================================ */
-    .page-depressao .not-section{
+    .page-tratamento .not-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.009) 0 1px, transparent 1px 9px),
         radial-gradient(120% 80% at 16% 0%, rgba(255,251,244,.50), transparent 44%),
         linear-gradient(180deg, #F2EADD 0%, #F4EEE3 100%);
     }
-    .page-depressao .not-inner{
+    .page-tratamento .not-inner{
       position:relative; z-index:1; max-width:42rem;
       padding-top:clamp(52px,6vw,80px);
       padding-bottom:clamp(64px,7vw,96px);
     }
-    .page-depressao .not-list{
+    .page-tratamento .not-list{
       list-style:none; padding-left:0;
       margin-top:1.4rem;
       border-top:1px solid rgba(154,123,79,.14);
     }
-    .page-depressao .not-item{
+    .page-tratamento .not-item{
       padding:.6rem 0;
       border-bottom:1px solid rgba(154,123,79,.14);
     }
-    .page-depressao .not-item:last-child{ border-bottom:0; }
+    .page-tratamento .not-item:last-child{ border-bottom:0; }
     /* "O que e, entao" — card editorial de fechamento (espresso de marca) */
-    .page-depressao .not-affirm{
+    .page-tratamento .not-affirm{
       margin-top:clamp(2rem,4vw,2.75rem);
       background:linear-gradient(155deg,#5E2616,#2C2521);
       border:1px solid rgba(243,237,227,.10);
@@ -658,14 +659,14 @@
       box-shadow:0 44px 90px -64px rgba(44,37,33,.50);
       padding:clamp(1.4rem,3.2vw,2rem);
     }
-    .page-depressao .not-affirm p{ margin:0; color:#F3EDE3; }
-    .page-depressao .not-affirm strong{ color:#EAD9C2; font-weight:600; }
-    .page-depressao .not-section::before{
+    .page-tratamento .not-affirm p{ margin:0; color:#F3EDE3; }
+    .page-tratamento .not-affirm strong{ color:#EAD9C2; font-weight:600; }
+    .page-tratamento .not-section::before{
       content:""; position:absolute; left:0; right:0; top:0; height:70px; z-index:0;
       background:linear-gradient(to bottom, #EFE6D6, rgba(239,230,214,0));
       pointer-events:none;
     }
-    .page-depressao .not-section::after{
+    .page-tratamento .not-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
       pointer-events:none;
@@ -674,27 +675,27 @@
     /* ============================================================ */
     /* BLOCO 5 — "Por que e diferente": ledger editorial             */
     /* ============================================================ */
-    .page-depressao .b5-section{
+    .page-tratamento .b5-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
         radial-gradient(110% 64% at 50% 0%, rgba(255,253,248,.60), transparent 52%),
         #F3EDE3;
     }
-    .page-depressao .b5-inner{
+    .page-tratamento .b5-inner{
       position:relative; z-index:1;
       padding-top:clamp(56px,6vw,88px);
       padding-bottom:clamp(52px,5.5vw,82px);
     }
-    .page-depressao .b5-ledger{
+    .page-tratamento .b5-ledger{
       margin-top:2.4rem;
       border-top:1px solid rgba(154,123,79,.18);
     }
-    .page-depressao .b5-row{
+    .page-tratamento .b5-row{
       margin:0; padding:1.15rem 0;
       border-bottom:1px solid rgba(154,123,79,.18);
     }
-    .page-depressao .b5-section::after{
+    .page-tratamento .b5-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(241,229,212,0), #F1E5D4);
       pointer-events:none;
@@ -703,18 +704,18 @@
     /* ============================================================ */
     /* BLOCO 6 — "O custo": gravidade silenciosa (fundo + quente)    */
     /* ============================================================ */
-    .page-depressao .b6-section{
+    .page-tratamento .b6-section{
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.009) 0 1px, transparent 1px 9px),
         radial-gradient(120% 80% at 50% 0%, rgba(255,250,242,.45), transparent 46%),
         linear-gradient(180deg, #F1E5D4 0%, #EAD9C0 100%);
     }
-    .page-depressao .b6-inner{
+    .page-tratamento .b6-inner{
       position:relative; z-index:1;
       padding-top:clamp(44px,5vw,74px);
       padding-bottom:clamp(72px,7vw,112px);
     }
-    .page-depressao .b6-section::after{
+    .page-tratamento .b6-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
       pointer-events:none;
@@ -723,40 +724,40 @@
     /* ============================================================ */
     /* BLOCO 7 — Prova social: editorial, humano (escopo)            */
     /* ============================================================ */
-    .page-depressao .b7-section{
+    .page-tratamento .b7-section{
       position:relative;
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.007) 0 1px, transparent 1px 9px),
         radial-gradient(100% 52% at 50% 0%, rgba(255,253,248,.50), transparent 52%),
         #F3EDE3;
     }
-    .page-depressao .b7-header h2{ text-wrap:balance; }
-    .page-depressao .b7-header p{ text-wrap:pretty; }
+    .page-tratamento .b7-header h2{ text-wrap:balance; }
+    .page-tratamento .b7-header p{ text-wrap:pretty; }
     /* ============================================================ */
     /* BLOCO 7 · "Em palavras" — galeria editorial de depoimentos    */
     /* ============================================================ */
-    .page-depressao .b7-words{ margin-top:clamp(2.6rem,4.6vw,4rem); }
-    .page-depressao .b7-words-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.2rem); }
-    .page-depressao .b7-words-title{ letter-spacing:-.01em; }
-    .page-depressao .b7-words-title::after{
+    .page-tratamento .b7-words{ margin-top:clamp(2.6rem,4.6vw,4rem); }
+    .page-tratamento .b7-words-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.2rem); }
+    .page-tratamento .b7-words-title{ letter-spacing:-.01em; }
+    .page-tratamento .b7-words-title::after{
       content:""; display:block; width:34px; height:1px; margin:.75rem auto 0;
       background:linear-gradient(90deg, transparent, rgba(154,123,79,.6), transparent);
     }
-    .page-depressao .b7-words-carousel{ position:relative; }
-    .page-depressao .b7-words-track{
+    .page-tratamento .b7-words-carousel{ position:relative; }
+    .page-tratamento .b7-words-track{
       counter-reset:b7q;
       display:flex; align-items:stretch; gap:clamp(16px,1.6vw,24px);
       overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
       padding:10px 0 16px;   /* sem padding lateral: evita que a última página assente ~4px à direita */
       scrollbar-width:none; -webkit-overflow-scrolling:touch;
     }
-    .page-depressao .b7-words-track::-webkit-scrollbar{ display:none; }
-    .page-depressao .b7-words-card{ flex:0 0 auto; scroll-snap-align:start; width:86%; }
-    @media (min-width:641px){ .page-depressao .b7-words-card{ width:calc((100% - clamp(16px,1.6vw,24px)) / 2); } }
-    @media (min-width:1024px){ .page-depressao .b7-words-card{ width:calc((100% - 2 * clamp(16px,1.6vw,24px)) / 3); } }
+    .page-tratamento .b7-words-track::-webkit-scrollbar{ display:none; }
+    .page-tratamento .b7-words-card{ flex:0 0 auto; scroll-snap-align:start; width:86%; }
+    @media (min-width:641px){ .page-tratamento .b7-words-card{ width:calc((100% - clamp(16px,1.6vw,24px)) / 2); } }
+    @media (min-width:1024px){ .page-tratamento .b7-words-card{ width:calc((100% - 2 * clamp(16px,1.6vw,24px)) / 3); } }
 
     /* card = folha editorial (papel premium) */
-    .page-depressao .b7-card.card{
+    .page-tratamento .b7-card.card{
       position:relative; display:flex; flex-direction:column; overflow:hidden;
       counter-increment:b7q;
       /* card stock: grão de papel fino + gradiente vertical aprofundado */
@@ -772,108 +773,108 @@
       padding:clamp(1.6rem,2.1vw,2.05rem);
     }
     /* aspa grande decorativa — opacidade muito baixa, sem competir */
-    .page-depressao .b7-card.card::before{
+    .page-tratamento .b7-card.card::before{
       content:"\201C"; position:absolute; top:-.30em; right:.14em; z-index:0;
       font-family:Georgia,"Times New Roman",serif; font-size:5.75rem; line-height:1;
       color:rgba(94,38,22,.07); pointer-events:none;
     }
-    .page-depressao .b7-card.card > *{ position:relative; z-index:1; }
+    .page-tratamento .b7-card.card > *{ position:relative; z-index:1; }
     /* assinatura editorial: indice 01..08 + estrelas rebaixadas */
-    .page-depressao .b7-words-top{ display:flex; align-items:center; gap:.65rem; margin-bottom:.85rem; }
-    .page-depressao .b7-words-index{
+    .page-tratamento .b7-words-top{ display:flex; align-items:center; gap:.65rem; margin-bottom:.85rem; }
+    .page-tratamento .b7-words-index{
       font-family:Georgia,"Times New Roman",serif; font-weight:600;
       font-size:.82rem; letter-spacing:.06em; color:#9A7B4F;
     }
-    .page-depressao .b7-words-index::before{ content:counter(b7q, decimal-leading-zero) " / 32"; }
-    .page-depressao .b7-words-stars{ font-size:.56rem; letter-spacing:.18em; color:rgba(154,123,79,.55); }
-    .page-depressao .b7-quote{ text-wrap:pretty; line-height:1.5; color:#5E2616; font-weight:600; }
-    .page-depressao .b7-body{ text-wrap:pretty; overflow-wrap:break-word; line-height:1.62; color:rgba(44,37,33,.70); }
-    .page-depressao .b7-meta{
+    .page-tratamento .b7-words-index::before{ content:counter(b7q, decimal-leading-zero) " / 32"; }
+    .page-tratamento .b7-words-stars{ font-size:.56rem; letter-spacing:.18em; color:rgba(154,123,79,.55); }
+    .page-tratamento .b7-quote{ text-wrap:pretty; line-height:1.5; color:#5E2616; font-weight:600; }
+    .page-tratamento .b7-body{ text-wrap:pretty; overflow-wrap:break-word; line-height:1.62; color:rgba(44,37,33,.70); }
+    .page-tratamento .b7-meta{
       margin-top:auto; padding-top:.9rem;
       border-top:1px solid rgba(154,123,79,.18);
       color:rgba(44,37,33,.86); font-weight:600;   /* nível 1: a pessoa (nome) */
     }
     /* nível 2: a plataforma (Google) — presença média */
-    .page-depressao .b7-words-card .b7-seal-src{ font-weight:500; color:#5E4A2C; }
+    .page-tratamento .b7-words-card .b7-seal-src{ font-weight:500; color:#5E4A2C; }
     /* nível 3: " · verificado" recua (peso normal; cor mantém AA) */
-    .page-depressao .b7-words-card .b7-seal{ font-weight:400; color:#6E5634; }
+    .page-tratamento .b7-words-card .b7-seal{ font-weight:400; color:#6E5634; }
     /* card final (Google) — herda raio 18 + sombra card-stock dos irmãos (sem moldura própria) */
 
     /* navegacao abaixo do carrossel — discreta, vidro fosco; só com JS pronto */
-    .page-depressao .b7-words-nav{ display:none; }
-    .js .page-depressao .b7-words.is-ready .b7-words-nav{
+    .page-tratamento .b7-words-nav{ display:none; }
+    .js .page-tratamento .b7-words.is-ready .b7-words-nav{
       display:flex; justify-content:center; gap:.7rem; margin-top:clamp(1rem,2vw,1.5rem);
     }
-    .page-depressao .b7-words-button{
+    .page-tratamento .b7-words-button{
       width:42px; height:42px; display:grid; place-items:center; border-radius:50%;
       background:rgba(243,237,227,.58); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
       border:1px solid rgba(154,123,79,.22); color:#5E2616;
       box-shadow:0 14px 32px -20px rgba(44,37,33,.40);
       cursor:pointer; transition:background .35s var(--ease), transform .35s var(--ease);
     }
-    .page-depressao .b7-words-button:hover{ background:rgba(243,237,227,.85); transform:translateY(-1px); }
-    .page-depressao .b7-words-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
-    @media (prefers-reduced-motion: reduce){ .page-depressao .b7-words-track{ scroll-behavior:auto; } }
+    .page-tratamento .b7-words-button:hover{ background:rgba(243,237,227,.85); transform:translateY(-1px); }
+    .page-tratamento .b7-words-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce){ .page-tratamento .b7-words-track{ scroll-behavior:auto; } }
     /* card-portão "ver mais" (posição 16) — mesmo recipiente dos cards, conteúdo centralizado */
-    .page-depressao .b7-card.card.b7-words-gate{ counter-increment:none; }   /* não conta como depoimento */
-    .page-depressao .b7-words-gate{ -webkit-appearance:none; appearance:none; font:inherit; cursor:pointer; gap:.15rem; }
-    .page-depressao .b7-words-gate:hover{ border-color:rgba(154,123,79,.5); }
-    .page-depressao .b7-words-gate:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
-    .page-depressao .b7-words-gate-ico{ display:inline-flex; color:rgba(168,107,76,.85); }
+    .page-tratamento .b7-card.card.b7-words-gate{ counter-increment:none; }   /* não conta como depoimento */
+    .page-tratamento .b7-words-gate{ -webkit-appearance:none; appearance:none; font:inherit; cursor:pointer; gap:.15rem; }
+    .page-tratamento .b7-words-gate:hover{ border-color:rgba(154,123,79,.5); }
+    .page-tratamento .b7-words-gate:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    .page-tratamento .b7-words-gate-ico{ display:inline-flex; color:rgba(168,107,76,.85); }
     /* controle "ver menos" abaixo do carrossel (visível só no estado expandido, via [hidden]) */
-    .page-depressao .b7-words-more{ text-align:center; margin-top:clamp(1.2rem,2.2vw,1.8rem); }
-    .page-depressao .b7-words-morebtn{
+    .page-tratamento .b7-words-more{ text-align:center; margin-top:clamp(1.2rem,2.2vw,1.8rem); }
+    .page-tratamento .b7-words-morebtn{
       -webkit-appearance:none; appearance:none; cursor:pointer; font:inherit;
       font-family:var(--font-ui); font-size:.86rem; letter-spacing:.02em; color:#5E2616;
       padding:.55rem 1.4rem; border-radius:999px;
       background:rgba(243,237,227,.5); border:1px solid rgba(154,123,79,.34);
       transition:background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
     }
-    .page-depressao .b7-words-morebtn:hover{ background:rgba(154,123,79,.12); border-color:rgba(154,123,79,.5); }
-    .page-depressao .b7-words-morebtn:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    .page-tratamento .b7-words-morebtn:hover{ background:rgba(154,123,79,.12); border-color:rgba(154,123,79,.5); }
+    .page-tratamento .b7-words-morebtn:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
     /* [hidden] precisa vencer o display:flex de .b7-card.card (origem autor > UA) — sem isto o atributo é inerte */
-    .page-depressao .b7-card.card[hidden]{ display:none; }
+    .page-tratamento .b7-card.card[hidden]{ display:none; }
     /* sem JS: revela os cards ocultos (SEO/a11y) e oculta o card-portão não-funcional */
-    html:not(.js) .page-depressao .b7-words-card[hidden]{ display:flex; }
-    html:not(.js) .page-depressao .b7-words-gate{ display:none; }
+    html:not(.js) .page-tratamento .b7-words-card[hidden]{ display:flex; }
+    html:not(.js) .page-tratamento .b7-words-gate{ display:none; }
     /* frames de video: proporcao estavel + moldura premium discreta */
-    .page-depressao .b7-frame{
+    .page-tratamento .b7-frame{
       border-radius:12px;
       border:1px solid rgba(154,123,79,.22);
       box-shadow:0 30px 60px -48px rgba(44,37,33,.40);
     }
     /* transicao organica B7 -> B8 (#F3EDE3) */
-    .page-depressao .b7-section::after{
+    .page-tratamento .b7-section::after{
       content:""; position:absolute; left:0; right:0; bottom:0; height:100px; z-index:0;
       background:linear-gradient(to bottom, rgba(243,237,227,0), #F3EDE3);
       pointer-events:none;
     }
 
     /* ===== BLOCO 7 · "Em video" — galeria privada curada (center-stage) ===== */
-    .page-depressao .b7-video{ margin-top:clamp(2.2rem,3.8vw,3.4rem); }
-    .page-depressao .b7-video-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.4rem); }
-    .page-depressao .b7-video-carousel{ position:relative; }
-    .page-depressao .b7-video-stage{ position:relative; }
+    .page-tratamento .b7-video{ margin-top:clamp(2.2rem,3.8vw,3.4rem); }
+    .page-tratamento .b7-video-header{ text-align:center; margin-bottom:clamp(1.4rem,3vw,2.4rem); }
+    .page-tratamento .b7-video-carousel{ position:relative; }
+    .page-tratamento .b7-video-stage{ position:relative; }
 
     /* BASE / SEM JS: lista horizontal scroll-snap (fallback) */
-    .page-depressao .b7-video-track{
+    .page-tratamento .b7-video-track{
       display:flex; align-items:center; gap:clamp(14px,1.6vw,22px);
       overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
       padding-block:10px;
       padding-inline:calc(50% - clamp(130px,12.5vw,170px));
       scrollbar-width:none; -webkit-overflow-scrolling:touch;
     }
-    .page-depressao .b7-video-track::-webkit-scrollbar{ display:none; }
-    .page-depressao .b7-video-card{
+    .page-tratamento .b7-video-track::-webkit-scrollbar{ display:none; }
+    .page-tratamento .b7-video-card{
       flex:0 0 auto; width:clamp(240px,23vw,300px); scroll-snap-align:center;
     }
-    .page-depressao .b7-video-frame{
+    .page-tratamento .b7-video-frame{
       position:relative; aspect-ratio:9/16; overflow:hidden;
       border-radius:16px; background:#221a16;
       border:1px solid rgba(154,123,79,.20);
       box-shadow:0 34px 80px -56px rgba(44,37,33,.45);
     }
-    .page-depressao .b7-video-el{
+    .page-tratamento .b7-video-el{
       position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
       display:block; z-index:0; background:#221a16; border:0;
       /* Quiet Luxury: still claro, matte e soft-focus (privacidade pela suavidade) */
@@ -883,28 +884,28 @@
     }
     /* véu editorial em 2 camadas — leve, arejado (não escurece o rosto) */
     /* camada 1 — scrim só na base p/ legibilidade da legenda; topo arejado */
-    .page-depressao .b7-video-frame::before{
+    .page-tratamento .b7-video-frame::before{
       content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
       background:linear-gradient(to top, rgba(20,15,12,.60) 0%, rgba(20,15,12,.12) 40%, rgba(243,237,227,.06) 100%);
       transition:opacity .45s var(--ease);
     }
     /* camada 2 — wash quente suave (unifica temperatura dos stills) */
-    .page-depressao .b7-video-frame::after{
+    .page-tratamento .b7-video-frame::after{
       content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
       background:linear-gradient(150deg, rgba(94,38,22,.24) 0%, rgba(154,123,79,.16) 100%);
       mix-blend-mode:multiply; transition:opacity .45s var(--ease);
     }
     /* ao tocar: vídeo nítido e real; oculta véu/play/legenda */
-    .page-depressao .b7-video-card.is-playing .b7-video-frame::before,
-    .page-depressao .b7-video-card.is-playing .b7-video-frame::after,
-    .page-depressao .b7-video-card.is-playing .b7-video-play,
-    .page-depressao .b7-video-card.is-playing .b7-video-caption{ opacity:0; pointer-events:none; }
-    .page-depressao .b7-video-card.is-playing .b7-video-el{ z-index:2; filter:none; transform:none; }
+    .page-tratamento .b7-video-card.is-playing .b7-video-frame::before,
+    .page-tratamento .b7-video-card.is-playing .b7-video-frame::after,
+    .page-tratamento .b7-video-card.is-playing .b7-video-play,
+    .page-tratamento .b7-video-card.is-playing .b7-video-caption{ opacity:0; pointer-events:none; }
+    .page-tratamento .b7-video-card.is-playing .b7-video-el{ z-index:2; filter:none; transform:none; }
     /* botão de play acessível (reset de <button>) + foco visível */
-    .page-depressao .b7-video-play{ cursor:pointer; -webkit-appearance:none; appearance:none; padding:0 0 0 3px; font:inherit; }
-    .page-depressao .b7-video-play:focus-visible{ outline:2px solid rgba(224,174,132,.95); outline-offset:3px; }
+    .page-tratamento .b7-video-play{ cursor:pointer; -webkit-appearance:none; appearance:none; padding:0 0 0 3px; font:inherit; }
+    .page-tratamento .b7-video-play:focus-visible{ outline:2px solid rgba(224,174,132,.95); outline-offset:3px; }
     /* play discreto — anel terracota fino */
-    .page-depressao .b7-video-play{
+    .page-tratamento .b7-video-play{
       position:absolute; inset:0; margin:auto; z-index:2;
       width:48px; height:48px; display:grid; place-items:center;
       border-radius:50%; border:1px solid rgba(201,150,110,.70);
@@ -912,25 +913,25 @@
       color:#C9926B; font-size:1rem; padding-left:3px;
       transition:background .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
     }
-    .page-depressao .b7-video-card.is-active .b7-video-play:hover{ background:rgba(94,38,22,.42); border-color:rgba(201,150,110,.95); transform:scale(1.05); }
+    .page-tratamento .b7-video-card.is-active .b7-video-play:hover{ background:rgba(94,38,22,.42); border-color:rgba(201,150,110,.95); transform:scale(1.05); }
     /* legenda: centralizada, dois registros (nome micro-label + fala em Playfair italic) */
-    .page-depressao .b7-video-caption{
+    .page-tratamento .b7-video-caption{
       position:absolute; inset-inline:0; bottom:0; z-index:2;
       padding:1.1rem 1rem 1.25rem; text-align:center;
       display:flex; flex-direction:column; align-items:center; gap:.32rem;
     }
-    .page-depressao .b7-video-name{
+    .page-tratamento .b7-video-name{
       font-size:.66rem; text-transform:uppercase; letter-spacing:.2em;
       color:rgba(243,237,227,.78);
     }
-    .page-depressao .b7-video-line{
+    .page-tratamento .b7-video-line{
       font-family:'Playfair Display',serif; font-style:italic;
       font-size:1.02rem; line-height:1.3; color:#F3EDE3; text-wrap:balance;
     }
 
     /* botoes — vidro fosco, discretos; só quando JS pronto */
-    .page-depressao .b7-video-button{ display:none; }
-    .js .page-depressao .b7-video-carousel.is-ready .b7-video-button{
+    .page-tratamento .b7-video-button{ display:none; }
+    .js .page-tratamento .b7-video-carousel.is-ready .b7-video-button{
       position:absolute; top:50%; margin-top:-22px; z-index:6;
       display:grid; place-items:center; width:44px; height:44px; border-radius:50%;
       background:rgba(243,237,227,.58); backdrop-filter:blur(10px);
@@ -938,14 +939,14 @@
       box-shadow:0 16px 36px -20px rgba(44,37,33,.45);
       cursor:pointer; transition:background .35s var(--ease), transform .35s var(--ease);
     }
-    .js .page-depressao .b7-video-prev{ left:clamp(4px,2vw,20px); }
-    .js .page-depressao .b7-video-next{ right:clamp(4px,2vw,20px); }
-    .js .page-depressao .b7-video-carousel.is-ready .b7-video-button:hover{ background:rgba(243,237,227,.82); transform:translateY(-1px); }
-    .js .page-depressao .b7-video-carousel.is-ready .b7-video-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
+    .js .page-tratamento .b7-video-prev{ left:clamp(4px,2vw,20px); }
+    .js .page-tratamento .b7-video-next{ right:clamp(4px,2vw,20px); }
+    .js .page-tratamento .b7-video-carousel.is-ready .b7-video-button:hover{ background:rgba(243,237,227,.82); transform:translateY(-1px); }
+    .js .page-tratamento .b7-video-carousel.is-ready .b7-video-button:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; }
 
     /* STAGE (JS pronto, >=641): só 3 cards (prev/active/next), resto oculto */
     @media (min-width:641px){
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-stage{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-stage{
         height:clamp(430px,42vw,548px); overflow:hidden;
         --b7-shift:clamp(138px,15vw,220px);   /* menor = centro sobrepõe os laterais (oclusão) */
         --b7-tilt:9deg;                        /* subir até ~10-12deg se quiser mais relevo */
@@ -953,28 +954,28 @@
         -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
         mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-track{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-track{
         position:absolute; inset:0; display:block; overflow:visible; padding:0; scroll-snap-type:none;
         transform-style:preserve-3d;           /* propaga a perspective do palco até os cards */
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card{
         position:absolute; top:50%; left:50%;
         transform:translate(-50%,-50%) scale(.7); opacity:0; pointer-events:none;
         transition:transform 800ms cubic-bezier(.19,1,.22,1), opacity 800ms cubic-bezier(.19,1,.22,1), filter 800ms cubic-bezier(.19,1,.22,1);
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-active{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-active{
         transform:translate(-50%,-50%) scale(1) rotateY(0); opacity:1; filter:none; z-index:3; pointer-events:auto;
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-active .b7-video-frame{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-active .b7-video-frame{
         box-shadow:0 50px 90px -46px rgba(20,14,10,.70), 0 18px 40px -30px rgba(20,14,10,.55);
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-prev{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-prev{
         transform:translate(calc(-50% - var(--b7-shift)), calc(-50% + 16px)) scale(.80) rotateY(var(--b7-tilt)); opacity:.46; z-index:2;
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-next{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-next{
         transform:translate(calc(-50% + var(--b7-shift)), calc(-50% + 16px)) scale(.80) rotateY(calc(-1 * var(--b7-tilt))); opacity:.46; z-index:2;
       }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-hidden{
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-hidden{
         transform:translate(-50%,-50%) scale(.7); opacity:0; pointer-events:none; z-index:1;
       }
     }
@@ -982,31 +983,31 @@
     /* MOBILE (<=640): scroll-snap, ~1.12 card, legenda sem estourar */
     @media (max-width:640px){
       /* trilho sai do padding do painel p/ centralizar o vídeo protagonista */
-      .page-depressao .b7-video-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
-      .page-depressao .b7-video-track{
+      .page-tratamento .b7-video-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
+      .page-tratamento .b7-video-track{
         gap:16px;
         padding-inline:calc((100% - min(78vw, 290px)) / 2);
       }
-      .page-depressao .b7-video-card{ width:min(78vw, 290px); }
+      .page-tratamento .b7-video-card{ width:min(78vw, 290px); }
     }
     @media (prefers-reduced-motion: reduce){
-      .page-depressao .b7-video-track{ scroll-behavior:auto; }
+      .page-tratamento .b7-video-track{ scroll-behavior:auto; }
     }
 
     /* ===== Continuidade de textura — blocos posteriores (acabamento sutil) ===== */
-    .page-depressao .tex-paper{
+    .page-tratamento .tex-paper{
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
         radial-gradient(100% 60% at 50% 0%, rgba(255,253,248,.50), transparent 55%),
         #F3EDE3;
     }
-    .page-depressao .tex-cream{
+    .page-tratamento .tex-cream{
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.01) 0 1px, transparent 1px 10px),
         radial-gradient(120% 70% at 50% 0%, rgba(255,252,246,.45), transparent 55%),
         #F3EDE3;
     }
-    .page-depressao .tex-band{
+    .page-tratamento .tex-band{
       background:
         repeating-linear-gradient(135deg, rgba(44,37,33,.008) 0 1px, transparent 1px 10px),
         linear-gradient(180deg, rgba(154,123,79,.04), transparent 62%),
@@ -1016,7 +1017,7 @@
     /* ============================================================ */
     /* BLOCO 7 — banda escura de marca (prova social unificada)      */
     /* ============================================================ */
-    .page-depressao .b7-section{
+    .page-tratamento .b7-section{
       position:relative; scroll-margin-top:5.5rem;
       padding-block:clamp(40px,5.5vw,76px) clamp(20px,3vw,38px);
       padding-inline:clamp(14px,3.5vw,32px);
@@ -1025,7 +1026,7 @@
         #F3EDE3;
     }
     /* sala reservada: painel escuro contido (não faixa cheia) */
-    .page-depressao .b7-inner{
+    .page-tratamento .b7-inner{
       position:relative; z-index:1; overflow:hidden; scroll-margin-top:5.5rem;
       border-radius:clamp(20px,2.4vw,30px);
       padding:clamp(2.6rem,4.4vw,4.25rem) clamp(1.3rem,3vw,3rem) clamp(1.9rem,3.2vw,2.8rem);
@@ -1034,14 +1035,14 @@
         linear-gradient(170deg, #302722 0%, #2B221D 60%, #271F1A 100%);
       box-shadow:0 40px 90px -60px rgba(20,14,11,.46), inset 0 1px 0 rgba(255,250,244,.04);
     }
-    .page-depressao .b7-section .b7-header h2{ color:#F3EDE3; }
-    .page-depressao .b7-eyebrow{ color:var(--bronze-on-dark); } /* B7 é fundo ESCURO (gradiente) → bronze-on-dark passa ~5.9; manter */
-    .page-depressao .b7-eyebrow::before, .page-depressao .b7-eyebrow::after{ background:rgba(201,160,106,.55); }
-    .page-depressao .b7-intro{ color:rgba(243,237,227,.82); }
-    .page-depressao .b7-intro strong{ color:#F3EDE3; }
-    .page-depressao .b7-rating{ color:#E0AE84; font-weight:600; }
+    .page-tratamento .b7-section .b7-header h2{ color:#F3EDE3; }
+    .page-tratamento .b7-eyebrow{ color:var(--bronze-on-dark); } /* B7 é fundo ESCURO (gradiente) → bronze-on-dark passa ~5.9; manter */
+    .page-tratamento .b7-eyebrow::before, .page-tratamento .b7-eyebrow::after{ background:rgba(201,160,106,.55); }
+    .page-tratamento .b7-intro{ color:rgba(243,237,227,.82); }
+    .page-tratamento .b7-intro strong{ color:#F3EDE3; }
+    .page-tratamento .b7-rating{ color:#E0AE84; font-weight:600; }
     /* subtitulos editoriais "Em video" / "Em palavras" */
-    .page-depressao .b7-label{
+    .page-tratamento .b7-label{
       text-align:center;
       font-family:"Playfair Display",Georgia,serif;
       font-size:clamp(1.4rem, 1.08rem + 1.2vw, 2.125rem);
@@ -1049,37 +1050,37 @@
       color:#E3C7A0;
       margin:clamp(3rem,5vw,4.25rem) 0 clamp(1.5rem,2.6vw,2.1rem);
     }
-    .page-depressao .b7-label::after{
+    .page-tratamento .b7-label::after{
       content:""; display:block; width:34px; height:1px; margin:.9rem auto 0;
       background:linear-gradient(90deg, transparent, rgba(201,160,106,.6), transparent);
     }
     /* play solido em tom de marca */
-    .page-depressao .b7-video-play{
+    .page-tratamento .b7-video-play{
       width:54px; height:54px; padding-left:3px;
       background:radial-gradient(circle at 50% 42%, rgba(120,48,28,.80), rgba(44,33,28,.72));
       border:1px solid rgba(243,237,227,.45); color:#F3EDE3;
       box-shadow:0 10px 26px -10px rgba(0,0,0,.55);
     }
     /* convite ao clique: escala discreta só no card ativo */
-    .page-depressao .b7-video-card.is-active .b7-video-play:hover{ background:radial-gradient(circle at 50% 42%, rgba(140,58,34,.88), rgba(54,40,33,.78)); transform:scale(1.05); }
+    .page-tratamento .b7-video-card.is-active .b7-video-play:hover{ background:radial-gradient(circle at 50% 42%, rgba(140,58,34,.88), rgba(54,40,33,.78)); transform:scale(1.05); }
     /* laterais do video: sem legenda competindo; play rebaixado (convite só no centro) */
     @media (min-width:641px){
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-prev,
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-next{ filter:blur(3px); }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-caption,
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-caption,
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-caption{ opacity:0; }
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-play,
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-play,
-      .js .page-depressao .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-play{ opacity:.35; }
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-prev,
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-next{ filter:blur(3px); }
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-caption,
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-caption,
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-caption{ opacity:0; }
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-prev .b7-video-play,
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-next .b7-video-play,
+      .js .page-tratamento .b7-video-carousel.is-ready .b7-video-card.is-hidden .b7-video-play{ opacity:.35; }
     }
     /* setas integradas ao fundo escuro */
-    .js .page-depressao .b7-video-carousel.is-ready .b7-video-button,
-    .page-depressao .b7-words-button{ background:rgba(243,237,227,.16); border-color:rgba(243,237,227,.30); color:#F3EDE3; }
-    .js .page-depressao .b7-video-carousel.is-ready .b7-video-button:hover,
-    .page-depressao .b7-words-button:hover{ background:rgba(243,237,227,.32); }
+    .js .page-tratamento .b7-video-carousel.is-ready .b7-video-button,
+    .page-tratamento .b7-words-button{ background:rgba(243,237,227,.16); border-color:rgba(243,237,227,.30); color:#F3EDE3; }
+    .js .page-tratamento .b7-video-carousel.is-ready .b7-video-button:hover,
+    .page-tratamento .b7-words-button:hover{ background:rgba(243,237,227,.32); }
     /* cards de texto claros flutuando: pilha + aresta de luz, sombra mais funda no escuro */
-    .page-depressao .b7-section .b7-card.card{
+    .page-tratamento .b7-section .b7-card.card{
       box-shadow:
         0 1px 2px rgba(0,0,0,.16),
         0 24px 46px -30px rgba(0,0,0,.46),
@@ -1089,61 +1090,61 @@
     /* ===== MOBILE "Em palavras": card único protagonista, centralizado ===== */
     @media (max-width:640px){
       /* trilho sai do padding do painel p/ poder centralizar de borda a borda */
-      .page-depressao .b7-words-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
-      .page-depressao .b7-words-track{
+      .page-tratamento .b7-words-carousel{ margin-inline:calc(-1 * clamp(1.3rem,3vw,3rem)); }
+      .page-tratamento .b7-words-track{
         gap:16px; padding-block:8px 6px;
         padding-inline:calc((100% - min(100vw - 40px, 390px)) / 2);
         -webkit-mask-image:none; mask-image:none;        /* sem fade de borda no mobile */
       }
-      .page-depressao .b7-words-card{
+      .page-tratamento .b7-words-card{
         width:min(100vw - 40px, 390px);
         margin-inline:auto; scroll-snap-align:center;     /* protagonista centralizado */
       }
       /* mobile: pilha mais curta, mantém contato + aresta de luz */
-      .page-depressao .b7-section .b7-card.card{
+      .page-tratamento .b7-section .b7-card.card{
         box-shadow:
           0 1px 2px rgba(0,0,0,.16),
           0 16px 30px -24px rgba(0,0,0,.42),
           inset 0 1px 0 rgba(255,255,255,.50);
       }
     }
-    .page-depressao .b7-card.card::before{ content:none; }
-    .page-depressao .b7-words-top{ margin-bottom:.55rem; }
+    .page-tratamento .b7-card.card::before{ content:none; }
+    .page-tratamento .b7-words-top{ margin-bottom:.55rem; }
     /* selos de verificacao com micro-icone monocromatico */
-    .page-depressao .b7-seal{
+    .page-tratamento .b7-seal{
       display:inline; color:#6E5634; font-size:.72rem; letter-spacing:.015em;
       font-family:var(--font-ui); white-space:nowrap;
     }
     /* ===== Micro-provas: linhas editoriais discretas espalhadas na LP ===== */
-    .page-depressao .microprova{ max-width:34rem; margin-inline:auto; text-align:center; }
-    .page-depressao .microprova-quote{
+    .page-tratamento .microprova{ max-width:34rem; margin-inline:auto; text-align:center; }
+    .page-tratamento .microprova-quote{
       font-family:"Playfair Display",Georgia,serif; font-style:italic;
       font-size:clamp(1.05rem, 0.98rem + 0.45vw, 1.3rem); line-height:1.5;
       color:#5E2616; text-wrap:balance;
     }
-    .page-depressao .microprova-cite{
+    .page-tratamento .microprova-cite{
       margin-top:.7rem; font-family:var(--font-ui);
       font-size:.72rem; letter-spacing:.02em; color:#6E5634;
     }
-    .page-depressao .microprova.on-dark .microprova-quote{ color:#F3EDE3; }
-    .page-depressao .microprova.on-dark .microprova-cite{ color:var(--bronze-on-dark); }
-    .page-depressao .microprova.on-dark .b7-seal{ color:var(--bronze-on-dark); }
+    .page-tratamento .microprova.on-dark .microprova-quote{ color:#F3EDE3; }
+    .page-tratamento .microprova.on-dark .microprova-cite{ color:var(--bronze-on-dark); }
+    .page-tratamento .microprova.on-dark .b7-seal{ color:var(--bronze-on-dark); }
 
     /* ===== BLOCO 8 "Quem conduz" — seção editorial com foto integrada (estilo hero) ===== */
-    .page-depressao .b8-section{ position:relative; isolation:isolate; overflow:hidden; background:#F3EDE3; }
-    .page-depressao .b8-section picture{ display:contents; }   /* o <img.b8-bg> herda layout como filho direto */
-    .page-depressao .b8-bg{ display:block; width:100%; object-fit:cover; filter:brightness(1.015) saturate(1.05) contrast(1.03); transform:scaleX(-1); }
-    .page-depressao .b8-veil{ position:absolute; inset:0; z-index:1; pointer-events:none; }
-    .page-depressao .b8-content{ position:relative; z-index:2; }
-    .page-depressao .b8-text{ max-width:500px; }
+    .page-tratamento .b8-section{ position:relative; isolation:isolate; overflow:hidden; background:#F3EDE3; }
+    .page-tratamento .b8-section picture{ display:contents; }   /* o <img.b8-bg> herda layout como filho direto */
+    .page-tratamento .b8-bg{ display:block; width:100%; object-fit:cover; filter:brightness(1.015) saturate(1.05) contrast(1.03); transform:scaleX(-1); }
+    .page-tratamento .b8-veil{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+    .page-tratamento .b8-content{ position:relative; z-index:2; }
+    .page-tratamento .b8-text{ max-width:500px; }
     /* DESKTOP (≥1024): foto full-bleed ao fundo (Cris à esquerda); texto sobre campo cream à direita.
        Abaixo de 1024 o layout horizontal aperta a coluna contra a foto → usa o empilhado. */
     @media (min-width:1024px){
-      .page-depressao .b8-section{ min-height:clamp(460px,54vh,580px); display:flex; align-items:center; }
-      .page-depressao .b8-bg{ position:absolute; top:0; bottom:0; left:-4vw; right:auto; width:100%; height:100%; object-position:74% 32%; z-index:0; }
+      .page-tratamento .b8-section{ min-height:clamp(460px,54vh,580px); display:flex; align-items:center; }
+      .page-tratamento .b8-bg{ position:absolute; top:0; bottom:0; left:-4vw; right:auto; width:100%; height:100%; object-position:74% 32%; z-index:0; }
       /* luz natural entrando da direita: foto limpa à esquerda (rosto/cabelo/ombro),
          fusão começa ~44%, campo claro do texto a partir de ~59% */
-      .page-depressao .b8-veil{
+      .page-tratamento .b8-veil{
         background:
           repeating-linear-gradient(135deg, rgba(44,37,33,.012) 0 1px, transparent 1px 9px),
           linear-gradient(92deg,
@@ -1154,21 +1155,21 @@
             #F3EDE3 54%,
             #F3EDE3 100%);
       }
-      .page-depressao .b8-content{ width:100%; padding-block:clamp(40px,5vh,68px); }
-      .page-depressao .b8-text{ margin-left:auto; }
+      .page-tratamento .b8-content{ width:100%; padding-block:clamp(40px,5vh,68px); }
+      .page-tratamento .b8-text{ margin-left:auto; }
     }
     /* ATÉ 1023 (mobile + tablet/notebook estreito): foto como faixa editorial no topo, texto sobre cream abaixo */
     @media (max-width:1023px){
-      .page-depressao .b8-bg{ position:relative; aspect-ratio:4/5; max-height:72vh; object-position:81% 24%; }
-      .page-depressao .b8-veil{ display:none; }
-      .page-depressao .b8-content{ padding:clamp(1.75rem,6vw,2.5rem) 0 clamp(0px,1vw,8px); }
+      .page-tratamento .b8-bg{ position:relative; aspect-ratio:4/5; max-height:72vh; object-position:81% 24%; }
+      .page-tratamento .b8-veil{ display:none; }
+      .page-tratamento .b8-content{ padding:clamp(1.75rem,6vw,2.5rem) 0 clamp(0px,1vw,8px); }
       /* cabeçalho centralizado (declaração); parágrafos longos seguem à esquerda (argumento) */
-      .page-depressao .b8-text{ text-align:center; }
-      .page-depressao .b8-text p:not(:first-of-type){ text-align:left; }
-      .page-depressao .b8-text details{ text-align:left; }
+      .page-tratamento .b8-text{ text-align:center; }
+      .page-tratamento .b8-text p:not(:first-of-type){ text-align:left; }
+      .page-tratamento .b8-text details{ text-align:left; }
     }
     /* ===== BLOCO 9 "O primeiro passo" — convite premium (espresso mineral) ===== */
-    .page-depressao .b9-card{
+    .page-tratamento .b9-card{
       position:relative; overflow:hidden;
       border-radius:clamp(16px,1.6vw,22px);
       padding:clamp(2rem,4.2vw,3.5rem);
@@ -1179,116 +1180,116 @@
       border:1px solid rgba(154,123,79,.14);
       box-shadow:0 56px 112px -66px rgba(20,14,11,.42), 0 18px 44px -30px rgba(20,14,11,.24);
     }
-    .page-depressao .b9-measure{ max-width:58ch; }
-    .page-depressao .b9-list{ margin-top:1.35rem; display:flex; flex-direction:column; gap:.95rem; }
-    .page-depressao .b9-list li{ display:flex; gap:.85rem; align-items:flex-start; }
-    .page-depressao .b9-arrow{ flex:0 0 auto; margin-top:.16rem; color:rgba(201,160,106,.82); font-size:.92em; line-height:1.45; }
-    .page-depressao .b9-cta{ box-shadow:0 18px 40px -26px rgba(0,0,0,.36); }
+    .page-tratamento .b9-measure{ max-width:58ch; }
+    .page-tratamento .b9-list{ margin-top:1.35rem; display:flex; flex-direction:column; gap:.95rem; }
+    .page-tratamento .b9-list li{ display:flex; gap:.85rem; align-items:flex-start; }
+    .page-tratamento .b9-arrow{ flex:0 0 auto; margin-top:.16rem; color:rgba(201,160,106,.82); font-size:.92em; line-height:1.45; }
+    .page-tratamento .b9-cta{ box-shadow:0 18px 40px -26px rgba(0,0,0,.36); }
 
     /* ===== BLOCO 10 FAQ — clareza editorial, silenciosa ===== */
     /* fronteira B9→B10: mesmo canvas #F3EDE3; divisor hairline p/ passagem percebida (não degrau) */
-    .page-depressao .b10-section{ border-top:1px solid rgba(154,123,79,.14); }
-    .page-depressao .faq-sig{ max-width:30rem; }
-    .page-depressao .faq-sig .microprova-quote{ font-size:clamp(1rem, 0.95rem + 0.28vw, 1.16rem); }
-    .page-depressao .faq-list{
+    .page-tratamento .b10-section{ border-top:1px solid rgba(154,123,79,.14); }
+    .page-tratamento .faq-sig{ max-width:30rem; }
+    .page-tratamento .faq-sig .microprova-quote{ font-size:clamp(1rem, 0.95rem + 0.28vw, 1.16rem); }
+    .page-tratamento .faq-list{
       margin-top:clamp(1.25rem,2.2vw,1.85rem);          /* respiro citação→lista reduzido */
       display:flex; flex-direction:column; gap:8px;
       border-top:1px solid rgba(154,123,79,.14);         /* divisor antes da lista, delicado */
       padding-top:8px;
     }
     /* fechado: linha de índice editorial, fina — sem caixa, sem sombra */
-    .page-depressao .faq-item{
+    .page-tratamento .faq-item{
       border-bottom:1px solid rgba(154,123,79,.14); border-radius:12px;
       transition:background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
     }
     /* aberto: papel premium sobre papel (contraste sutil + borda discreta + sombra longa) */
-    .page-depressao .faq-item[open]{
+    .page-tratamento .faq-item[open]{
       background:rgba(243,237,227,.58);
       border:1px solid rgba(154,123,79,.12);
       box-shadow:0 24px 70px rgba(44,37,33,.045);
     }
-    .page-depressao .faq-item summary{
+    .page-tratamento .faq-item summary{
       list-style:none; cursor:pointer;
       display:flex; align-items:flex-start; justify-content:space-between; gap:1.25rem;
       padding:24px 28px;                                  /* fechado: 24/28 */
     }
-    .page-depressao .faq-item[open] summary{ padding:28px 32px 10px; }   /* aberto: 28/32 */
-    .page-depressao .faq-item summary::-webkit-details-marker{ display:none; }
-    .page-depressao .faq-q{
+    .page-tratamento .faq-item[open] summary{ padding:28px 32px 10px; }   /* aberto: 28/32 */
+    .page-tratamento .faq-item summary::-webkit-details-marker{ display:none; }
+    .page-tratamento .faq-q{
       max-width:46ch; color:#5E2616; padding-right:.25rem;
       font-family:"Playfair Display",Georgia,serif; font-weight:600;
       font-size:clamp(1.02rem, 0.97rem + 0.32vw, 1.18rem); line-height:1.34; text-wrap:pretty;
     }
-    .page-depressao .faq-ico{
+    .page-tratamento .faq-ico{
       flex:0 0 auto; width:16px; height:16px; margin-top:.32rem;
       color:rgba(168,107,76,.82);
       transition:transform .32s cubic-bezier(.19,1,.22,1), color .32s cubic-bezier(.19,1,.22,1);
     }
-    .page-depressao .faq-item[open] .faq-ico{ transform:rotate(45deg); color:rgba(168,107,76,.92); }
-    .page-depressao .faq-a{
+    .page-tratamento .faq-item[open] .faq-ico{ transform:rotate(45deg); color:rgba(168,107,76,.92); }
+    .page-tratamento .faq-a{
       max-width:60ch; color:rgba(44,37,33,.82); line-height:1.8; text-wrap:pretty;
       margin:0; padding:6px 32px 30px;                    /* +respiro pergunta→resposta */
     }
     /* ===== BLOCO 11 CTA final — espresso quente, vinheta sutil, transição alta ===== */
-    .page-depressao .b11-section{
+    .page-tratamento .b11-section{
       background:
         radial-gradient(120% 85% at 50% 30%, rgba(94,38,22,.15), transparent 58%),   /* calor do rust, baixa intensidade */
         radial-gradient(125% 132% at 50% 50%, transparent 50%, rgba(0,0,0,.26)),      /* vinheta muito sutil nas bordas */
         linear-gradient(165deg, #32231E 0%, #2C2521 58%, #261E1A 100%);               /* espresso/carvão quente, sem vermelho saturado */
     }
     /* finale: transição DELIBERADA claro→escuro — marfim (#F3EDE3) → bloom rust (#5E2616) → espresso */
-    .page-depressao .b11-section::before{
+    .page-tratamento .b11-section::before{
       content:""; position:absolute; left:0; right:0; top:0; z-index:0; pointer-events:none;
       height:clamp(120px,16vh,200px);
       background:linear-gradient(to bottom, #F3EDE3 0%, rgba(94,38,22,.55) 55%, rgba(94,38,22,0) 100%);
     }
-    .page-depressao .b11-inner{ position:relative; z-index:1; padding-top:clamp(128px,17vh,210px); }
+    .page-tratamento .b11-inner{ position:relative; z-index:1; padding-top:clamp(128px,17vh,210px); }
     /* links legais do rodapé — discretos, sem botão, sublinhado só no hover/focus */
-    .page-depressao .footer-legal{ color:rgba(243,237,227,.66); text-decoration:none; transition:color .25s ease; }
-    .page-depressao .footer-legal:hover{ color:#9A7B4F; text-decoration:underline; text-underline-offset:3px; }
-    .page-depressao .footer-legal:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:2px; color:#9A7B4F; }
+    .page-tratamento .footer-legal{ color:rgba(243,237,227,.66); text-decoration:none; transition:color .25s ease; }
+    .page-tratamento .footer-legal:hover{ color:#9A7B4F; text-decoration:underline; text-underline-offset:3px; }
+    .page-tratamento .footer-legal:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:2px; color:#9A7B4F; }
     /* redes sociais do rodapé — ícones discretos, hover dourado */
-    .page-depressao .footer-social{ display:inline-flex; color:rgba(201,160,106,.75); transition:color .25s ease; }
-    .page-depressao .footer-social:hover{ color:#C9A06A; }
-    .page-depressao .footer-social:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:4px; color:#C9A06A; }
+    .page-tratamento .footer-social{ display:inline-flex; color:rgba(201,160,106,.75); transition:color .25s ease; }
+    .page-tratamento .footer-social:hover{ color:#C9A06A; }
+    .page-tratamento .footer-social:focus-visible{ outline:2px solid rgba(154,123,79,.9); outline-offset:3px; border-radius:4px; color:#C9A06A; }
     /* alinhamento óptico: a SVG manuscrita tem ~14% de respiro à esquerda; no desktop puxamos a logo
        para que a borda visível do "CRIS" bata na mesma vertical da borda dos ícones (margem do bloco-marca).
        Só em md+ (no mobile a coluna é centralizada — não deslocar). */
     @media (min-width:768px){
-      .page-depressao footer .brand-logo{ margin-left:-24px; }
+      .page-tratamento footer .brand-logo{ margin-left:-24px; }
     }
     @media (prefers-reduced-motion: reduce){
-      .page-depressao .faq-ico{ transition:color .32s linear; }
+      .page-tratamento .faq-ico{ transition:color .32s linear; }
     }
     @media (max-width:640px){
-      .page-depressao .faq-item summary{ padding:20px 20px; }
-      .page-depressao .faq-item[open] summary{ padding:22px 20px 8px; }   /* aberto mobile: 22/20/24 */
-      .page-depressao .faq-a{ padding:6px 20px 24px; }
+      .page-tratamento .faq-item summary{ padding:20px 20px; }
+      .page-tratamento .faq-item[open] summary{ padding:22px 20px 8px; }   /* aberto mobile: 22/20/24 */
+      .page-tratamento .faq-a{ padding:6px 20px 24px; }
     }
-    .page-depressao .b7-words-end{ gap:.1rem; }
+    .page-tratamento .b7-words-end{ gap:.1rem; }
 
     /* ===== Bloco 6 "O custo" — refino tipografico (medida/quebras) ===== */
     /* titulos e destaques: linhas equilibradas */
-    .page-depressao .b6-title{ text-wrap:balance; }
+    .page-tratamento .b6-title{ text-wrap:balance; }
     /* depoimento: voz da cliente, distinta do climax (rust serifada) */
-    .page-depressao .b6-testimonial{ max-width:34rem; margin-inline:auto; }
-    .page-depressao .b6-quote{ text-wrap:balance; }
+    .page-tratamento .b6-testimonial{ max-width:34rem; margin-inline:auto; }
+    .page-tratamento .b6-quote{ text-wrap:balance; }
     /* lead: medida mais curta + pretty p/ nao isolar "a que custo." */
-    .page-depressao .b6-lead{ text-wrap:balance; max-width:33rem; margin-inline:auto; }
+    .page-tratamento .b6-lead{ text-wrap:balance; max-width:33rem; margin-inline:auto; }
     /* paragrafo-corpo: argumento corrido -> esquerda; coluna segue centralizada */
-    .page-depressao .b6-body{ text-align:left; text-wrap:pretty; max-width:33rem; margin-inline:auto; }
+    .page-tratamento .b6-body{ text-align:left; text-wrap:pretty; max-width:33rem; margin-inline:auto; }
     /* frase em destaque: balanceada, presenca editorial, -1 a -2px no desktop */
-    .page-depressao .b6-emph{
+    .page-tratamento .b6-emph{
       text-wrap:balance; max-width:36rem; margin-inline:auto;
       font-size:clamp(1.25rem, 1.05rem + 0.55vw, 1.42rem); line-height:1.5;
     }
     /* a11y contraste: subtitulo do header (era text-clay 3.39) e copyright do rodape (era cream/45 3.81) */
-    .page-depressao header span.uppercase{ color:#6E5634; }
-    .page-depressao footer .pt-6 > p{ color:rgba(243,237,227,.55); }
+    .page-tratamento header span.uppercase{ color:#6E5634; }
+    .page-tratamento footer .pt-6 > p{ color:rgba(243,237,227,.55); }
   </style>
 </head>
 
-<body data-origem="depressao" class="page-depressao font-sans antialiased text-ink pb-28 md:pb-0">
+<body data-origem="tratamento" class="page-tratamento font-sans antialiased text-ink pb-28 md:pb-0">
 
   <!-- ===== Portão de nome — captura pré-WhatsApp (todos os CTAs) ===== -->
   <div id="name-gate" class="name-gate" hidden aria-hidden="true">
@@ -1339,12 +1340,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- ==BLOCO1:KICKER== -->Terapia breve · presencial em SP e online<!-- ==/BLOCO1:KICKER== -->
           </p>
           <h1 class="hero-title font-serif font-bold leading-[1.07] text-[2.4rem] sm:text-[3.3rem] text-rust">
-            <!-- ==BLOCO1:H1== -->Não é preguiça nem falta de fé. <em class="italic font-medium text-terra">A depressão tem causa. E com terapia breve, tem fim.</em><!-- ==/BLOCO1:H1== -->
+            <!-- ==BLOCO1:H1== -->Existe tratamento para ansiedade que chega na causa. <em class="italic font-medium text-terra">E o caminho é mais curto do que você imagina.</em><!-- ==/BLOCO1:H1== -->
           </h1>
           <p class="mt-5 text-base md:text-lg leading-relaxed text-ink/80">
-            Levantar já custa. Você cumpre o dia no automático e chega em casa sem nada sobrando, nem para quem você ama. E ainda escuta que é falta de vontade. O tratamento vai à <span class="text-terra">raiz</span> do que apagou a sua vontade, e caminha junto do acompanhamento médico, nunca no lugar dele.
+            O peito aperta sem motivo. Às três da manhã você está acordada de novo, esperando passar. E ainda ouve que é só ansiedade, como se isso fosse pouco. Você já fez o que a internet manda e não resolveu, porque dica não chega na <span class="text-terra">raiz</span>. Tratamento chega.
           </p>
-          <p class="mt-3 text-[0.8rem] leading-snug text-ink/55"><em>A hipnoterapia caminha junto do acompanhamento médico ou psiquiátrico. Não o substitui.</em></p>
         </div>
         <!-- MOBILE: foto cedo (LCP mobile); no desktop é o fundo full-bleed -->
         <picture style="display:contents">
@@ -1356,7 +1356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- baixo: subhead + CTA + prova social -->
         <div class="order-3 w-full max-w-xl">
           <p class="md:mt-6 text-base md:text-lg leading-relaxed text-ink/90 max-w-lg">
-            Hipnoterapia Integrativa e o <strong class="font-medium text-rust">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.
+            O tratamento é a Hipnoterapia Integrativa com o <strong class="font-medium text-rust">Método Voltar a Si</strong>: poucas sessões, não anos. Começa pela <strong class="font-medium text-rust">Sessão de Clareza</strong>, 60 minutos para entender a raiz do que você sente e sair com um caminho definido. Particular e sigiloso, na Vila Madalena ou online.
           </p>
           <div class="mt-8 md:mt-9 hidden md:block">
             <a href="https://wa.me/5511978622903" class="whatsapp-cta cta-solid inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg">
@@ -1457,8 +1457,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="tex-band bg-[#EFE6D6]">
       <div class="max-w-2xl mx-auto px-4 md:px-8 py-9 text-center">
         <figure class="microprova reveal">
-          <p class="microprova-quote">“Cris me ajudou a voltar a dormir!”</p>
-          <figcaption class="microprova-cite">— Lucienne C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+          <p class="microprova-quote">“O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.”</p>
+          <figcaption class="microprova-cite">— Amanda V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
         </figure>
         <p class="mt-6 text-sm md:text-base text-ink/70"><span class="text-terra font-medium">★ 4,9 no Google</span> · +900 atendimentos em +9 anos</p>
       </div>
@@ -1615,6 +1615,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="words-track" class="b7-words-track no-scrollbar" role="group" aria-label="Depoimentos em texto">
           <blockquote class="b7-words-card b7-card card">
             <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A ansiedade atrapalhava demais várias áreas da vida. Depois do processo, as brigas no relacionamento acabaram.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Gabriela L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…as vezes a ansiedade fala, e eu logo calo ela. A Cris me ensinou que a nossa mente nos engana e é verdade, sofremos a toa.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Mais segura sobre o que quer, com forças para seguir combatendo os próprios pensamentos.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Fernanda M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">A cada sessão, uma melhora significativa. Ao fim da terapia, a mudança interna foi incrível.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Abel F. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Uma profissional ética, transparente, que se preocupa de alma com os pacientes.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Amanda V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card">
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
             <p class="b7-quote mt-3 font-serif text-lg text-rust">“O que poderia levar anos pra eu entender num processo tradicional de análise/ terapia, eu pude entender nas sessões com a Cris.”</p>
             <p class="b7-body mt-3 text-ink/80 text-[15px]">Veio com preconceito e mil dúvidas sobre a hipnoterapia. Saiu tendo se encontrado consigo mesma.</p>
             <p class="b7-meta mt-4 text-xs text-clay">— Paula C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
@@ -1679,35 +1703,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="b7-body mt-3 text-ink/80 text-[15px]">Queixas que carregou a vida toda tentando resolver. Espera que mais pessoas se abram para a experiência.</p>
             <p class="b7-meta mt-4 text-xs text-clay">— Mariah L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
           </blockquote>
-          <blockquote class="b7-words-card b7-card card">
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…hoje não sinto mais aquelas travas que me limitavam. Me sinto uma nova versão de mim mesma, mais confiante.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Aos poucos, uma grande melhora na autoestima. Sempre acolhida e ouvida nas sessões.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Stephanie G. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card">
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Na primeira sessão eu acabei tomando consciência e me libertando de bloqueios que afetavam a minha vida em muitos aspectos.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Foi conduzido por um processo muito mais profundo do que imaginava. Concluiu totalmente transformado.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Thiago V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card">
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Desde que saí do processo já sinto uma motivação e ânimo diferente no meu dia a dia, com uma fluidez muito gostosa.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Dois dias intensos, leves e surpreendentes de alinhamento: da missão de vida ao estado presente.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Liliana P. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card">
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Cada sessão foi reveladora e estou até agora sem palavras pra definir o quanto elas me modificaram .”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Primeira experiência com hipnoterapia, tão marcante que já quer voltar para mais.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Janaina R. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
           <button type="button" id="words-gate" aria-expanded="false" aria-controls="words-track" class="b7-words-card b7-card card b7-words-gate justify-center items-center text-center">
             <span class="font-serif text-2xl text-rust">Ver mais depoimentos</span>
             <span class="mt-2 text-sm text-ink/65">+17 relatos verificados</span>
             <span class="b7-words-gate-ico mt-4" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
           </button>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…hoje não sinto mais aquelas travas que me limitavam. Me sinto uma nova versão de mim mesma, mais confiante.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Aos poucos, uma grande melhora na autoestima. Sempre acolhida e ouvida nas sessões.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Stephanie G. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Na primeira sessão eu acabei tomando consciência e me libertando de bloqueios que afetavam a minha vida em muitos aspectos.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Foi conduzido por um processo muito mais profundo do que imaginava. Concluiu totalmente transformado.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Thiago V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Desde que saí do processo já sinto uma motivação e ânimo diferente no meu dia a dia, com uma fluidez muito gostosa.”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Dois dias intensos, leves e surpreendentes de alinhamento: da missão de vida ao estado presente.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Liliana P. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
+          <blockquote class="b7-words-card b7-card card" hidden>
+            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
+            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Cada sessão foi reveladora e estou até agora sem palavras pra definir o quanto elas me modificaram .”</p>
+            <p class="b7-body mt-3 text-ink/80 text-[15px]">Primeira experiência com hipnoterapia, tão marcante que já quer voltar para mais.</p>
+            <p class="b7-meta mt-4 text-xs text-clay">— Janaina R. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
+          </blockquote>
           <blockquote class="b7-words-card b7-card card" hidden>
             <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
             <p class="b7-quote mt-3 font-serif text-lg text-rust">“…me sinto triste em saber que muitas pessoas passarão suas vidas sem ao menos saberem a que tipo de experiência me refiro”</p>
@@ -1755,30 +1779,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="b7-quote mt-3 font-serif text-lg text-rust">“…consegui ser mais confiante e ser do jeito que sou sem me preocupar com a opinião de outras pessoas.”</p>
             <p class="b7-body mt-3 text-ink/80 text-[15px]">Logo após a hipnoterapia, já sentiu a diferença. Sempre confortável e à vontade.</p>
             <p class="b7-meta mt-4 text-xs text-clay">— Mayara C. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card" hidden>
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">A ansiedade atrapalhava demais várias áreas da vida. Depois do processo, as brigas no relacionamento acabaram.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Gabriela L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card" hidden>
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…as vezes a ansiedade fala, e eu logo calo ela. A Cris me ensinou que a nossa mente nos engana e é verdade, sofremos a toa.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Mais segura sobre o que quer, com forças para seguir combatendo os próprios pensamentos.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Fernanda M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card" hidden>
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“…melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">A cada sessão, uma melhora significativa. Ao fim da terapia, a mudança interna foi incrível.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Abel F. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
-          </blockquote>
-          <blockquote class="b7-words-card b7-card card" hidden>
-            <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
-            <p class="b7-quote mt-3 font-serif text-lg text-rust">“O tratamento com ela ajudou - e muito - a reduzir minha ansiedade e medo de mudanças.”</p>
-            <p class="b7-body mt-3 text-ink/80 text-[15px]">Uma profissional ética, transparente, que se preocupa de alma com os pacientes.</p>
-            <p class="b7-meta mt-4 text-xs text-clay">— Amanda V. · <span class="b7-seal">★★★★★ · Verificada no Google</span></p>
           </blockquote>
           <blockquote class="b7-words-card b7-card card" hidden>
             <div class="b7-words-top"><span class="b7-words-index" aria-hidden="true"></span></div>
@@ -1873,8 +1873,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section id="sessao" class="tex-cream bg-cream">
       <div class="max-w-3xl mx-auto px-4 md:px-8 pt-8 md:pt-10 pb-16 md:pb-24">
         <figure class="microprova reveal mb-6">
-          <p class="microprova-quote">“…saí de lá entendendo os porques dos meus medos, especialmente do medo de ser feliz!”</p>
-          <figcaption class="microprova-cite">— Sônia M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+          <p class="microprova-quote">“…melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.”</p>
+          <figcaption class="microprova-cite">— Abel F. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
         </figure>
         <div class="b9-card reveal">
           <div class="relative text-cream b9-measure mx-auto">
@@ -1919,8 +1919,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="rule w-16 mx-auto mt-6"></div>
         </div>
         <figure class="microprova faq-sig reveal mt-7">
-          <p class="microprova-quote">“Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.”</p>
-          <figcaption class="microprova-cite">— Barbara L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+          <p class="microprova-quote">“…as vezes a ansiedade fala, e eu logo calo ela.”</p>
+          <figcaption class="microprova-cite">— Fernanda M. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
         </figure>
         <div class="faq-list reveal">
           <!-- BUSCA LITERAL (31/07/2026): as 6 primeiras respondem, com as palavras
@@ -1967,8 +1967,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="mt-3 text-sm text-cream/70">Atendimento particular e sigiloso · Vila Madalena (SP) ou online</p>
         </div>
         <figure class="microprova on-dark reveal mt-12">
-          <p class="microprova-quote">“Transformadora, não tem outra forma de descrever. Retomei o melhor de mim, porém com uma visão mais madura”</p>
-          <figcaption class="microprova-cite">— Carlos L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
+          <p class="microprova-quote">“Hoje consigo lidar com todas as situações de forma mais calma, vencer o medo do novo e me respeitar.”</p>
+          <figcaption class="microprova-cite">— Gabriela L. · <span class="b7-seal">★★★★★ · Verificada no Google</span></figcaption>
         </figure>
         <div class="w-24 h-px mx-auto mt-10 mb-6 bg-cream/30 reveal"></div>
         <p class="text-sm text-cream/75 reveal">
