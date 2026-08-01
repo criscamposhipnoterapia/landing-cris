@@ -50,9 +50,16 @@
       var params = new URLSearchParams(window.location.search);
       var CLICK_IDS = ['gclid', 'gbraid', 'wbraid'];
       var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      // 31/07/2026 — "conta" chega pelo sufixo de URL final da campanha
+      // (conta=683 / conta=152). Sem ela não dá para saber QUAL conta serviu o
+      // clique, e o upload de conversão falha inteiro: cada conta rejeita o
+      // gclid que a outra serviu. Segue a mesma regra dos click IDs, inclusive a
+      // prioridade da URL, para que um visitante que volta por outro anúncio
+      // seja atribuído à conta do clique mais recente.
+      var CONTA = ['conta'];
 
       // 1) Captura/persistência — URL tem prioridade; senão mantém o já salvo.
-      CLICK_IDS.concat(UTM).forEach(function (k) {
+      CLICK_IDS.concat(UTM).concat(CONTA).forEach(function (k) {
         var v = params.get(k);
         if (v) { setCookie(k, v); lsSet(k, v); }
       });
@@ -75,6 +82,7 @@
           try {
             var payload = JSON.stringify({
               gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
+              conta: getVal('conta') || '',
               origem: ORIGEM, pagina: location.pathname, ua: navigator.userAgent, nome: nome || ''
             });
             if (navigator.sendBeacon) {
@@ -99,6 +107,7 @@
           var pv = JSON.stringify({
             event_type: 'pageview',
             gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
+            conta: getVal('conta') || '',
             origem: ORIGEM, pagina: location.pathname,
             referrer: document.referrer || '',
             utm_source: params.get('utm_source') || '',
