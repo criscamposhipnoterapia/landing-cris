@@ -30,6 +30,9 @@ MASTER = os.path.join(BASE, "ansiedade.html")
 
 VISIBLE = 15  # cards visíveis antes do portão "Ver mais"
 
+# Origem canônica do site. Com barra final: a home é ".../" e as demais ".../slug".
+SITE = "https://www.cristinacampos.com.br/"
+
 # Mapa nome -> tema (curadoria V3 LITERAL). Nomes são únicos na assinatura "— Nome I.".
 NAME_TEMA = {
     "Gabriela L.": "ansiedade", "Fernanda M.": "ansiedade", "Abel F.": "ansiedade", "Amanda V.": "ansiedade",
@@ -414,6 +417,21 @@ def main():
         # noindex opcional (variantes de campanha que duplicam conteúdo; AdsBot ignora)
         if cfg.get("noindex"):
             c = sub_once(r"</title>", '</title>\n  <meta name="robots" content="noindex" />', c, "noindex")
+
+        # rel="canonical" — cada página INDEXADA aponta para si mesma. As 7 indexadas
+        # compartilham ~85% do conteúdo (32 depoimentos, método, FAQ); sem canonical o
+        # Google escolhe sozinho a versão boa e pode escolher errado.
+        # As 3 com noindex NÃO recebem canonical: já estão fora do índice de propósito,
+        # e canonical numa página noindex é sinal contraditório.
+        # O href sai do nome do arquivo, não de um mapa à parte, para não haver duas
+        # fontes de verdade divergindo quando nascer uma página nova.
+        if cfg.get("noindex"):
+            c = sub_once(r'\n[ \t]*<link rel="canonical"[^>]*/>', "", c, "canonical-remover")
+        else:
+            slug = "" if fname == "index.html" else fname[: -len(".html")]
+            c = sub_once(r'<link rel="canonical"[^>]*/>',
+                         '<link rel="canonical" href="%s%s" />' % (SITE, slug),
+                         c, "canonical")
         c = sub_once(r"<!-- ==BLOCO1:KICKER== -->.*?<!-- ==/BLOCO1:KICKER== -->",
                      "<!-- ==BLOCO1:KICKER== -->%s<!-- ==/BLOCO1:KICKER== -->" % cfg["kicker"], c, "kicker", re.DOTALL)
         c = sub_once(r"<!-- ==BLOCO1:H1== -->.*?<!-- ==/BLOCO1:H1== -->",
@@ -453,6 +471,13 @@ def main():
         assert cfg["scope"] in c and cfg["title"] in c, "%s: identidade não aplicada" % fname
         assert c.count('id="words-gate"') == 1, "%s: portão duplicado/ausente" % fname
         assert c.count(CARD_HID) == 17, "%s: %d cards ocultos (esperava 17)" % (fname, c.count(CARD_HID))
+        if cfg.get("noindex"):
+            assert 'rel="canonical"' not in c, "%s: página noindex não pode ter canonical" % fname
+        else:
+            esperado = '<link rel="canonical" href="%s%s" />' % (
+                SITE, "" if fname == "index.html" else fname[: -len(".html")])
+            assert c.count('rel="canonical"') == 1, "%s: canonical ausente ou duplicado" % fname
+            assert esperado in c, "%s: canonical errado (esperava %s)" % (fname, esperado)
 
         with io.open(os.path.join(BASE, fname), "w", encoding="utf-8") as out:
             out.write(c)
