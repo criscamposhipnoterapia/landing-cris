@@ -111,13 +111,38 @@ PAGES = {
         # noindex: conteudo duplicado da /ansiedade (AdsBot ignora noindex).
         "scope": "page-tratamento", "origem": "tratamento",
         "noindex": True,
-        "title": "Cris Campos · Tratamento para Ansiedade que vai à causa",
-        "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "Existe tratamento para ansiedade que chega na causa. <em class=\"italic font-medium text-terra\">E o caminho é mais curto do que você imagina.</em>",
-        "subhead": ("O peito aperta sem motivo. Às três da manhã você está acordada de novo, "
-                    "esperando passar. E ainda ouve que é só ansiedade, como se isso fosse pouco. "
-                    "Você já fez o que a internet manda e não resolveu, porque dica não chega na "
-                    "<span class=\"text-terra\">raiz</span>. Tratamento chega."),
+        # 07/08/2026 — PRIMEIRA DOBRA REESCRITA. A anterior abria em ANSIEDADE
+        # porque a pagina nasceu para o grupo "Tratamento / Cura" da conta 152,
+        # cuja palavra que mais gastava era "tratamento para ansiedade".
+        #
+        # A 152 secou em 04/08. Hoje quem manda trafego para ca e o grupo
+        # Hipnoterapia da 683, cujas OITO palavras sao: Hipnoterapia,
+        # Hipnoterapeuta, Hipnose clinica, hipnose terapia, terapia com hipnose,
+        # terapia hipnotica, hipnoterapia em SP, hipnoterapia em Vila Madalena.
+        # Nenhuma contem "ansiedade" nem "tratamento".
+        #
+        # Medido em 07/08: dos 21 cliques da pagina, so 2 eram sobre ansiedade.
+        # Os outros 19 chegavam numa pagina que abre falando de peito apertado as
+        # tres da manha, e nao se reconheciam. Visita -> clique no WhatsApp: 6,9%,
+        # o pior das paginas de anuncio (a /ansiedade01 faz 23,5%).
+        #
+        # Quem busca "hipnoterapia" esta consciente da SOLUCAO e nao nomeou a
+        # propria dor. A pagina respondia uma pergunta que ele nao fez. Agora ela
+        # responde a que ele fez ("trata o que?") e ABRE O LEQUE do escopo real
+        # para ele se reconhecer, em vez de escolher a dor por ele.
+        #
+        # As 18 queixas em escopo estao na memoria escopo-de-atendimento-cris.
+        # Autoestima e relacionamento ganham frase propria, nao item de lista:
+        # o deep dive de 63 fichas mostrou que sao bolsoes tao grandes quanto
+        # ansiedade.
+        "title": "Cris Campos · Hipnoterapia em SP: tratamento que vai à raiz",
+        "kicker": "Hipnoterapia Integrativa em São Paulo · terapia breve",
+        "h1": "Hipnoterapia trata o quê? <em class=\"italic font-medium text-terra\">O que se repete, e que você já tentou resolver sozinho.</em>",
+        "subhead": ("Ansiedade, pânico, fobia. Insônia e bruxismo. Compulsão alimentar, "
+                    "vícios, gagueira, timidez. Uma autoestima que nunca se sustenta, "
+                    "um padrão de relacionamento que sempre termina igual. Não é força de "
+                    "vontade que falta: é que a <span class=\"text-terra\">raiz</span> está "
+                    "numa camada que a vontade não alcança."),
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
              "O tratamento é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: poucas sessões, não anos. Começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>, 60 minutos para entender a raiz do que você sente e sair com um caminho definido. Particular e sigiloso, na Vila Madalena ou online."),
