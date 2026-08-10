@@ -339,6 +339,41 @@ PAGES = {
             ("Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.", "Barbara L."),
         ],
     },
+    "falar-em-publico.html": {
+        # Página nova de 11/08/2026, aprovada pelo Rodrigo. Existe para MEDIR um tema,
+        # não por estética: cruzando os temas em escopo com o que a conta 683 já tocou
+        # de raspão pelas amplas dos outros grupos, "falar em público / timidez /
+        # bloqueio" tem a melhor CTR (12,20% em 33 termos) e a única conversão fora do
+        # tráfego informacional, e NENHUM grupo compra o tema hoje. Bate com as fichas:
+        # 5 fichas de bloqueio profissional, o recorte de renda mais alta que a Cris
+        # atende. As 8 palavras passam limpo na política de saúde do Google, em frase e
+        # em ampla, porque timidez e bloqueio não são condição clínica (ansiedade e
+        # fobia são, e por isso exigiram isenção nos outros grupos).
+        # INDEXÁVEL: conteúdo próprio, não é clone de campanha como a /ansiedade01.
+        # O scope NÃO pode conter "page-ansiedade": há um invariante que rejeita isso.
+        "scope": "page-falar", "origem": "falar-em-publico",
+        "title": "Cris Campos · Hipnoterapia para Falar em Público, Timidez e Bloqueios",
+        "kicker": "Terapia breve · presencial em SP e online",
+        # A vergonha aqui é específica e não é "sou tímido": é ser competente e o corpo
+        # trair justo no momento que conta. O H1 nomeia essa cena em vez de rotular a
+        # pessoa, e fecha no padrão das outras páginas (tem causa, tem fim).
+        "h1": "Você domina o assunto. Na hora de falar, o corpo trava. <em class=\"italic font-medium text-terra\">Isso tem causa, e com terapia breve, tem fim.</em>",
+        # padrão de 31/07: CENA DE DOR + QUEBRA DE OBJEÇÃO + MECANISMO VIRANDO BENEFÍCIO
+        "subhead": ("A reunião em que você tinha a melhor ideia e não abriu a boca. A apresentação "
+                    "ensaiada vinte vezes que evaporou na primeira frase. A promoção que você não "
+                    "foi buscar. Não é falta de preparo nem de competência, é uma resposta antiga "
+                    "que dispara antes de você pensar. Tratar a <span class=\"text-terra\">raiz</span> "
+                    "é o que faz ela parar de disparar, e devolve a você a sala."),
+        "seq": ["medos", "geral", "ansiedade", "burnout"],
+        # Os quatro são reais e já publicados no site. Escolhidos por falarem de
+        # bloqueio, de sustentar a própria voz e do efeito profissional.
+        "micro": [
+            ("Na primeira sessão eu acabei tomando consciência e me libertando de bloqueios que afetavam a minha vida em muitos aspectos.", "Thiago V."),
+            ("Tinha muita dificuldade de dizer não, impor limites e sustentar minhas opiniões.", "Cecilia M."),
+            ("melhorou minha ansiedade, meus relacionamentos e também meus negócios profissionais.", "Abel F."),
+            ("Consegui abrir uma nova fase da minha vida, com mais leveza, consciência e coragem para ser quem eu sou.", "Barbara L."),
+        ],
+    },
     "index.html": {
         "scope": "page-site", "origem": "site",
         "title": "Cris Campos · Hipnoterapia Integrativa — O Método Voltar a Si",
