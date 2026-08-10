@@ -205,15 +205,23 @@ PAGES = {
     },
     "burnout.html": {
         "scope": "page-burnout", "origem": "burnout",
-        "title": "Cris Campos · Hipnoterapia Integrativa — Burnout / Esgotamento",
-        # 31/07: padrao unico. O kicker de dor virou a abertura do H1 (mais peso) e o
-        # kicker passou a carregar a promessa do anuncio ("terapia breve").
+        # 10/08/2026: a pagina falava so de esgotamento, e o grupo que manda
+        # trafego para ca compra 14 palavras: Insonia, Timidez, Baixa autoestima,
+        # Procrastinacao, Medo de morrer, Mudancas de Humor, Fadiga, alem de
+        # burnout. Insonia (99 impressoes, a 3a do grupo), timidez e autoestima
+        # estao no escopo da Cris e nao apareciam em lugar nenhum da primeira
+        # dobra. Resultado: QS 2 e 3 com 'pagina abaixo da media' em 5 de 5
+        # palavras com nota.
+        #
+        # A abertura agora nomeia insonia, confianca e adiamento, e enquadra tudo
+        # como o que sobra de quem vive no limite, que e o fio que liga as 14.
+        "title": "Cris Campos · Hipnoterapia para Esgotamento, Insônia e Autoestima",
         "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "Você dá conta de tudo, menos de você. <em class=\"italic font-medium text-terra\">O esgotamento tem causa. E com terapia breve, tem fim.</em>",
-        "subhead": ("Dormir o fim de semana inteiro e acordar cansado. Ler a mesma linha três vezes. "
-                    "Continuar entregando tudo, porque parar não é opção, e conviver com o medo de que "
-                    "um dia alguém perceba. O tratamento vai à <span class=\"text-terra\">raiz</span> do "
-                    "esgotamento, e é isso que devolve a sua energia sem você ter que largar tudo."),
+        "h1": "Não é preguiça e não é frescura. <em class=\"italic font-medium text-terra\">É o que sobra de quem funciona no limite há tempo demais.</em>",
+        "subhead": ("O cansaço que o fim de semana não cura. A insônia que virou rotina. "
+                    "A confiança que foi encolhendo, o medo de se expor que não existia antes, "
+                    "tudo o que é seu ficando para depois. A hipnoterapia vai à "
+                    "<span class=\"text-terra\">raiz</span> disso, não ao cansaço de superfície."),
         "seq": ["burnout", "geral", "ansiedade", "medos"],
         "micro": [
             ("graças a Deus estou conseguindo me reorganizar em todas as áreas da minha vida de uma forma tranquila e clara.", "Luis C."),
