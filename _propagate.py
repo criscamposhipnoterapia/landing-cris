@@ -217,11 +217,19 @@ PAGES = {
         # como o que sobra de quem vive no limite, que e o fio que liga as 14.
         "title": "Cris Campos · Hipnoterapia para Esgotamento, Insônia e Autoestima",
         "kicker": "Terapia breve · presencial em SP e online",
-        "h1": "Não é preguiça e não é frescura. <em class=\"italic font-medium text-terra\">É o que sobra de quem funciona no limite há tempo demais.</em>",
-        "subhead": ("O cansaço que o fim de semana não cura. A insônia que virou rotina. "
-                    "A confiança que foi encolhendo, o medo de se expor que não existia antes, "
-                    "tudo o que é seu ficando para depois. A hipnoterapia vai à "
-                    "<span class=\"text-terra\">raiz</span> disso, não ao cansaço de superfície."),
+        # 17/08/2026: a correcao de 10/08 nomeou insonia/confianca/adiamento e
+        # resolveu QS de 3 das 5 palavras com nota. As 4 que sobraram baixas
+        # (Sindrome de burnout, Exaustao Mental, Procrastinacao, tratar Burnout)
+        # sao exatamente as que nao tinham o texto literal na pagina -- "burnout"
+        # aparecia 0x no texto visivel, so em HTML/JS. Esta versao nomeia as 4,
+        # sem soltar a voz emocional (mesmo padrao ja aprovado na pagina de
+        # depressao: nomear o termo clinico dentro do <em> do H1).
+        "h1": "Não é preguiça e não é frescura. <em class=\"italic font-medium text-terra\">É síndrome de burnout: o que sobra de quem funciona no limite há tempo demais.</em>",
+        "subhead": ("O cansaço que virou exaustão mental, e que o fim de semana já não cura. "
+                    "A insônia que virou rotina. A confiança que foi encolhendo, o medo de se "
+                    "expor que não existia antes, a procrastinação que parece preguiça e não é. "
+                    "A hipnoterapia vai à <span class=\"text-terra\">raiz</span> disso, não ao "
+                    "cansaço de superfície."),
         "seq": ["burnout", "geral", "ansiedade", "medos"],
         "micro": [
             ("graças a Deus estou conseguindo me reorganizar em todas as áreas da minha vida de uma forma tranquila e clara.", "Luis C."),
