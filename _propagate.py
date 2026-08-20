@@ -205,29 +205,31 @@ PAGES = {
     },
     "burnout.html": {
         "scope": "page-burnout", "origem": "burnout",
-        # 10/08/2026: a pagina falava so de esgotamento, e o grupo que manda
-        # trafego para ca compra 14 palavras: Insonia, Timidez, Baixa autoestima,
-        # Procrastinacao, Medo de morrer, Mudancas de Humor, Fadiga, alem de
-        # burnout. Insonia (99 impressoes, a 3a do grupo), timidez e autoestima
-        # estao no escopo da Cris e nao apareciam em lugar nenhum da primeira
-        # dobra. Resultado: QS 2 e 3 com 'pagina abaixo da media' em 5 de 5
-        # palavras com nota.
+        # HISTORICO DA PAGINA, e uma REVERSAO deliberada:
         #
-        # A abertura agora nomeia insonia, confianca e adiamento, e enquadra tudo
-        # como o que sobra de quem vive no limite, que e o fio que liga as 14.
-        "title": "Cris Campos · Hipnoterapia para Esgotamento, Insônia e Autoestima",
+        # 10/08: a pagina foi ALARGADA de proposito para caber as 13 palavras do
+        # grupo, que misturava Insonia, Baixa autoestima, Medo de morrer,
+        # Mudancas de Humor e burnout. A aposta era cobrir todas na primeira
+        # dobra.
+        # 17/08: nomeou os termos clinicos que faltavam literalmente.
+        # 19/08: a aposta do alargamento CAIU. Cobrir 6 temas numa pagina so
+        # manteve 'pagina abaixo da media' justamente nas palavras de burnout,
+        # e o IQ ficou em 2 e 3. Decisao do Rodrigo: o grupo passa a ser
+        # EXCLUSIVAMENTE burnout (as 5 palavras fora do tema foram pausadas em
+        # google-ads/focar_burnout_19-08.py), e a pagina acompanha.
+        #
+        # Agora a primeira dobra fala SO a queixa de quem esta em burnout:
+        # fadiga que o descanso nao resolve, exaustao mental, irritacao,
+        # procrastinacao e a sensacao de nao dar mais conta do trabalho.
+        # Autoestima, medo de se expor e insonia saem da abertura: sao outras
+        # queixas, e cada uma diluia a relevancia desta pagina para burnout.
+        "title": "Cris Campos · Hipnoterapia para Síndrome de Burnout e Exaustão Mental",
         "kicker": "Terapia breve · presencial em SP e online",
-        # 17/08/2026: a correcao de 10/08 nomeou insonia/confianca/adiamento e
-        # resolveu QS de 3 das 5 palavras com nota. As 4 que sobraram baixas
-        # (Sindrome de burnout, Exaustao Mental, Procrastinacao, tratar Burnout)
-        # sao exatamente as que nao tinham o texto literal na pagina -- "burnout"
-        # aparecia 0x no texto visivel, so em HTML/JS. Esta versao nomeia as 4,
-        # sem soltar a voz emocional (mesmo padrao ja aprovado na pagina de
-        # depressao: nomear o termo clinico dentro do <em> do H1).
         "h1": "Não é preguiça e não é frescura. <em class=\"italic font-medium text-terra\">É síndrome de burnout: o que sobra de quem funciona no limite há tempo demais.</em>",
-        "subhead": ("O cansaço que virou exaustão mental, e que o fim de semana já não cura. "
-                    "A insônia que virou rotina. A confiança que foi encolhendo, o medo de se "
-                    "expor que não existia antes, a procrastinação que parece preguiça e não é. "
+        "subhead": ("A fadiga e o cansaço constante que o fim de semana já não resolve. "
+                    "A exaustão mental que virou rotina. A irritação com o que antes nem "
+                    "incomodava, a procrastinação que parece preguiça e não é, e a sensação "
+                    "de não dar mais conta do trabalho que você sempre deu conta. "
                     "A hipnoterapia vai à <span class=\"text-terra\">raiz</span> disso, não ao "
                     "cansaço de superfície."),
         "seq": ["burnout", "geral", "ansiedade", "medos"],
