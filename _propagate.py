@@ -23,7 +23,9 @@ SE TROCAR OS DEPOIMENTOS
     de cada tema vem da ordem em que os cards aparecem na master.
   - Atualize o campo "micro" de cada página (4 relatos verbatim do tema).
 """
-import re, io, os
+import re
+import io
+import os
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 MASTER = os.path.join(BASE, "ansiedade.html")
@@ -168,14 +170,30 @@ PAGES = {
         # noindex: conteudo duplicado da /ansiedade (AdsBot ignora noindex).
         "scope": "page-consulta", "origem": "consulta",
         "noindex": True,
-        "title": "Cris Campos · Consulta com Terapeuta em São Paulo",
-        "kicker": "Terapia breve · consulta particular na Vila Madalena e online",
-        "h1": ("Você não precisa de mais um lugar para desabafar. "
-               "<em class=\"italic font-medium text-terra\">Precisa de uma consulta que chegue na causa.</em>"),
-        "subhead": ("Meses falando da mesma dor, entendendo cada detalhe dela, e a segunda-feira "
-                    "chegando exatamente igual. Entender não muda. A consulta aqui começa por onde "
-                    "a conversa não alcança, na <span class=\"text-terra\">raiz</span>, e é por isso "
-                    "que se conta em sessões, não em anos."),
+        # 04/09/2026 — PRIMEIRA DOBRA REESCRITA. A busca mudou de lugar.
+        # A copy acima foi escrita para "consulta com terapeuta", que em 31/07 era a
+        # nº1 do grupo com R$586/30d. Medido em 04/09, essa busca fez 1 impressao e
+        # R$0,00 em 30 dias; a familia inteira com "consulta" somou R$9,24 em 16
+        # buscas. Quem paga a conta hoje e o termo PURO: "terapia" (602 impr, 40
+        # cliques, R$333,42) e "terapeuta" (199 impr, 13 cliques, R$102,79), juntos
+        # 95% do gasto dessas palavras. E "terapia" nao aparecia no H1 nenhuma vez.
+        # Sintoma no Google Ads: IQ 3 nas duas, com anuncio ACIMA da media e
+        # pagina ABAixo — o anuncio falava a lingua da busca, a pagina nao.
+        # O H1 antigo ainda abria negando ("Voce nao precisa de mais um lugar para
+        # desabafar"), ou seja, dizia o que a pagina NAO e antes de confirmar que e
+        # terapia. Copy nova escrita pelo Rodrigo e aprovada por ele em 04/09.
+        # "Poucas sessoes, nao anos" e a mesma frase que ja roda na descricao do
+        # anuncio, de proposito: casamento anuncio<->pagina e o que a nota de
+        # experiencia mede.
+        "title": "Cris Campos · Terapia Breve em São Paulo",
+        "kicker": "Terapia breve · presencial em SP e online",
+        "h1": ("Terapia que vai até a raiz, tem prazo para terminar. "
+               "<em class=\"italic font-medium text-terra\">Você não precisa de anos de "
+               "tratamento, poucas sessões são suficientes.</em>"),
+        "subhead": ("Meses falando da mesma dor, com alguém que já conhece cada detalhe dela, "
+                    "e a segunda-feira chegando exatamente igual. Entender não muda. Aqui a "
+                    "terapia começa por onde a conversa não alcança, na "
+                    "<span class=\"text-terra\">raiz</span>. Particular, na Vila Madalena ou online."),
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
              "Sua consulta começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>: 60 minutos, particular, para mapear a raiz do que trava você e sair com um caminho definido, não com uma lista de tarefas. Se fizer sentido seguir, o processo é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>, contado em poucas sessões. Na Vila Madalena ou online."),
