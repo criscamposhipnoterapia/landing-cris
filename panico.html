@@ -93,6 +93,26 @@
           } catch (e) {}
         }
 
+        // 11/09/2026 — mede a INTENCAO: disparado no instante em que o portao
+        // de nome ABRE, antes de saber se a pessoa completa ou desiste. So
+        // dispara quando existe portao pra abandonar (o fallback sem gate, logo
+        // abaixo, ja e completude por definicao — nao precisa desta contagem).
+        // Comparar com fireBeacon() no mesmo periodo mede abandono do portao.
+        function fireBeaconIntencao() {
+          try {
+            var payload = JSON.stringify({
+              event_type: 'whatsapp_intencao',
+              gclid: getVal('gclid') || '', gbraid: getVal('gbraid') || '', wbraid: getVal('wbraid') || '',
+              origem: ORIGEM, pagina: location.pathname, ua: navigator.userAgent
+            });
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(BACKEND_URL, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+            } else {
+              fetch(BACKEND_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
+            }
+          } catch (e) {}
+        }
+
         // ===== Beacon de visita (Painel, 30/07): 1 disparo por pageview. =====
         // Alimenta a aba Visitas: e o denominador da taxa visita->clique e a
         // unica leitura de organico/Instagram/direto (o Ads so ve trafego pago).
@@ -184,6 +204,7 @@
             if (!gate) { fireBeacon(''); return; } // sem modal no DOM: comportamento antigo (não trava o clique)
             try {
               ev.preventDefault();
+              fireBeaconIntencao();
               gateOpen(function (nome) {
                 var finalText = nome ? texto.replace('! ', '! Meu nome é ' + nome + '. ') : texto;
                 fireBeacon(nome);
