@@ -80,7 +80,7 @@ PAGES = {
         # scope sem o prefixo "page-ansiedade" p/ não disparar o invariante de propagação.
         "scope": "page-campanha", "origem": "ansiedade01",
         "noindex": True,
-        "title": "Cris Campos · Hipnoterapia Integrativa — Ansiedade",
+        "title": "Cris Campos · Hipnoterapia Integrativa · Ansiedade",
         # Copy 29/07/2026: estrutura DIFERENTE da /relacionamentos, de proposito.
         #   /relacionamentos = culpa -> sintomas -> mecanismo
         #   /ansiedade01     = culpa -> mecanismo -> prova + primeiro passo
@@ -137,8 +137,16 @@ PAGES = {
         # Autoestima e relacionamento ganham frase propria, nao item de lista:
         # o deep dive de 63 fichas mostrou que sao bolsoes tao grandes quanto
         # ansiedade.
-        "title": "Cris Campos · Hipnoterapia em SP: tratamento que vai à raiz",
-        "kicker": "Hipnoterapia Integrativa em São Paulo · terapia breve",
+        # 29/09/2026: title e kicker falam as buscas reais do grupo Hipnoterapia
+        # (60 dias: hipnoterapia 16 cliques, hipnose 6, hipnoterapia perto de mim 3,
+        # hipnoterapia online 2). A pagina dizia "hipnose" no corpo, nunca no title,
+        # e nao dizia o bairro. Nota de pagina 'media' em 73% do gasto da conta.
+        # "terapia breve" saiu daqui e a pagina fica sem a expressao: conferido que
+        # o anuncio do Hipnoterapia (824324322388) nao promete terapia breve, entao a
+        # trava de marca de 31/07 ("o anuncio promete isso") nao se aplica.
+        # Copy aprovada pelo Rodrigo em 29/09. H1 e subhead (07/08) intocados.
+        "title": "Hipnoterapia e Hipnose Clínica em São Paulo · Cris Campos",
+        "kicker": "Hipnoterapia em São Paulo · Vila Madalena e online",
         "h1": "Hipnoterapia trata o quê? <em class=\"italic font-medium text-terra\">O que se repete, e que você já tentou resolver sozinho.</em>",
         "subhead": ("Ansiedade, pânico, fobia. Insônia e bruxismo. Compulsão alimentar, "
                     "vícios, gagueira, timidez. Uma autoestima que nunca se sustenta, "
@@ -148,6 +156,14 @@ PAGES = {
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
              "O tratamento é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: poucas sessões, não anos. Começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>, 60 minutos para entender a raiz do que você sente e sair com um caminho definido. Particular e sigiloso, na Vila Madalena ou online."),
+            # 29/09/2026: 1 pergunta de busca literal so desta pagina, antes das 6
+            # comuns. Mesma ancora da /consulta ("Ansiedade tem cura?"): se ela for
+            # reescrita na master, o assert derruba a propagacao de proposito.
+            ('<details class="faq-item"><summary><span class="faq-q">Ansiedade tem cura?',
+             '<details class="faq-item"><summary><span class="faq-q">Onde fazer hipnoterapia em São Paulo?</span>'
+             '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
+             '<p class="faq-a">Na Vila Madalena, em São Paulo, ou online, com o mesmo método. A Cris é hipnoterapeuta com formação OMNI, AIS e TRI, e o processo começa pela Sessão de Clareza: 60 minutos para mapear a raiz do que você sente e sair com o caminho definido.</p></details>\n'
+             '          <details class="faq-item"><summary><span class="faq-q">Ansiedade tem cura?'),
         ],
         "seq": ["ansiedade", "geral", "burnout", "medos"],
         "micro": [
@@ -185,8 +201,15 @@ PAGES = {
         # "Poucas sessoes, nao anos" e a mesma frase que ja roda na descricao do
         # anuncio, de proposito: casamento anuncio<->pagina e o que a nota de
         # experiencia mede.
-        "title": "Cris Campos · Terapia Breve em São Paulo",
-        "kicker": "Terapia breve · presencial em SP e online",
+        # 29/09/2026: title e kicker passam a dizer "terapeuta", "online" e o
+        # bairro. Buscas reais dos grupos Terapia e Terapia - Consulta (60 dias):
+        # terapia 55 cliques, terapeuta 28, terapeuta perto de mim 5, terapia
+        # online 5. A pagina dizia "terapia" 32 vezes e "terapeuta" so 7, nenhuma
+        # no topo; "terapia online" nenhuma. "Terapia Breve" segue no title e
+        # volta no FAQ novo: os anuncios desta pagina prometem terapia breve.
+        # Copy aprovada pelo Rodrigo em 29/09. H1 e subhead (04/09) intocados.
+        "title": "Terapeuta em São Paulo · Terapia Breve e Online · Cris Campos",
+        "kicker": "Terapeuta em São Paulo · Vila Madalena e online",
         "h1": ("Terapia que vai até a raiz, tem prazo para terminar. "
                "<em class=\"italic font-medium text-terra\">Você não precisa de anos de "
                "tratamento, poucas sessões são suficientes.</em>"),
@@ -197,12 +220,17 @@ PAGES = {
         "text_overrides": [
             ("Hipnoterapia Integrativa e o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>: um processo profundo que vai à raiz do que você sente, não ao sintoma de superfície.",
              "Sua consulta começa pela <strong class=\"font-medium text-rust\">Sessão de Clareza</strong>: 60 minutos, particular, para mapear a raiz do que trava você e sair com um caminho definido, não com uma lista de tarefas. Se fizer sentido seguir, o processo é a Hipnoterapia Integrativa com o <strong class=\"font-medium text-rust\">Método Voltar a Si</strong>, contado em poucas sessões. Na Vila Madalena ou online."),
-            # 3 perguntas de busca literal so desta pagina, antes das 6 comuns.
+            # 4 perguntas de busca literal so desta pagina, antes das 6 comuns.
             # A do convenio e deliberada: convenio e a 2ª objecao mais citada no
             # diario (6,1% dos leads) e desqualificar na pagina custa menos que
             # desqualificar no WhatsApp da Cris.
+            # 29/09/2026: entrou a 1a, "Como escolher um terapeuta em São Paulo?",
+            # a busca "terapeuta" com a cidade (aprovada pelo Rodrigo em 29/09).
             ('<details class="faq-item"><summary><span class="faq-q">Ansiedade tem cura?',
-             '<details class="faq-item"><summary><span class="faq-q">Como funciona a primeira consulta?</span>'
+             '<details class="faq-item"><summary><span class="faq-q">Como escolher um terapeuta em São Paulo?</span>'
+             '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
+             '<p class="faq-a">Vale olhar três coisas: formação, método e prazo. A Cris é hipnoterapeuta com formação OMNI, AIS e TRI e conduz o Método Voltar a Si, uma terapia breve, contada em sessões e não em anos. Atende na Vila Madalena, em São Paulo, e online, com o mesmo método. E a primeira consulta, a Sessão de Clareza, já mostra se faz sentido seguir.</p></details>\n'
+             '          <details class="faq-item"><summary><span class="faq-q">Como funciona a primeira consulta?</span>'
              '<svg class="faq-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></summary>'
              '<p class="faq-a">É a Sessão de Clareza, 60 minutos. Você conta o que está acontecendo e saímos com a raiz mapeada e um caminho definido. Não é uma triagem nem uma conversa de apresentação: já é trabalho. Muita gente sai dela enxergando algo que não tinha visto em anos.</p></details>\n'
              '          <details class="faq-item"><summary><span class="faq-q">Atende por convênio ou plano de saúde?</span>'
@@ -260,7 +288,7 @@ PAGES = {
     },
     "medos.html": {
         "scope": "page-medos", "origem": "medos",
-        "title": "Cris Campos · Hipnoterapia Integrativa — Medos",
+        "title": "Cris Campos · Hipnoterapia Integrativa · Medos",
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "Por fora, firmeza. Por dentro, um medo que paralisa. <em class=\"italic font-medium text-terra\">Ele tem causa, e com terapia breve, tem fim.</em>",
         "subhead": ("A oportunidade que passou. O convite que você recusou. A conversa adiada mais "
@@ -277,7 +305,7 @@ PAGES = {
     },
     "depressao.html": {
         "scope": "page-depressao", "origem": "depressao",
-        "title": "Cris Campos · Hipnoterapia Integrativa — Depressão / Tristeza Profunda",
+        "title": "Cris Campos · Hipnoterapia Integrativa · Depressão / Tristeza Profunda",
         # OPÇÃO B (escolhida pelo Rodrigo). Nomeia "depressão" p/ relevância com o anúncio.
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "Não é preguiça nem falta de fé. <em class=\"italic font-medium text-terra\">A depressão tem causa. E com terapia breve, tem fim.</em>",
@@ -297,7 +325,7 @@ PAGES = {
     },
     "panico.html": {
         "scope": "page-panico", "origem": "panico",
-        "title": "Cris Campos · Hipnoterapia Integrativa — Crises de Pânico / Síndrome do Pânico",
+        "title": "Cris Campos · Hipnoterapia Integrativa · Crises de Pânico / Síndrome do Pânico",
         # Copy 13/07 (pacote de melhoria do piloto): destino do grupo [Crise/Pânico]
         # e da keyword "síndrome do pânico tratamento" (QS1 por landing genérica).
         # Copy 29/07/2026: mesma estrutura testada na /ansiedade01 (culpa -> mecanismo ->
@@ -329,7 +357,7 @@ PAGES = {
         # (término/ciúme/dependência/padrões). Whitespace: a 683 não roda esse tema.
         # Captura na crise de superfície e ponte pra identidade ("voltar a se escolher").
         "scope": "page-relacionamentos", "origem": "relacionamentos",
-        "title": "Cris Campos · Hipnoterapia Integrativa — Relacionamentos / Padrões Afetivos",
+        "title": "Cris Campos · Hipnoterapia Integrativa · Relacionamentos / Padrões Afetivos",
         "kicker": "Terapia breve · presencial em SP e online",
         "h1": "A dor não passa, e a culpa não é sua. <em class=\"italic font-medium text-terra\">Com terapia breve, o alívio começa mais cedo do que você imagina.</em>",
         # 31/07: abre em DEPENDENCIA EMOCIONAL (as palavras que mais gastam no grupo) e
@@ -404,7 +432,7 @@ PAGES = {
     },
     "index.html": {
         "scope": "page-site", "origem": "site",
-        "title": "Cris Campos · Hipnoterapia Integrativa — O Método Voltar a Si",
+        "title": "Cris Campos · Hipnoterapia Integrativa · O Método Voltar a Si",
         # 31/07: a home tambem carrega a promessa "terapia breve" (era a unica sem).
         # Mantem Vila Madalena, que e o que serve a busca local e de marca.
         "kicker": "Terapia breve · Vila Madalena (SP) e online",
