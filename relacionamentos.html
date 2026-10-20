@@ -149,7 +149,7 @@
         var gateCb = null, gateLastFocus = null;
         function gateOpen(cb) {
           gateCb = cb; gateLastFocus = document.activeElement;
-          gateInput.value = ''; gateGo.disabled = true;
+          gateInput.value = '';
           gate.hidden = false; gate.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
           setTimeout(function () { try { gateInput.focus(); } catch (e) {} }, 40);
@@ -160,12 +160,12 @@
           try { if (gateLastFocus && gateLastFocus.focus) gateLastFocus.focus(); } catch (e) {}
         }
         if (gate) {
-          gateInput.addEventListener('input', function () { gateGo.disabled = gateInput.value.trim().length < 2; });
-          gateInput.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !gateGo.disabled) { e.preventDefault(); gateGo.click(); } });
+          gateInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); gateGo.click(); } });
           gateGo.addEventListener('click', function () {
+            // 20/10/2026 — nome OPCIONAL (aprovado pelo Rodrigo): 36-43% de quem
+            // tocava no botao desistia aqui. Vazio ou 1 letra segue sem nome.
             var nome = gateInput.value.trim();
-            if (nome.length < 2) return;
-            nome = nome.charAt(0).toUpperCase() + nome.slice(1);
+            nome = nome.length < 2 ? '' : nome.charAt(0).toUpperCase() + nome.slice(1);
             var cb = gateCb; gateClose(); if (cb) cb(nome);
           });
           Array.prototype.forEach.call(gate.querySelectorAll('[data-gate-close]'), function (el) { el.addEventListener('click', gateClose); });
@@ -1330,9 +1330,9 @@
       <button type="button" class="name-gate__x" data-gate-close aria-label="Fechar">&times;</button>
       <span class="eyebrow center name-gate__eyebrow">Um instante</span>
       <h3 id="name-gate-title" class="name-gate__title">Como gostaria de ser chamada(o)?</h3>
-      <p class="name-gate__lead">Você vai ser redirecionada(o) para o meu WhatsApp. Confirme seu nome e, assim que possível, já te respondo.</p>
-      <input id="name-gate-input" class="name-gate__input" type="text" autocomplete="given-name" inputmode="text" maxlength="40" placeholder="Confirme seu nome" />
-      <button type="button" id="name-gate-go" class="cta-solid name-gate__go inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base" disabled>Continuar no WhatsApp →</button>
+      <p class="name-gate__lead">Você vai para o meu WhatsApp. Se quiser, deixe seu nome e eu já te chamo por ele.</p>
+      <input id="name-gate-input" class="name-gate__input" type="text" autocomplete="given-name" inputmode="text" maxlength="40" placeholder="Seu nome (opcional)" />
+      <button type="button" id="name-gate-go" class="cta-solid name-gate__go inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base">Continuar no WhatsApp →</button>
       <p class="name-gate__note">Atendimento particular e sigiloso.</p>
     </div>
   </div>
